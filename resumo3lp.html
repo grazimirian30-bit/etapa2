@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Supremo: Módulo 3 - Engenharia de Funções e Modularização</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #334155;
+            --accent: #0ea5e9;
+            --highlight: #f59e0b;
+            --code-bg: #011627;
+            --code-text: #d6deeb;
+            --bg-page: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.8;
+            color: var(--primary);
+            background-color: var(--bg-page);
+            margin: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 8px solid var(--accent);
+        }
+
+        .container { max-width: 1200px; margin: -80px auto 80px; padding: 0 20px; }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+            border-left: 12px solid var(--accent);
+        }
+
+        h2 { color: var(--primary); font-size: 2.2rem; border-bottom: 3px solid #e2e8f0; padding-bottom: 15px; margin-top: 0; }
+        h3 { color: var(--secondary); margin-top: 2.5rem; font-size: 1.6rem; border-left: 5px solid var(--accent); padding-left: 15px; }
+
+        /* --- INFOGRÁFICO: ANATOMIA DEF --- */
+        .def-viz {
+            background: #f1f5f9;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 1px solid #cbd5e1;
+        }
+        .component-label { font-weight: bold; color: var(--accent); }
+
+        /* --- TABELA TÉCNICA --- */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+        .tech-table th { background: #f1f5f9; padding: 18px; text-align: left; border: 1px solid #cbd5e1; }
+        .tech-table td { padding: 18px; border: 1px solid #cbd5e1; vertical-align: top; }
+
+        /* --- CODE BLOCKS --- */
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 35px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            border-right: 6px solid var(--accent);
+        }
+        .k { color: #c792ea; font-weight: bold; } /* keyword */
+        .f { color: #82aaff; } /* function */
+        .s { color: #ecc48d; } /* string */
+        .c { color: #637777; font-style: italic; } /* comment */
+
+        .deep-note {
+            background: #f0f9ff;
+            border-left: 6px solid var(--accent);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .recursive-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 25px 0;
+        }
+        .step {
+            padding: 15px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .quiz-card{
+    background:#fff;
+    padding:30px;
+    margin-top:30px;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+
+.alternativa{
+    display:block;
+    padding:12px;
+    margin:10px 0;
+    background:#f8fafc;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.alternativa:hover{
+    background:#e0f2fe;
+}
+
+.btn-gabarito{
+    background:#0ea5e9;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.btn-gabarito:hover{
+    background:#0284c7;
+}
+
+.gabarito{
+    display:none;
+    margin-top:20px;
+    background:#ecfdf5;
+    border-left:6px solid #16a34a;
+    padding:20px;
+    border-radius:10px;
+}
+
+.gabarito h4{
+    color:#166534;
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Unidade 3: Engenharia de Modularização</h1>
+    <p>Abstração de Código, Gestão de Memória e Lógica de Sub-rotinas Avançadas</p>
+</header>
+
+<div class="container">
+
+    <!-- SEÇÃO 1: FILOSOFIA DA MODULARIZAÇÃO -->
+    <section class="card">
+        <h2>🏗️ 1. O Paradigma da Decomposição</h2>
+        <p>A modularização não é apenas "organizar" o código, é uma estratégia de **abstração**. Em sistemas complexos, o desenvolvedor não deve precisar saber *como* uma função faz o cálculo, apenas *o que* ela recebe e *o que* ela entrega.</p>
+        
+        <h3>1.1 Vantagens Técnicas Profundas [58-59]</h3>
+        <ul>
+            <li><strong>Manutenibilidade:</strong> Se a regra de cálculo do imposto mudar, você altera apenas um módulo (uma função), e o sistema inteiro se atualiza.</li>
+            <li><strong>Reutilização (DRY - Don't Repeat Yourself):</strong> Evita a duplicação de lógica, reduzindo o tamanho do executável e a probabilidade de bugs.</li>
+            <li><strong>Testabilidade:</strong> É muito mais fácil testar uma função pequena de 10 linhas do que um script monolítico de 1000 linhas.</li>
+        </ul>
+    </section>
+
+    <!-- SEÇÃO 2: PROCEDIMENTOS E ESCOPO -->
+    <section class="card">
+        <h2>🛠️ 2. Procedimentos e o Ciclo de Vida da Memória</h2>
+        <p>Um procedimento é uma sub-rotina que realiza um processamento e termina sua execução sem retornar dados ao chamador. Em Python, embora usemos <code>def</code>, se não houver <code>return</code>, a função devolve implicitamente o valor <code>None</code>.</p>
+        
+        <div class="def-viz">
+            <code><span class="k">def</span> <span class="f">nome_funcao</span>(<span class="component-label">parâmetros</span>):</code>
+            <p>1. <span class="component-label">def</span>: Palavra reservada que instrui o interpretador a carregar a rotina na memória.</p>
+            <p>2. <span class="component-label">Parâmetros</span>: Variáveis locais que recebem os valores de entrada (argumentos).</p>
+            <p>3. <span class="component-label">Corpo</span>: O bloco indentado que define o algoritmo da rotina.</p>
+        </div>
+
+        <h3>2.1 Escopo e Variáveis Locais vs. Globais [60-61]</h3>
+        <p>Este é o ponto onde muitos programadores falham. Variáveis criadas dentro de uma função residem em um espaço de memória temporário chamado <strong>Stack Frame</strong>.</p>
+        <table class="tech-table">
+            <tr>
+                <th>Escopo Local</th>
+                <td>Criado no momento da chamada da função. Morre assim que a função termina. Não ocupa memória permanentemente.</td>
+            </tr>
+            <tr>
+                <th>Escopo Global</th>
+                <td>Vive durante toda a execução do programa. Se abusado, pode causar efeitos colaterais (quando uma função altera o que não devia).</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- SEÇÃO 3: FUNÇÕES COM RETORNO -->
+    <section class="card">
+        <h2>🧪 3. Funções e o Fluxo de Dados (Return)</h2>
+        <p>Diferente do procedimento, a <strong>Função</strong> possui uma "saída". O comando <code>return</code> encerra imediatamente a execução da função e envia o resultado de volta para o ponto onde a função foi invocada.</p>
+        
+        <div class="deep-note">
+            <strong>Mecânica do Return:</strong> Quando o interpretador encontra o <code>return</code>, ele limpa o escopo local da função da memória e substitui a chamada da função pelo valor calculado.
+        </div>
+
+        <pre><code><span class="k">def</span> <span class="f">validar_senha</span>(senha):
+    <span class="c"># Lógica de validação extensa</span>
+    <span class="k">if</span> <span class="f">len</span>(senha) >= 8 <span class="k">and</span> <span class="s">"@"</span> <span class="k">in</span> senha:
+        <span class="k">return</span> <span class="k">True</span>
+    <span class="k">else</span>:
+        <span class="k">return</span> <span class="k">False</span>
+
+<span class="c"># O resultado da função é usado diretamente em uma decisão</span>
+<span class="k">if</span> <span class="f">validar_senha</span>(<span class="s">"user@123"</span>):
+    <span class="f">print</span>(<span class="s">"Acesso Liberado"</span>)</code></pre>
+    </section>
+
+    <!-- SEÇÃO 4: RECURSIVIDADE AVANÇADA -->
+    <section class="card">
+        <h2>🔄 4. Recursividade: A Lógica da Auto-Invocação</h2>
+        <p>A recursividade é uma técnica onde a solução de um problema depende da solução de instâncias menores do mesmo problema. É amplamente usada em algoritmos de busca e estruturas de dados complexas [68-72].</p>
+        
+        <h3>4.1 Os dois Pilares da Recursão</h3>
+        <ol>
+            <li><strong>Caso Base (Condição de Parada):</strong> A situação mais simples possível que não precisa de recursão para ser resolvida. Sem isso, ocorre o erro <i>RecursionError</i>.</li>
+            <li><strong>Caso Recursivo:</strong> Onde a função chama a si mesma, aproximando-se do caso base a cada passo.</li>
+        </ol>
+
+        <div class="recursive-steps">
+            <strong>Rastro de Execução (Fatorial de 4):</strong>
+            <div class="step"><span>Chamada 1: fat(4)</span> <span>4 * fat(3)</span></div>
+            <div class="step"><span>Chamada 2: fat(3)</span> <span>3 * fat(2)</span></div>
+            <div class="step"><span>Chamada 3: fat(2)</span> <span>2 * fat(1)</span></div>
+            <div class="step" style="background:#dcfce7"><span>Chamada 4: fat(1)</span> <span>1 (Caso Base atingido!)</span></div>
+        </div>
+
+        <pre><code><span class="k">def</span> <span class="f">fatorial</span>(n):
+    <span class="c"># Caso Base: evita o empilhamento infinito</span>
+    <span class="k">if</span> n == 0 <span class="k">or</span> n == 1:
+        <span class="k">return</span> 1
+    <span class="c"># Passo Recursivo: quebra o problema em partes menores</span>
+    <span class="k">return</span> n * <span class="f">fatorial</span>(n - 1)</code></pre>
+    </section>
+
+    <!-- SEÇÃO 5: PARÂMETROS E FLEXIBILIDADE -->
+    <section class="card">
+        <h2>📦 5. Gestão de Parâmetros e Argumentos</h2>
+        <p>Python oferece um dos sistemas de parâmetros mais flexíveis entre as linguagens modernas:</p>
+        <ul>
+            <li><strong>Parâmetros Obrigatórios:</strong> Devem ser passados na ordem exata definida.</li>
+            <li><strong>Default Parameters (Valores Padrão):</strong> Permitem que a função seja chamada com menos argumentos do que o definido. <code>def taxa(valor, perc=0.1):</code></li>
+            <li><strong>Keyword Arguments (Argumentos Nomeados):</strong> Aumentam a clareza do código. <code>taxa(valor=100, perc=0.05)</code></li>
+        </ul>
+    </section>
+
+</div>
+<script>
+
+function mostrarGabarito(id){
+
+let bloco =
+document.getElementById(id);
+
+if(bloco.style.display === "block"){
+
+    bloco.style.display = "none";
+
+}
+else{
+
+    bloco.style.display = "block";
+
+}
+
+}
+
+</script>
+<section class="card">
+
+<div class="quiz-card">
+    <section class="card">
+
+<h2>🎓 Avaliação do Módulo</h2>
+
+<div class="quiz-card">
+
+<h3>Questão 1</h3>
+
+<p>
+
+Uma equipe está desenvolvendo um sistema acadêmico com mais de
+20.000 linhas de código. Durante a manutenção, percebe-se que
+uma simples alteração na regra de cálculo de média exige
+modificações em diversos pontos do sistema.
+
+Qual princípio da modularização resolveria esse problema de forma
+mais eficiente?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+A) Aumentar o número de variáveis globais.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+B) Centralizar toda a lógica em um único arquivo.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+C) Encapsular a regra de cálculo em uma função reutilizável.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+D) Utilizar apenas estruturas de repetição.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+E) Eliminar procedimentos.
+</label>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('g1')">
+Ver Gabarito Comentado
+</button>
+
+<div id="g1" class="gabarito">
+
+<h4>✅ Resposta Correta: C</h4>
+
+<p>
+
+Ao encapsular a regra em uma função, qualquer alteração futura
+será realizada em apenas um local.
+
+Esse conceito reduz duplicação de código e aumenta a
+manutenibilidade do sistema, um dos principais objetivos da
+modularização.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão 2</h3>
+
+<p>
+
+Analise o código:
+
+</p>
+
+<pre>
+def calcula(a,b):
+    return a+b
+
+resultado = calcula(10,5)
+</pre>
+
+<p>
+
+Sob a perspectiva da modularização, a função apresentada pode ser
+classificada como:
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+A) Estrutura redundante.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+B) Variável global.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+C) Módulo reutilizável.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+D) Estrutura de repetição.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+E) Estrutura de decisão.
+</label>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('g2')">
+Ver Gabarito Comentado
+</button>
+
+<div id="g2" class="gabarito">
+
+<h4>✅ Resposta Correta: C</h4>
+
+<p>
+
+A função encapsula uma operação específica que pode ser utilizada
+em diversos pontos do sistema sem necessidade de reescrever o
+código.
+
+Esse é um dos pilares da reutilização de software.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão 3</h3>
+
+<p>
+
+Observe o trecho abaixo:
+
+</p>
+
+<pre>
+def exemplo():
+    print("A")
+    print("B")
+    return
+    print("C")
+</pre>
+
+<p>
+
+Ao executar a função, qual será a saída produzida?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+A) A B C
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+B) A C
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+C) B C
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+D) A B
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+E) Nenhuma saída
+</label>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('g3')">
+Ver Gabarito Comentado
+</button>
+
+<div id="g3" class="gabarito">
+
+<h4>✅ Resposta Correta: D</h4>
+
+<p>
+
+Quando o interpretador encontra o comando return, a execução da
+função é encerrada imediatamente.
+
+Portanto a instrução:
+
+print("C")
+
+jamais será executada.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão 4</h3>
+
+<p>
+
+Uma função recursiva deve obrigatoriamente possuir:
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="q4">
+A) Variáveis globais.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q4">
+B) Vetores auxiliares.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q4">
+C) Estruturas match-case.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q4">
+D) Um caso-base.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q4">
+E) Dois parâmetros.
+</div>
+</body>
+</html>
+
+O caso-base é a condição responsável por interromper as chamadas
+recursivas.
+
+Sem ele a função continuará chamando a si mesma indefinidamente,
+gerando erro de profundidade de recursão.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão 5</h3>
+
+<p>
+
+Considere a função:
+
+</p>
+
+<pre>
+def soma(n):
+
+    if n == 1:
+        return 1
+
+    return n + soma(n-1)
+</pre>
+
+<p>
+
+Qual será o resultado produzido por:
+
+</p>
+
+<pre>
+soma(4)
+</pre>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+A) 4
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+B) 6
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+C) 8
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+D) 10
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+E) 12
+</label>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('g5')">
+Ver Gabarito Comentado
+</button>
+
+<div id="g5" class="gabarito">
+
+<h4>✅ Resposta Correta: D</h4>
+
+<p>
+
+A expansão das chamadas ocorre da seguinte forma:
+
+</p>
+
+<pre>
+4 + soma(3)
+
+4 + 3 + soma(2)
+
+4 + 3 + 2 + soma(1)
+
+4 + 3 + 2 + 1
+</pre>
+
+<p>
+
+Resultado:
+
+10
+
+A questão exige compreender o funcionamento da pilha de chamadas
+recursivas e a resolução do caso-base.
+
+</p>
+
+</div>
+
+</div>
+<section class="card">
+
+<h2>✍️ Questões Discursivas</h2>
+<div class="quiz-card">
+
+<h3>Questão Discursiva 1</h3>
+
+<p>
+
+Uma empresa possui um sistema de folha de pagamento contendo mais
+de 5.000 linhas em um único arquivo.
+
+Explique por que essa arquitetura é inadequada e como a
+modularização poderia melhorar a qualidade do software.
+
+</p>
+
+<button
+class="btn-gabarito"
+onclick="mostrarGabarito('d1')">
+
+Ver Resposta Comentada
+
+</button>
+
+<div id="d1" class="gabarito">
+
+<h4>✅ Resposta Esperada</h4>
+
+<p>
+
+Um sistema monolítico dificulta manutenção, localização de erros,
+testes e trabalho em equipe.
+
+A modularização permite dividir o sistema em partes menores, como:
+
+</p>
+
+<ul>
+
+<li>Cadastro de funcionários;</li>
+
+<li>Cálculo salarial;</li>
+
+<li>Descontos;</li>
+
+<li>Relatórios;</li>
+
+<li>Controle financeiro.</li>
+
+</ul>
+
+<p>
+
+Cada módulo passa a ter responsabilidade específica,
+facilitando manutenção e reutilização.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão Discursiva 2</h3>
+
+<p>
+
+Compare funções iterativas e funções recursivas.
+
+Apresente vantagens, desvantagens e aplicações de cada abordagem.
+
+</p>
+
+<button
+class="btn-gabarito"
+onclick="mostrarGabarito('d2')">
+
+Ver Resposta Comentada
+
+</button>
+
+<div id="d2" class="gabarito">
+
+<h4>✅ Resposta Esperada</h4>
+
+<p>
+
+Funções iterativas utilizam estruturas de repetição como for e
+while.
+
+Funções recursivas chamam a si mesmas para resolver problemas
+menores.
+
+</p>
+
+<p>
+
+Vantagens da recursão:
+
+</p>
+
+<ul>
+
+<li>Código mais elegante;</li>
+
+<li>Maior proximidade com definições matemáticas;</li>
+
+<li>Boa aplicação em árvores e grafos.</li>
+
+</ul>
+
+<p>
+
+Desvantagens:
+
+</p>
+
+<ul>
+
+<li>Maior consumo de memória;</li>
+
+<li>Maior uso da pilha de execução;</li>
+
+<li>Possibilidade de RecursionError.</li>
+
+</ul>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão Discursiva 3</h3>
+
+<p>
+
+Explique o conceito de abstração dentro da modularização e sua
+importância para sistemas complexos.
+
+</p>
+
+<button
+class="btn-gabarito"
+onclick="mostrarGabarito('d3')">
+
+Ver Resposta Comentada
+
+</button>
+
+<div id="d3" class="gabarito">
+
+<h4>✅ Resposta Esperada</h4>
+
+<p>
+
+Abstração consiste em ocultar detalhes internos de implementação
+e disponibilizar apenas a funcionalidade necessária ao usuário.
+
+</p>
+
+<p>
+
+Exemplo:
+
+</p>
+
+<pre>
+calcular_imposto()
+</pre>
+
+<p>
+
+Quem utiliza a função não precisa conhecer todos os cálculos
+internos.
+
+Isso reduz complexidade e melhora a manutenção do sistema.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão Discursiva 4</h3>
+
+<p>
+
+Analise o algoritmo abaixo:
+
+</p>
+
+<pre>
+def potencia(base, expoente):
+
+    if expoente == 0:
+        return 1
+
+    return base * potencia(base, expoente-1)
+</pre>
+
+<p>
+
+Explique detalhadamente a sequência de chamadas para:
+
+potencia(2,4)
+
+</p>
+
+<button
+class="btn-gabarito"
+onclick="mostrarGabarito('d4')">
+
+Ver Resposta Comentada
+
+</button>
+
+<div id="d4" class="gabarito">
+
+<h4>✅ Resposta Esperada</h4>
+
+<pre>
+potencia(2,4)
+
+2 × potencia(2,3)
+
+2 × 2 × potencia(2,2)
+
+2 × 2 × 2 × potencia(2,1)
+
+2 × 2 × 2 × 2 × potencia(2,0)
+
+2 × 2 × 2 × 2 × 1
+</pre>
+
+<p>
+
+Resultado final:
+
+16
+
+</p>
+
+<p>
+
+O caso-base ocorre quando o expoente é igual a zero.
+
+Nesse momento a função interrompe novas chamadas e inicia o
+retorno dos valores armazenados na pilha de execução.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão Discursiva 5</h3>
+
+<p>
+
+Explique a diferença entre alta coesão e baixo acoplamento em
+projetos modulares.
+
+</p>
+
+<button
+class="btn-gabarito"
+onclick="mostrarGabarito('d5')">
+
+Ver Resposta Comentada
+
+</button>
+
+<div id="d5" class="gabarito">
+
+<h4>✅ Resposta Esperada</h4>
+
+<p>
+
+Alta coesão significa que cada módulo possui uma única
+responsabilidade bem definida.
+
+Exemplo:
+
+</p>
+
+<ul>
+
+<li>Módulo de autenticação;</li>
+
+<li>Módulo financeiro;</li>
+
+<li>Módulo de relatórios.</li>
+
+</ul>
+
+<p>
+
+Baixo acoplamento significa que os módulos possuem pouca
+dependência entre si.
+
+Isso permite manutenção independente, maior escalabilidade e
+menor impacto quando alterações são realizadas.
+
+</p>
+
+<p>
+
+Esses dois conceitos são considerados pilares da Engenharia de
+Software moderna e estão diretamente relacionados à qualidade da
+modularização.
+
+</p>
+
+</div>
+
+</div>
+<h3>Questão 6</h3>
+
+<p>
+
+Explique o conceito de abstração em modularização e descreva sua
+importância para o desenvolvimento de sistemas complexos.
+</p>
+
+<button
+class="btn-gabarito"
+onclick="mostrarGabarito('d6')">
+
+Ver Resposta Comentada
+
+</button>
+
+<div id="d6" class="gabarito">
+
+<h4>✅ Resposta Esperada</h4>
+
+<p>
+
+Abstração consiste em ocultar detalhes internos de implementação e
+expor apenas funcionalidades necessárias.
+
+<br><br>
+
+<b>Explicação:</b>
+
+A abstração reduz complexidade, melhora reutilização e facilita a
+manutenção de sistemas de grande porte.
+
+</div>
+<h3>Questão 7</h3>
+
+<p>
+
+Analise a importância dos parâmetros em funções.
+
+Explique como eles contribuem para flexibilidade e reutilização de
+código.
+
+</p>
+
+<button
+class="btn-gabarito"
+onclick="mostrarGabarito('d7')">
+
+Ver Resposta Comentada
+
+</button>
+
+<div id="d7" class="gabarito">
+
+<h4>✅ Resposta Esperada</h4>
+
+<p>
+
+Parâmetros permitem que a mesma função trabalhe com diferentes
+dados de entrada.
+
+<br><br>
+
+<b>Explicação:</b>
+
+Sem parâmetros seria necessário criar várias versões de uma mesma
+função para situações semelhantes.
+
+</div>
+<h3>Questão 8</h3>
+
+<p>
+
+Explique o conceito de recursividade e a importância da condição
+de parada em algoritmos recursivos.
+
+</p>
+
+<button
+class="btn-gabarito"
+onclick="mostrarGabarito('d8')">
+
+Ver Resposta Comentada
+
+</button>
+
+<div id="d8" class="gabarito">
+
+<h4>✅ Resposta Esperada</h4>
+
+<p>
+
+Recursividade ocorre quando uma função chama a si mesma.
+
+A condição de parada impede chamadas infinitas.
+
+<br><br>
+
+<b>Explicação:</b>
+
+Sem caso-base o algoritmo provoca erro de recursão devido ao
+crescimento contínuo da pilha de execução.
+
+</div>
+<h3>Questão 9</h3>
+
+<p>
+
+Descreva detalhadamente como ocorre o cálculo recursivo do
+fatorial de um número inteiro positivo.
+
+</p>
+
+<button
+class="btn-gabarito"
+onclick="mostrarGabarito('d9')">
+
+Ver Resposta Comentada
+
+</button>
+
+<div id="d9" class="gabarito">
+
+<h4>✅ Resposta Esperada</h4>
+
+<p>
+
+O cálculo é realizado através de chamadas sucessivas da função até
+atingir o caso-base.
+
+Exemplo:
+
+5 × 4 × 3 × 2 × 1.
+
+<br><br>
+
+<b>Explicação:</b>
+
+Cada chamada permanece armazenada na pilha até que o caso-base
+seja alcançado e os retornos ocorram na ordem inversa.
+
+</div>
+<h3>Questão 10</h3>
+
+<p>
+
+Explique a relação entre modularização, reutilização de código e
+qualidade de software.
+
+</p>
+
+<button
+class="btn-gabarito"
+onclick="mostrarGabarito('d10')">
+
+Ver Resposta Comentada
+
+</button>
+
+<div id="d10" class="gabarito">
+
+<h4>✅ Resposta Esperada</h4>
+
+<p>
+
+A modularização favorece a reutilização de componentes e reduz
+duplicação de código.
+
+<br><br>
+
+<b>Explicação:</b>
+
+Sistemas modulares são mais fáceis de manter, testar, expandir e
+corrigir, resultando em maior qualidade e menor custo de
+desenvolvimento.
+</div>
+</body>
+</html>

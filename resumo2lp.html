@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Supremo: Python Módulo 2 - Repetições e Estruturas de Dados</title>
+    <style>
+        .questao{
+
+    background:#ffffff;
+
+    padding:25px;
+
+    margin-top:25px;
+
+    border-radius:12px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+
+}
+
+.alternativa{
+
+    display:block;
+
+    margin:10px 0;
+
+}
+
+.btn-gabarito{
+
+    background:#0ea5e9;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    margin-top:15px;
+
+}
+
+.btn-gabarito:hover{
+
+    background:#0284c7;
+
+}
+
+.resposta{
+
+    display:none;
+
+    margin-top:20px;
+
+    padding:20px;
+
+    background:#ecfdf5;
+
+    border-left:6px solid #16a34a;
+
+    border-radius:8px;
+
+}
+        :root {
+            --primary: #0f172a;
+            --secondary: #334155;
+            --accent-blue: #38bdf8;
+            --accent-yellow: #facc15;
+            --bg-page: #f1f5f9;
+            --white: #ffffff;
+            --code-bg: #011627;
+            --code-text: #d6deeb;
+            --border: #e2e8f0;
+        }
+<script>
+
+function ver(id){
+
+    let resposta =
+    document.getElementById(id);
+
+    if(resposta.style.display === "block"){
+
+        resposta.style.display = "none";
+
+    }
+    else{
+
+        resposta.style.display = "block";
+
+    }
+
+}
+</script>
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--primary);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 8px solid var(--accent-blue);
+        }
+
+        .container { max-width: 1200px; margin: -80px auto 80px; padding: 0 20px; }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+            border-left: 12px solid var(--accent-blue);
+        }
+
+        h2 { color: var(--primary); font-size: 2.2rem; border-bottom: 3px solid var(--border); padding-bottom: 15px; margin-top: 0; }
+        h3 { color: var(--secondary); margin-top: 2.5rem; font-size: 1.6rem; display: flex; align-items: center; gap: 10px; }
+
+        /* --- INFOGRÁFICO: MECÂNICA DO RANGE --- */
+        .range-viz {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid var(--border);
+        }
+        .range-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--accent-blue);
+            text-align: center;
+        }
+        .range-item strong { display: block; color: var(--accent-blue); font-size: 1.2rem; }
+
+        /* --- GRÁFICO: MEMÓRIA ARRAY --- */
+        .array-viz {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin: 30px 0;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        .cell {
+            min-width: 70px;
+            height: 90px;
+            background: white;
+            border: 2px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+        .cell:hover { transform: translateY(-5px); background: #f0f9ff; }
+        .cell .idx { font-size: 0.7rem; font-weight: bold; color: #64748b; margin-bottom: 10px; }
+        .cell .val { font-size: 1.2rem; font-weight: bold; }
+        .cell .neg-idx { font-size: 0.7rem; color: #ef4444; margin-top: 5px; }
+
+        /* --- GRÁFICO: MATRIZ DINÂMICA --- */
+        .matrix-viz {
+            display: inline-grid;
+            grid-template-columns: repeat(3, 70px);
+            gap: 8px;
+            padding: 15px;
+            background: #e2e8f0;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .m-cell {
+            width: 70px; height: 70px;
+            background: white;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 0.8rem;
+            border: 1px solid #94a3b8;
+        }
+
+        /* --- CODE BOXES --- */
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 30px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.95rem;
+            border-left: 6px solid var(--accent-yellow);
+            margin: 25px 0;
+        }
+        .k { color: #c792ea; font-weight: bold; } /* keyword */
+        .f { color: #82aaff; } /* function */
+        .s { color: #ecc48d; } /* string */
+        .c { color: #637777; font-style: italic; } /* comment */
+
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        .tech-table th { background: #f1f5f9; padding: 15px; text-align: left; border: 1px solid var(--border); }
+        .tech-table td { padding: 15px; border: 1px solid var(--border); }
+
+        .note {
+    background: #fffbeb;
+    border-left: 6px solid var(--accent-yellow);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 25px 0;
+}
+
+
+    </style>
+    
+    
+</head>
+<body>
+
+<header>
+    <h1>Manual Master Unidade 2: Programação Estruturada</h1>
+    <p>Automação com Laços de Repetição e Manipulação Massiva de Dados</p>
+</header>
+
+<div class="container">
+
+    <!-- SEÇÃO 1: LAÇOS DE REPETIÇÃO (LOOPS) -->
+    <section class="card">
+        <h2>🔄 1. Estruturas de Repetição (Iteração)</h2>
+        <p>A repetição permite que um bloco de instruções seja executado múltiplas vezes até que uma condição seja satisfeita. Em Python, existem duas formas principais:</p>
+        
+        <h3>1.1 O Laço <code>for</code> e a Anatomia do <code>range()</code></h3>
+        <p>O <code>for</code> é usado para percorrer sequências. A função <code>range()</code> é o motor que gera essas sequências de números [33-35].</p>
+        
+        <div class="range-viz">
+            <div class="range-item">
+                <strong>1 Argumento</strong>
+                <code>range(5)</code>
+                <small>Inicia em 0, vai até 4.<br>(Saída: 0,1,2,3,4)</small>
+            </div>
+            <div class="range-item">
+                <strong>2 Argumentos</strong>
+                <code>range(2, 6)</code>
+                <small>Inicia em 2, vai até 5.<br>(Saída: 2,3,4,5)</small>
+            </div>
+            <div class="range-item">
+                <strong>3 Argumentos</strong>
+                <code>range(10, 0, -2)</code>
+                <small>Inicia em 10, decrementa 2.<br>(Saída: 10,8,6,4,2)</small>
+            </div>
+        </div>
+
+        <pre><code><span class="c"># Exemplo de Acumulador (Soma de Notas)</span>
+<span class="v">soma</span> = 0
+<span class="k">for</span> i <span class="k">in</span> <span class="f">range</span>(3):
+    <span class="v">nota</span> = <span class="f">float</span>(<span class="f">input</span>(<span class="s">"Digite a nota: "</span>))
+    <span class="v">soma</span> += <span class="v">nota</span> <span class="c"># Acumulador</span>
+<span class="f">print</span>(f<span class="s">"Média: {soma/3:.2f}"</span>)</code></pre>
+    </section>
+
+    <!-- SEÇÃO 2: WHILE E CONTROLE DE FLUXO -->
+    <section class="card">
+        <h2>🔁 2. <code>while</code>: Lógica de Sentinela</h2>
+        <p>Diferente do <code>for</code>, o <code>while</code> é ideal para quando **não sabemos** quantas vezes o loop rodará (ex: esperar o usuário digitar uma senha correta) [35-37].</p>
+        
+        <table class="tech-table">
+            <thead>
+                <tr><th>Comando</th><th>Ação Técnica</th><th>Uso Comum</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>break</strong></td><td>Encerra o loop completamente.</td><td>Sair de loops "infinitos" <code>while True</code>.</td></tr>
+                <tr><td><strong>continue</strong></td><td>Pula o código abaixo e volta para o teste da condição.</td><td>Ignorar dados inválidos ou números ímpares.</td></tr>
+            </tbody>
+        </table>
+
+        <pre><code><span class="c"># Loop com Break (Simulando do-while)</span>
+<span class="k">while</span> <span class="k">True</span>:
+    <span class="v">n</span> = <span class="f">int</span>(<span class="f">input</span>(<span class="s">"Digite um número positivo (ou negativo para sair): "</span>))
+    <span class="k">if</span> <span class="v">n</span> < 0:
+        <span class="k">break</span>
+    <span class="f">print</span>(<span class="s">"Dobro:"</span>, <span class="v">n</span> * 2)</code></pre>
+    </section>
+
+    <!-- SEÇÃO 3: ARRAY UNIDIMENSIONAL (LISTAS) -->
+    <section class="card">
+        <h2>📊 3. Arrays Unidimensionais (Vetores)</h2>
+        <p>Listas são coleções ordenadas de elementos. Elas permitem armazenar um volume massivo de dados em uma única variável [40-42].</p>
+        
+        <div class="array-viz">
+            <div class="cell"><span class="idx">índice 0</span><span class="val">51</span><span class="neg-idx">-5</span></div>
+            <div class="cell"><span class="idx">índice 1</span><span class="val">22</span><span class="neg-idx">-4</span></div>
+            <div class="cell"><span class="idx">índice 2</span><span class="val">36</span><span class="neg-idx">-3</span></div>
+            <div class="cell"><span class="idx">índice 3</span><span class="val">29</span><span class="neg-idx">-2</span></div>
+            <div class="cell"><span class="idx">índice 4</span><span class="val">12</span><span class="neg-idx">-1</span></div>
+        </div>
+        <p style="text-align: center;"><small>💡 Em Python, você pode acessar do fim para o começo usando índices negativos!</small></p>
+
+        <h3>Operações de Lista (O Canivete Suíço) [41]</h3>
+        <ul>
+            <li><code>idades.append(18)</code>: Insere um novo elemento no final.</li>
+            <li><code>idades.sort()</code>: Ordena a lista (Crescente).</li>
+            <li><code>len(idades)</code>: Conta quantos itens existem.</li>
+            <li><code>sum(idades)</code>: Soma todos os valores internos.</li>
+        </ul>
+    </section>
+
+    <!-- SEÇÃO 4: MANIPULAÇÃO DE STRINGS (SLICING) -->
+    <section class="card">
+        <h2>🔤 4. Strings: O Array de Caracteres</h2>
+        <p>Textos são arrays imutáveis. O fatiamento (slicing) é uma das ferramentas mais poderosas do Python [43-44].</p>
+        
+        <div class="note">
+            <strong>Sintaxe do Fatiamento:</strong> <code>variavel[início : fim]</code> <br>
+            <em>Nota: O índice "fim" nunca é incluído no resultado.</em>
+        </div>
+
+        <pre><code><span class="v">texto</span> = <span class="s">"Linguagem Python"</span>
+<span class="f">print</span>(<span class="v">texto</span>[0:9])   <span class="c"># Saída: Linguagem</span>
+<span class="f">print</span>(<span class="v">texto</span>[10:])    <span class="c"># Saída: Python (até o final)</span>
+<span class="f">print</span>(<span class="v">texto</span>[::-1])   <span class="c"># Saída: nohtyP megaugniL (Invertido!)</span></code></pre>
+    </section>
+
+    <!-- SEÇÃO 5: ARRAY BIDIMENSIONAL (MATRIZES) -->
+    <section class="card">
+        <h2>🏁 5. Arrays Bidimensionais (Matrizes)</h2>
+        <p>Uma matriz é essencialmente uma lista onde cada elemento é outra lista. É a base para planilhas e processamento de imagens [47-50].</p>
+        
+        <div style="display: flex; align-items: center; gap: 30px;">
+            <div class="matrix-viz">
+                <div class="m-cell">[0][0]</div><div class="m-cell">[0][1]</div><div class="m-cell">[0][2]</div>
+                <div class="m-cell">[1][0]</div><div class="m-cell">[1][1]</div><div class="m-cell">[1][2]</div>
+                <div class="m-cell">[2][0]</div><div class="m-cell">[2][1]</div><div class="m-cell">[2][2]</div>
+            </div>
+            <div>
+                <strong>Lógica de Acesso:</strong><br>
+                1º Colchete: Define a <strong>Linha</strong>.<br>
+                2º Colchete: Define a <strong>Coluna</strong>.<br>
+                <br>
+                <strong>Exemplo:</strong> <code>matriz[1][2]</code> acessa o valor na 2ª linha e 3ª coluna.
+            </div>
+        </div>
+
+        <pre><code><span class="c"># Percorrendo uma Matriz com Loops Aninhados</span>
+<span class="v">notas</span> = [, ] <span class="c"># 2 alunos, 2 notas cada</span>
+
+<span class="k">for</span> l <span class="k">in</span> <span class="f">range</span>(2): <span class="c"># Percorre linhas</span>
+    <span class="k">for</span> c <span class="k">in</span> <span class="f">range</span>(2): <span class="c"># Percorre colunas</span>
+        <span class="f">print</span>(f<span class="s">"Nota do aluno {l} na matéria {c}: {notas[l][c]}"</span>)</code></pre>
+    </section>
+
+</div>
+<div class="questao">
+<div class="questao">
+
+<h3>Questão 1</h3>
+
+<p>
+
+Uma empresa possui um sistema que processa diariamente mais de
+50.000 registros de clientes.
+
+O desenvolvedor precisa aplicar a mesma validação para cada
+registro armazenado em um vetor.
+
+Qual é a abordagem mais adequada?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+A) Criar uma variável para cada cliente.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+B) Repetir manualmente a validação para cada elemento.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+C) Utilizar uma estrutura de repetição percorrendo o vetor.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+D) Utilizar apenas estruturas condicionais.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+E) Criar uma matriz bidimensional obrigatoriamente.
+</label>
+
+<button class="btn-gabarito"
+onclick="ver('g1')">
+
+Mostrar / Ocultar Gabarito
+
+</button>
+
+<div id="g1" class="resposta">
+
+<b>Resposta Correta:</b> C
+
+<br><br>
+
+<b>Explicação:</b>
+
+Estruturas de repetição permitem processar milhares de registros
+utilizando poucas linhas de código.
+
+Quando combinadas com vetores, possibilitam automação,
+manutenção simplificada e maior eficiência computacional.
+
+</div>
+
+</div>
+<div class="questao">
+
+<h3>Questão 2</h3>
+
+<p>
+
+Considere o algoritmo:
+
+</p>
+
+<pre>
+soma = 0
+
+for i in range(1,6):
+    soma += i
+</pre>
+
+<p>
+
+Qual valor será armazenado na variável soma ao final da execução?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+A) 5
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+B) 10
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+C) 15
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+D) 20
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+E) 25
+</label>
+
+<button class="btn-gabarito"
+onclick="ver('g2')">
+
+Mostrar / Ocultar Gabarito
+
+</button>
+
+<div id="g2" class="resposta">
+
+<b>Resposta Correta:</b> C
+
+<br><br>
+
+<b>Explicação:</b>
+
+O laço executa:
+
+1 + 2 + 3 + 4 + 5
+
+Total:
+
+15
+
+A questão exige interpretação da execução passo a passo de uma
+estrutura de repetição.
+
+</div>
+
+</div>
+<div class="questao">
+
+<h3>Questão 3</h3>
+
+<p>
+
+Uma universidade utiliza uma matriz para armazenar as notas de
+500 alunos em 8 disciplinas.
+
+Qual é a principal vantagem dessa estrutura?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+A) Eliminar índices.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+B) Organizar dados em linhas e colunas.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+C) Eliminar laços de repetição.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+D) Reduzir a quantidade de memória utilizada.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+E) Substituir operadores relacionais.
+</label>
+
+<button class="btn-gabarito"
+onclick="ver('g3')">
+
+Mostrar / Ocultar Gabarito
+
+</button>
+
+<div id="g3" class="resposta">
+
+<b>Resposta Correta:</b> B
+
+<br><br>
+
+<b>Explicação:</b>
+
+Matrizes são estruturas bidimensionais.
+
+Elas permitem organizar informações em linhas e colunas,
+facilitando acesso, busca, atualização e processamento dos
+dados.
+
+</div>
+
+</div>
+<div class="questao">
+
+<h3>Questão 4</h3>
+
+<p>
+
+Considere o código:
+
+</p>
+
+<pre>
+contador = 1
+
+while contador <= 5:
+    print(contador)
+</pre>
+
+<p>
+
+Qual problema existe nesse algoritmo?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="q4">
+A) Erro de sintaxe.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q4">
+B) Erro de tipagem.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q4">
+C) Loop infinito.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q4">
+D) Falta de vetor.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q4">
+E) Erro matemático.
+</label>
+
+<button class="btn-gabarito"
+onclick="ver('g4')">
+
+Mostrar / Ocultar Gabarito
+
+</button>
+
+<div id="g4" class="resposta">
+
+<b>Resposta Correta:</b> C
+
+<br><br>
+
+<b>Explicação:</b>
+
+A variável contador nunca é incrementada.
+
+Como a condição permanece verdadeira, o laço continuará sendo
+executado indefinidamente.
+
+</div>
+
+</div>
+<div class="questao">
+
+<h3>Questão 5</h3>
+
+<p>
+
+Uma matriz 12x31 é utilizada para armazenar a temperatura diária
+de uma cidade durante um ano.
+
+Por que a matriz é mais adequada que centenas de variáveis
+independentes?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+A) Elimina o uso de índices.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+B) Representa naturalmente dados em duas dimensões.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+C) Dispensa validações.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+D) Elimina estruturas de repetição.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+E) Substitui operadores lógicos.
+</label>
+
+<button class="btn-gabarito"
+onclick="ver('g5')">
+
+Mostrar / Ocultar Gabarito
+
+</button>
+
+<div id="g5" class="resposta">
+
+<b>Resposta Correta:</b> B
+
+<br><br>
+
+<b>Explicação:</b>
+
+A matriz permite representar informações organizadas em linhas e
+colunas, facilitando armazenamento, busca e análise de dados.
+
+Essa é uma aplicação clássica de estruturas bidimensionais.
+
+</div>
+
+</div>
+<h1>QUESTÕES DISCURSIVAS</h1>
+<div class="questao">
+
+<h3>Questão Discursiva 1</h3>
+
+<p>
+
+Compare vetores e matrizes considerando organização dos dados,
+capacidade de armazenamento e aplicações práticas.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="ver('d1')">
+
+Mostrar / Ocultar Gabarito
+
+</button>
+
+<div id="d1" class="resposta">
+
+<b>Gabarito:</b>
+
+Vetores armazenam dados em uma única dimensão enquanto matrizes
+organizam informações em duas dimensões, utilizando linhas e
+colunas.
+
+<br><br>
+
+<b>Explicação:</b>
+
+Vetores são adequados para listas simples, como nomes ou notas.
+
+Matrizes são utilizadas em planilhas eletrônicas, sistemas
+acadêmicos, processamento de imagens, jogos digitais e bancos de
+dados.
+
+A escolha depende da estrutura lógica do problema.
+
+</div>
+
+</div>
+<div class="questao">
+
+<h3>Questão Discursiva 2</h3>
+
+<p>
+
+Compare vetores e matrizes considerando organização dos dados,
+capacidade de armazenamento e aplicações práticas.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="ver('d2')">
+
+Mostrar / Ocultar Gabarito
+
+</button>
+
+<div id="d2" class="resposta">
+
+<b>Gabarito:</b>
+
+Vetores armazenam dados em uma única dimensão enquanto matrizes
+organizam informações em duas dimensões, utilizando linhas e
+colunas.
+
+<br><br>
+
+<b>Explicação:</b>
+
+Vetores são adequados para listas simples, como nomes ou notas.
+
+Matrizes são utilizadas em planilhas eletrônicas, sistemas
+acadêmicos, processamento de imagens, jogos digitais e bancos de
+dados.
+
+A escolha depende da estrutura lógica do problema.
+
+</div>
+
+</div>
+<div class="questao">
+
+<h3>Questão Discursiva 3</h3>
+
+<p>
+
+Uma empresa precisa armazenar o faturamento mensal de 300 filiais
+durante um período de 12 meses.
+
+Explique qual estrutura de dados seria mais adequada e justifique
+sua resposta.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="ver('d3')">
+
+Mostrar / Ocultar Gabarito
+
+</button>
+
+<div id="d3" class="resposta">
+
+<b>Gabarito:</b>
+
+A estrutura mais adequada é uma matriz bidimensional.
+
+<br><br>
+
+<b>Explicação:</b>
+
+Cada linha pode representar uma filial e cada coluna um mês do
+ano.
+
+Essa organização permite acesso estruturado aos dados,
+facilitando cálculos estatísticos, geração de relatórios e
+processamento automatizado através de estruturas de repetição.
+
+</div>
+
+</div>
+<div class="questao">
+
+<h3>Questão Discursiva 4</h3>
+
+<p>
+
+Explique como um loop infinito pode surgir em um algoritmo e
+discuta os impactos desse problema sobre o desempenho de um
+sistema computacional.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="ver('d4')">
+
+Mostrar / Ocultar Gabarito
+
+</button>
+
+<div id="d4" class="resposta">
+
+<b>Gabarito:</b>
+
+Um loop infinito ocorre quando a condição de parada nunca é
+atingida.
+
+<br><br>
+
+<b>Explicação:</b>
+
+Isso normalmente acontece devido a erros na atualização da
+variável de controle ou falhas na lógica do algoritmo.
+
+Os impactos incluem alto consumo de processamento, desperdício de
+memória, travamento de aplicações e degradação do desempenho do
+sistema.
+
+</div>
+
+</div>
+<div class="questao">
+
+<h3>Questão Discursiva 5</h3>
+
+<p>
+
+Analise a importância da combinação entre estruturas de repetição,
+vetores e matrizes para o desenvolvimento de sistemas modernos.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="ver('d5')">
+
+Mostrar / Ocultar Gabarito
+
+</button>
+
+<div id="d5" class="resposta">
+
+<b>Gabarito:</b>
+
+Estruturas de repetição, vetores e matrizes trabalham de forma
+integrada para armazenar e processar grandes quantidades de dados.
+
+<br><br>
+
+<b>Explicação:</b>
+
+Vetores e matrizes armazenam informações de maneira organizada,
+enquanto os laços de repetição permitem percorrer esses dados
+automaticamente.
+
+Essa combinação é utilizada em sistemas corporativos, bancos de
+dados, inteligência artificial, análise estatística, jogos
+digitais, computação científica e aplicações empresariais de
+grande porte.
+
+</div>
+
+</div>
+<script>
+
+function ver(id){
+
+    let resposta =
+    document.getElementById(id);
+
+    if(resposta.style.display === "block"){
+
+        resposta.style.display = "none";
+
+    }else{
+
+        resposta.style.display = "block";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

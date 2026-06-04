@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📋 Questionário Comentado - Encontro 1</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+padding:30px;
+color:white;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+h1{
+text-align:center;
+margin-bottom:40px;
+font-size:40px;
+}
+
+.questao{
+background:white;
+color:#222;
+padding:25px;
+margin-bottom:25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.alternativa{
+padding:10px;
+margin:8px 0;
+background:#f1f5f9;
+border-radius:8px;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:8px;
+cursor:pointer;
+margin-top:15px;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+.resposta{
+display:none;
+margin-top:20px;
+padding:20px;
+background:#dcfce7;
+border-left:6px solid #16a34a;
+border-radius:10px;
+color:black;
+}
+
+.codigo{
+background:#0f172a;
+color:#22c55e;
+padding:15px;
+margin:10px 0;
+border-radius:10px;
+font-family:monospace;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📋 Questionário Comentado - Encontro 1</h1>
+
+<!-- QUESTÃO 1 -->
+
+<div class="questao">
+
+<h2>Questão 1</h2>
+
+<p><strong>Qual é o tipo da variável abaixo?</strong></p>
+
+<div class="codigo">
+nome = "Maria"
+</div>
+
+A) Inteiro (int)<br>
+B) Real (float)<br>
+C) Texto (string)<br>
+D) Booleano
+
+<button onclick="mostrar('r1')">
+Mostrar Gabarito
+</button>
+
+<div id="r1" class="resposta">
+
+<h3>✅ Gabarito: C) Texto (string)</h3>
+
+<p>Valores entre aspas são do tipo string.</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 2 -->
+
+<div class="questao">
+
+<h2>Questão 2</h2>
+
+<p><strong>Qual é o tipo da variável abaixo?</strong></p>
+
+<div class="codigo">
+afastamento = False
+</div>
+
+A) String<br>
+B) Float<br>
+C) Int<br>
+D) Booleano
+
+<button onclick="mostrar('r2')">
+Mostrar Gabarito
+</button>
+
+<div id="r2" class="resposta">
+
+<h3>✅ Gabarito: D) Booleano</h3>
+
+<p>False representa um valor lógico.</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 3 -->
+
+<div class="questao">
+
+<h2>Questão 3</h2>
+
+<p><strong>Qual é o tipo da variável?</strong></p>
+
+<div class="codigo">
+idade = 20
+</div>
+
+A) Float<br>
+B) Int<br>
+C) String<br>
+D) Boolean
+
+<button onclick="mostrar('r3')">
+Mostrar Gabarito
+</button>
+
+<div id="r3" class="resposta">
+
+<h3>✅ Gabarito: B) Int</h3>
+
+<p>20 é um número inteiro.</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 4 -->
+
+<div class="questao">
+
+<h2>Questão 4</h2>
+
+<p><strong>Qual operador representa potência?</strong></p>
+
+A) *<br>
+B) /<br>
+C) %<br>
+D) **
+
+<button onclick="mostrar('r4')">
+Mostrar Gabarito
+</button>
+
+<div id="r4" class="resposta">
+
+<h3>✅ Gabarito: D) **</h3>
+
+<div class="codigo">
+5 ** 2
+
+Resultado: 25
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 5 -->
+
+<div class="questao">
+
+<h2>Questão 5</h2>
+
+<p><strong>Qual será o resultado?</strong></p>
+
+<div class="codigo">
+10 + 5 * 2
+</div>
+
+A) 30<br>
+B) 20<br>
+C) 25<br>
+D) 15
+
+<button onclick="mostrar('r5')">
+Mostrar Gabarito
+</button>
+
+<div id="r5" class="resposta">
+
+<h3>✅ Gabarito: B) 20</h3>
+
+<p>A multiplicação acontece antes da soma.</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO 6 -->
+
+<div class="questao">
+
+<h2>Questão 6</h2>
+
+<p><strong>Qual função é utilizada para receber dados digitados pelo usuário?</strong></p>
+
+A) print()<br>
+B) input()<br>
+C) float()<br>
+D) len()
+
+<button onclick="mostrar('r6')">
+Mostrar Gabarito
+</button>
+
+<div id="r6" class="resposta">
+
+<h3>✅ Gabarito: B) input()</h3>
+
+<div class="codigo">
+nome = input("Digite seu nome:")
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 7 -->
+
+<div class="questao">
+
+<h2>Questão 7</h2>
+
+<p><strong>Qual função converte um texto para número inteiro?</strong></p>
+
+A) str()<br>
+B) bool()<br>
+C) int()<br>
+D) float()
+
+<button onclick="mostrar('r7')">
+Mostrar Gabarito
+</button>
+
+<div id="r7" class="resposta">
+
+<h3>✅ Gabarito: C) int()</h3>
+
+<div class="codigo">
+idade = int(input())
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 8 -->
+
+<div class="questao">
+
+<h2>Questão 8</h2>
+
+<p><strong>Qual função converte um valor para número decimal?</strong></p>
+
+A) float()<br>
+B) str()<br>
+C) print()<br>
+D) input()
+
+<button onclick="mostrar('r8')">
+Mostrar Gabarito
+</button>
+
+<div id="r8" class="resposta">
+
+<h3>✅ Gabarito: A) float()</h3>
+
+<div class="codigo">
+salario = float(input())
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 9 -->
+
+<div class="questao">
+
+<h2>Questão 9</h2>
+
+<p><strong>Qual operador representa divisão?</strong></p>
+
+A) *<br>
+B) /<br>
+C) +<br>
+D) %
+
+<button onclick="mostrar('r9')">
+Mostrar Gabarito
+</button>
+
+<div id="r9" class="resposta">
+
+<h3>✅ Gabarito: B) /</h3>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 10 -->
+
+<div class="questao">
+
+<h2>Questão 10</h2>
+
+<p><strong>Qual será o resultado da expressão?</strong></p>
+
+<div class="codigo">
+20 - 5 * 2
+</div>
+
+A) 30<br>
+B) 10<br>
+C) 15<br>
+D) 40
+
+<button onclick="mostrar('r10')">
+Mostrar Gabarito
+</button>
+
+<div id="r10" class="resposta">
+
+<h3>✅ Gabarito: B) 10</h3>
+
+<p>A multiplicação é realizada antes da subtração.</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO 11 -->
+
+<div class="questao">
+
+<h2>Questão 11</h2>
+
+<p><strong>Qual estrutura é utilizada para tomada de decisão?</strong></p>
+
+A) while<br>
+B) for<br>
+C) if<br>
+D) range()
+
+<button onclick="mostrar('r11')">
+Mostrar Gabarito
+</button>
+
+<div id="r11" class="resposta">
+
+<h3>✅ Gabarito: C) if</h3>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 12 -->
+
+<div class="questao">
+
+<h2>Questão 12</h2>
+
+<p><strong>Qual palavra representa uma condição alternativa?</strong></p>
+
+A) else<br>
+B) break<br>
+C) elif<br>
+D) while
+
+<button onclick="mostrar('r12')">
+Mostrar Gabarito
+</button>
+
+<div id="r12" class="resposta">
+
+<h3>✅ Gabarito: C) elif</h3>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 13 -->
+
+<div class="questao">
+
+<h2>Questão 13</h2>
+
+<p><strong>Qual palavra é executada quando nenhuma condição anterior é verdadeira?</strong></p>
+
+A) if<br>
+B) elif<br>
+C) else<br>
+D) input
+
+<button onclick="mostrar('r13')">
+Mostrar Gabarito
+</button>
+
+<div id="r13" class="resposta">
+
+<h3>✅ Gabarito: C) else</h3>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 14 -->
+
+<div class="questao">
+
+<h2>Questão 14</h2>
+
+<p><strong>Qual será a saída?</strong></p>
+
+<div class="codigo">
+idade = 16
+
+if idade < 18:
+    print("Menor de idade")
+</div>
+
+A) Maior de idade<br>
+B) Menor de idade<br>
+C) Adulto<br>
+D) Nenhuma
+
+<button onclick="mostrar('r14')">
+Mostrar Gabarito
+</button>
+
+<div id="r14" class="resposta">
+
+<h3>✅ Gabarito: B) Menor de idade</h3>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 15 -->
+
+<div class="questao">
+
+<h2>Questão 15</h2>
+
+<p><strong>Qual operador significa "maior ou igual"?</strong></p>
+
+A) ><br>
+B) ==<br>
+C) >=<br>
+D) <=
+
+<button onclick="mostrar('r15')">
+Mostrar Gabarito
+</button>
+
+<div id="r15" class="resposta">
+
+<h3>✅ Gabarito: C) >=</h3>
+
+</div>
+
+</div>
+<!-- QUESTÃO 16 -->
+
+<div class="questao">
+
+<!-- QUESTÃO 16 -->
+
+<div class="questao">
+
+<h2>Questão 16</h2>
+
+<p><strong>Qual será a saída do código abaixo?</strong></p>
+
+<div class="codigo">
+idade = 20
+
+if idade >= 18:
+    print("Maior de idade")
+else:
+    print("Menor de idade")
+</div>
+
+A) Menor de idade<br>
+B) Adulto<br>
+C) Maior de idade<br>
+D) Erro
+
+<button onclick="mostrar('r16')">
+Mostrar Gabarito
+</button>
+
+<div id="r16" class="resposta">
+
+<h3>✅ Gabarito: C) Maior de idade</h3>
+
+<p>
+Como 20 é maior que 18, a condição é verdadeira.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 17 -->
+
+<div class="questao">
+
+<h2>Questão 17</h2>
+
+<p><strong>Qual será o resultado?</strong></p>
+
+<div class="codigo">
+x = 10
+y = 5
+
+print(x + y)
+</div>
+
+A) 50<br>
+B) 15<br>
+C) 105<br>
+D) 5
+
+<button onclick="mostrar('r17')">
+Mostrar Gabarito
+</button>
+
+<div id="r17" class="resposta">
+
+<h3>✅ Gabarito: B) 15</h3>
+
+<p>
+O operador + realiza a soma dos valores.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 18 -->
+
+<div class="questao">
+
+<h2>Questão 18</h2>
+
+<p><strong>Qual será o valor da variável montante?</strong></p>
+
+<div class="codigo">
+principal = 1000
+taxa = 0.10
+periodos = 2
+
+montante = principal * (1 + taxa) ** periodos
+</div>
+
+A) 1100<br>
+B) 1000<br>
+C) 1210<br>
+D) 1200
+
+<button onclick="mostrar('r18')">
+Mostrar Gabarito
+</button>
+
+<div id="r18" class="resposta">
+
+<h3>✅ Gabarito: C) 1210</h3>
+
+<p>
+Aplicando juros compostos:
+1000 × (1,10)² = 1210
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 19 -->
+
+<div class="questao">
+
+<h2>Questão 19</h2>
+
+<p><strong>Qual estrutura permite verificar várias condições diferentes?</strong></p>
+
+A) print()<br>
+B) input()<br>
+C) if / elif / else<br>
+D) float()
+
+<button onclick="mostrar('r19')">
+Mostrar Gabarito
+</button>
+
+<div id="r19" class="resposta">
+
+<h3>✅ Gabarito: C) if / elif / else</h3>
+
+<p>
+Essa estrutura é usada quando existem várias possibilidades de decisão.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 20 -->
+
+<div class="questao">
+
+<h2>Questão 20</h2>
+
+<p><strong>Observe o código:</strong></p>
+
+<div class="codigo">
+idade = 65
+
+if idade >= 65:
+    print("Aposentadoria permitida")
+else:
+    print("Ainda não pode aposentar")
+</div>
+
+A) Ainda não pode aposentar<br>
+B) Aposentadoria permitida<br>
+C) Erro de execução<br>
+D) Nenhuma saída
+
+<button onclick="mostrar('r20')">
+Mostrar Gabarito
+</button>
+
+<div id="r20" class="resposta">
+
+<h3>✅ Gabarito: B) Aposentadoria permitida</h3>
+
+<p>
+A idade atende à condição estabelecida.
+</p>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+function mostrar(id){
+
+document.getElementById(id).style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>

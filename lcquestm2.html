@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📋 Questionário Comentado - Encontro 2</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+padding:30px;
+color:white;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+h1{
+text-align:center;
+margin-bottom:40px;
+font-size:40px;
+}
+
+.questao{
+background:white;
+color:#222;
+padding:25px;
+margin-bottom:25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:8px;
+cursor:pointer;
+margin-top:15px;
+}
+
+.resposta{
+display:none;
+margin-top:20px;
+padding:20px;
+background:#dcfce7;
+border-left:6px solid #16a34a;
+border-radius:10px;
+color:black;
+}
+
+.codigo{
+background:#0f172a;
+color:#22c55e;
+padding:15px;
+margin:10px 0;
+border-radius:10px;
+font-family:monospace;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📋 Questionário Comentado - Encontro 2</h1>
+
+<!-- QUESTÃO 1 -->
+
+<div class="questao">
+
+<h2>Questão 1</h2>
+
+<p><strong>Qual estrutura é utilizada quando sabemos exatamente quantas vezes uma repetição deverá acontecer?</strong></p>
+
+A) while<br>
+B) if<br>
+C) for<br>
+D) break
+
+<button onclick="mostrar('r1')">
+Mostrar Gabarito
+</button>
+
+<div id="r1" class="resposta">
+
+<h3>✅ Gabarito: C) for</h3>
+
+<p>
+O comando for é utilizado quando sabemos
+a quantidade de repetições que serão executadas.
+</p>
+
+<div class="codigo">
+for numero in range(1,6):
+    print(numero)
+</div>
+
+<p>
+Nesse exemplo o laço executa cinco vezes.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 2 -->
+
+<div class="questao">
+
+<h2>Questão 2</h2>
+
+<p><strong>Qual função gera uma sequência numérica?</strong></p>
+
+A) len()<br>
+B) range()<br>
+C) sum()<br>
+D) append()
+
+<button onclick="mostrar('r2')">
+Mostrar Gabarito
+</button>
+
+<div id="r2" class="resposta">
+
+<h3>✅ Gabarito: B) range()</h3>
+
+<p>
+A função range() cria sequências numéricas.
+</p>
+
+<div class="codigo">
+range(1,6)
+</div>
+
+<p>
+Resultado:
+1, 2, 3, 4 e 5
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 3 -->
+
+<div class="questao">
+
+<h2>Questão 3</h2>
+
+<p><strong>Qual operador representa potência?</strong></p>
+
+A) *<br>
+B) /<br>
+C) %<br>
+D) **
+
+<button onclick="mostrar('r3')">
+Mostrar Gabarito
+</button>
+
+<div id="r3" class="resposta">
+
+<h3>✅ Gabarito: D) **</h3>
+
+<p>
+O operador ** é utilizado para cálculos de potência.
+</p>
+
+<div class="codigo">
+5 ** 2
+
+Resultado: 25
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 4 -->
+
+<div class="questao">
+
+<h2>Questão 4</h2>
+
+<p><strong>Qual estrutura cria um loop infinito?</strong></p>
+
+A) for<br>
+B) if<br>
+C) while True<br>
+D) range()
+
+<button onclick="mostrar('r4')">
+Mostrar Gabarito
+</button>
+
+<div id="r4" class="resposta">
+
+<h3>✅ Gabarito: C) while True</h3>
+
+<p>
+A condição True permanece verdadeira durante toda a execução.
+</p>
+
+<div class="codigo">
+while True:
+    print("Executando...")
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 5 -->
+
+<div class="questao">
+
+<h2>Questão 5</h2>
+
+<p><strong>Qual comando interrompe imediatamente um loop?</strong></p>
+
+A) stop<br>
+B) continue<br>
+C) break<br>
+D) exit
+
+<button onclick="mostrar('r5')">
+Mostrar Gabarito
+</button>
+
+<div id="r5" class="resposta">
+
+<h3>✅ Gabarito: C) break</h3>
+
+<p>
+O comando break encerra a execução do laço.
+</p>
+
+<div class="codigo">
+while True:
+    break
+</div>
+
+</div>
+
+</div>
+<!-- QUESTÃO 6 -->
+
+<div class="questao">
+
+<h2>Questão 6</h2>
+
+<p><strong>Qual elemento está armazenado na posição 0 da lista abaixo?</strong></p>
+
+<div class="codigo">
+idades = [51,22,36,29,12]
+</div>
+
+A) 22<br>
+B) 12<br>
+C) 51<br>
+D) 29
+
+<button onclick="mostrar('r6')">
+Mostrar Gabarito
+</button>
+
+<div id="r6" class="resposta">
+
+<h3>✅ Gabarito: C) 51</h3>
+
+<p>
+Em Python os índices começam em zero.
+Por isso a posição 0 representa o primeiro elemento da lista.
+</p>
+
+<div class="codigo">
+idades[0]
+
+Resultado: 51
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 7 -->
+
+<div class="questao">
+
+<h2>Questão 7</h2>
+
+<p><strong>Qual função retorna a quantidade de elementos de uma lista?</strong></p>
+
+A) sum()<br>
+B) len()<br>
+C) append()<br>
+D) sort()
+
+<button onclick="mostrar('r7')">
+Mostrar Gabarito
+</button>
+
+<div id="r7" class="resposta">
+
+<h3>✅ Gabarito: B) len()</h3>
+
+<p>
+A função len() retorna quantos elementos existem na lista.
+</p>
+
+<div class="codigo">
+len([51,22,36,29,12])
+
+Resultado: 5
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 8 -->
+
+<div class="questao">
+
+<h2>Questão 8</h2>
+
+<p><strong>Qual função soma todos os elementos de uma lista?</strong></p>
+
+A) total()<br>
+B) add()<br>
+C) count()<br>
+D) sum()
+
+<button onclick="mostrar('r8')">
+Mostrar Gabarito
+</button>
+
+<div id="r8" class="resposta">
+
+<h3>✅ Gabarito: D) sum()</h3>
+
+<p>
+A função sum() realiza a soma de todos os números da lista.
+</p>
+
+<div class="codigo">
+sum([10,20,30])
+
+Resultado: 60
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 9 -->
+
+<div class="questao">
+
+<h2>Questão 9</h2>
+
+<p><strong>Qual método ordena uma lista em ordem crescente?</strong></p>
+
+A) organize()<br>
+B) order()<br>
+C) sort()<br>
+D) arrange()
+
+<button onclick="mostrar('r9')">
+Mostrar Gabarito
+</button>
+
+<div id="r9" class="resposta">
+
+<h3>✅ Gabarito: C) sort()</h3>
+
+<p>
+O método sort() organiza os valores do menor para o maior.
+</p>
+
+<div class="codigo">
+idades.sort()
+
+Resultado:
+[12,22,29,36,51]
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 10 -->
+
+<div class="questao">
+
+<h2>Questão 10</h2>
+
+<p><strong>Qual método adiciona um novo elemento ao final de uma lista?</strong></p>
+
+A) push()<br>
+B) append()<br>
+C) add()<br>
+D) insertLast()
+
+<button onclick="mostrar('r10')">
+Mostrar Gabarito
+</button>
+
+<div id="r10" class="resposta">
+
+<h3>✅ Gabarito: B) append()</h3>
+
+<p>
+O método append() adiciona novos elementos ao final da lista.
+</p>
+
+<div class="codigo">
+nomes = []
+
+nomes.append("Maria")
+</div>
+
+</div>
+
+</div>
+<!-- QUESTÃO 11 -->
+
+<div class="questao">
+
+<h2>Questão 11</h2>
+
+<p><strong>Qual biblioteca foi utilizada para gerar números aleatórios?</strong></p>
+
+A) math<br>
+B) random<br>
+C) numpy<br>
+D) time
+
+<button onclick="mostrar('r11')">
+Mostrar Gabarito
+</button>
+
+<div id="r11" class="resposta">
+
+<h3>✅ Gabarito: B) random</h3>
+
+<p>
+A biblioteca random permite criar números aleatórios.
+</p>
+
+<div class="codigo">
+import random
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 12 -->
+
+<div class="questao">
+
+<h2>Questão 12</h2>
+
+<p><strong>Qual função foi utilizada para gerar o número secreto?</strong></p>
+
+A) random.choice()<br>
+B) random.shuffle()<br>
+C) random.randrange()<br>
+D) random.pick()
+
+<button onclick="mostrar('r12')">
+Mostrar Gabarito
+</button>
+
+<div id="r12" class="resposta">
+
+<h3>✅ Gabarito: C) random.randrange()</h3>
+
+<p>
+A função gera números aleatórios dentro de um intervalo.
+</p>
+
+<div class="codigo">
+num = random.randrange(0,10)
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 13 -->
+
+<div class="questao">
+
+<h2>Questão 13</h2>
+
+<p><strong>Qual condição fazia o jogador vencer o jogo?</strong></p>
+
+A) chute > num<br>
+B) chute < num<br>
+C) chute == num<br>
+D) chute != num
+
+<button onclick="mostrar('r13')">
+Mostrar Gabarito
+</button>
+
+<div id="r13" class="resposta">
+
+<h3>✅ Gabarito: C) chute == num</h3>
+
+<p>
+O jogador vence quando o valor digitado é igual ao número sorteado.
+</p>
+
+<div class="codigo">
+if chute == num:
+    print("Parabéns!")
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 14 -->
+
+<div class="questao">
+
+<h2>Questão 14</h2>
+
+<p><strong>Qual comando encerra o loop quando o jogador acerta?</strong></p>
+
+A) stop<br>
+B) break<br>
+C) continue<br>
+D) exit
+
+<button onclick="mostrar('r14')">
+Mostrar Gabarito
+</button>
+
+<div id="r14" class="resposta">
+
+<h3>✅ Gabarito: B) break</h3>
+
+<p>
+O break interrompe imediatamente a repetição.
+</p>
+
+<div class="codigo">
+break
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 15 -->
+
+<div class="questao">
+
+<h2>Questão 15</h2>
+
+<p><strong>Qual estrutura foi utilizada para manter o jogo executando até o acerto?</strong></p>
+
+A) for<br>
+B) if<br>
+C) while True<br>
+D) range()
+
+<button onclick="mostrar('r15')">
+Mostrar Gabarito
+</button>
+
+<div id="r15" class="resposta">
+
+<h3>✅ Gabarito: C) while True</h3>
+
+<p>
+O jogo continua executando até que o comando break seja encontrado.
+</p>
+
+<div class="codigo">
+while True:
+    ...
+</div>
+
+</div>
+
+</div>
+<!-- QUESTÃO 16 -->
+
+<div class="questao">
+
+<h2>Questão 16</h2>
+
+<p><strong>Qual estrutura foi utilizada para armazenar nome, altura e peso das pessoas?</strong></p>
+
+A) String<br>
+B) Float<br>
+C) Array bidimensional<br>
+D) Boolean
+
+<button onclick="mostrar('r16')">
+Mostrar Gabarito
+</button>
+
+<div id="r16" class="resposta">
+
+<h3>✅ Gabarito: C) Array bidimensional</h3>
+
+<p>
+Foi utilizada uma lista dentro de outra lista.
+</p>
+
+<div class="codigo">
+pessoa = [nome, altura, peso]
+dados.append(pessoa)
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 17 -->
+
+<div class="questao">
+
+<h2>Questão 17</h2>
+
+<p><strong>Quantas informações eram armazenadas para cada pessoa?</strong></p>
+
+A) 2<br>
+B) 3<br>
+C) 4<br>
+D) 5
+
+<button onclick="mostrar('r17')">
+Mostrar Gabarito
+</button>
+
+<div id="r17" class="resposta">
+
+<h3>✅ Gabarito: B) 3</h3>
+
+<p>
+Cada pessoa possuía nome, altura e peso.
+</p>
+
+<div class="codigo">
+[nome, altura, peso]
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 18 -->
+
+<div class="questao">
+
+<h2>Questão 18</h2>
+
+<p><strong>No exercício do dado, quantas vezes ele foi lançado?</strong></p>
+
+A) 10<br>
+B) 50<br>
+C) 100<br>
+D) 1000
+
+<button onclick="mostrar('r18')">
+Mostrar Gabarito
+</button>
+
+<div id="r18" class="resposta">
+
+<h3>✅ Gabarito: C) 100</h3>
+
+<p>
+O professor utilizou um laço de repetição com 100 execuções.
+</p>
+
+<div class="codigo">
+for i in range(100):
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 19 -->
+
+<div class="questao">
+
+<h2>Questão 19</h2>
+
+<p><strong>No exercício das notas, quantas notas cada aluno possuía?</strong></p>
+
+A) 2<br>
+B) 3<br>
+C) 4<br>
+D) 5
+
+<button onclick="mostrar('r19')">
+Mostrar Gabarito
+</button>
+
+<div id="r19" class="resposta">
+
+<h3>✅ Gabarito: B) 3</h3>
+
+<p>
+Cada aluno possuía N1, N2 e N3.
+</p>
+
+<div class="codigo">
+for col in range(3):
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 20 -->
+
+<div class="questao">
+
+<h2>Questão 20</h2>
+
+<p><strong>Qual estrutura foi utilizada para armazenar as notas dos alunos?</strong></p>
+
+A) String<br>
+B) Float<br>
+C) Matriz (lista bidimensional)<br>
+D) Boolean
+
+<button onclick="mostrar('r20')">
+Mostrar Gabarito
+</button>
+
+<div id="r20" class="resposta">
+
+<h3>✅ Gabarito: C) Matriz (lista bidimensional)</h3>
+
+<p>
+Cada linha representava um aluno e cada coluna uma nota.
+</p>
+
+<div class="codigo">
+notas[lin][col]
+</div>
+
+<p>
+Essa estrutura é conhecida como matriz ou array bidimensional.
+</p>
+
+</div>
+
+</div>
+<script>
+function mostrar(id){
+document.getElementById(id).style.display="block";
+}
+</script>
+
+</body>
+</html>

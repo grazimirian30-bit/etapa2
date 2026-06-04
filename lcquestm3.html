@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📋 Questionário Comentado - Encontro 3</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+padding:30px;
+color:white;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+h1{
+text-align:center;
+margin-bottom:40px;
+font-size:40px;
+}
+
+.questao{
+background:white;
+color:#222;
+padding:25px;
+margin-bottom:25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:8px;
+cursor:pointer;
+margin-top:15px;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+.resposta{
+display:none;
+margin-top:20px;
+padding:20px;
+background:#dcfce7;
+border-left:6px solid #16a34a;
+border-radius:10px;
+color:black;
+}
+
+.codigo{
+background:#0f172a;
+color:#22c55e;
+padding:15px;
+margin:10px 0;
+border-radius:10px;
+font-family:monospace;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📋 Questionário Comentado - Encontro 3</h1>
+
+<!-- QUESTÃO 1 -->
+
+<div class="questao">
+
+<h2>Questão 1</h2>
+
+<p><strong>Qual palavra reservada é utilizada para declarar procedimentos e funções em Python?</strong></p>
+
+A) function<br>
+B) create<br>
+C) def<br>
+D) module<br><br>
+
+<button onclick="mostrar('r1')">
+Mostrar Gabarito
+</button>
+
+<div id="r1" class="resposta">
+
+<h3>✅ Gabarito: C) def</h3>
+
+<p>
+Segundo o professor, tanto procedimentos quanto funções
+são declarados utilizando a palavra reservada <strong>def</strong>.
+</p>
+
+<p>
+Após a palavra def informamos o nome do módulo
+e os parâmetros necessários.
+</p>
+
+<div class="codigo">
+def mostra_nome():
+
+    print("Linguagem de Programação")
+</div>
+
+<p>
+Esse comando cria um procedimento chamado mostra_nome().
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 2 -->
+
+<div class="questao">
+
+<h2>Questão 2</h2>
+
+<p><strong>Qual é a principal característica de um procedimento?</strong></p>
+
+A) Sempre retorna um valor<br>
+B) Executa uma tarefa específica<br>
+C) Cria arrays automaticamente<br>
+D) Só pode usar números<br><br>
+
+<button onclick="mostrar('r2')">
+Mostrar Gabarito
+</button>
+
+<div id="r2" class="resposta">
+
+<h3>✅ Gabarito: B) Executa uma tarefa específica</h3>
+
+<p>
+O procedimento é utilizado para executar uma ação
+ou conjunto de comandos.
+</p>
+
+<p>
+No exemplo apresentado em aula,
+o procedimento apenas exibia mensagens na tela.
+</p>
+
+<div class="codigo">
+def mostra_nome():
+
+    print("Linguagem de Programação")
+</div>
+
+<p>
+Observe que não existe return.
+Por isso ele é considerado um procedimento.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 3 -->
+
+<div class="questao">
+
+<h2>Questão 3</h2>
+
+<p><strong>Qual procedimento foi utilizado para exibir traços na tela?</strong></p>
+
+A) mostra_nome()<br>
+B) print()<br>
+C) tracos()<br>
+D) media()<br><br>
+
+<button onclick="mostrar('r3')">
+Mostrar Gabarito
+</button>
+
+<div id="r3" class="resposta">
+
+<h3>✅ Gabarito: C) tracos()</h3>
+
+<p>
+O professor criou um procedimento chamado tracos()
+que recebia um número como parâmetro.
+</p>
+
+<div class="codigo">
+def tracos(num):
+
+    texto = "-" * num
+
+    print(texto)
+</div>
+
+<p>
+Esse procedimento gera uma sequência de traços
+com a quantidade informada.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 4 -->
+
+<div class="questao">
+
+<h2>Questão 4</h2>
+
+<p><strong>Como são chamadas as variáveis recebidas por uma função?</strong></p>
+
+A) Índices<br>
+B) Operadores<br>
+C) Parâmetros<br>
+D) Vetores<br><br>
+
+<button onclick="mostrar('r4')">
+Mostrar Gabarito
+</button>
+
+<div id="r4" class="resposta">
+
+<h3>✅ Gabarito: C) Parâmetros</h3>
+
+<p>
+Os parâmetros são os dados enviados para uma função
+ou procedimento durante sua execução.
+</p>
+
+<div class="codigo">
+def tracos(num):
+
+    print("-" * num)
+</div>
+
+<p>
+Nesse exemplo, a variável num é um parâmetro.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 5 -->
+
+<div class="questao">
+
+<h2>Questão 5</h2>
+
+<p><strong>Qual comando transforma um procedimento em função?</strong></p>
+
+A) break<br>
+B) print<br>
+C) input<br>
+D) return<br><br>
+
+<button onclick="mostrar('r5')">
+Mostrar Gabarito
+</button>
+
+<div id="r5" class="resposta">
+
+<h3>✅ Gabarito: D) return</h3>
+
+<p>
+Uma função se diferencia de um procedimento
+porque devolve um valor para o programa.
+</p>
+
+<p>
+Esse retorno é realizado através do comando return.
+</p>
+
+<div class="codigo">
+def soma(a,b):
+
+    return a+b
+</div>
+
+<p>
+Sempre que o Python encontra um return,
+a função devolve um resultado e encerra sua execução.
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO 6 -->
+
+<div class="questao">
+
+<h2>Questão 6</h2>
+
+<p><strong>Qual era o objetivo da função calcula_media(arr)?</strong></p>
+
+A) Ordenar um array<br>
+B) Calcular a média dos elementos de um array<br>
+C) Criar uma lista vazia<br>
+D) Multiplicar números<br><br>
+
+<button onclick="mostrar('r6')">
+Mostrar Gabarito
+</button>
+
+<div id="r6" class="resposta">
+
+<h3>✅ Gabarito: B) Calcular a média dos elementos de um array</h3>
+
+<p>
+O professor apresentou uma função chamada calcula_media()
+que recebia um array como parâmetro.
+</p>
+
+<p>
+O objetivo da função era somar todos os elementos do array
+e dividir pela quantidade de elementos existentes.
+</p>
+
+<div class="codigo">
+def calcula_media(arr):
+
+    total = sum(arr)
+
+    media = total / len(arr)
+
+    return media
+</div>
+
+<p>
+Esse tipo de função evita repetir cálculos em vários locais do programa.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 7 -->
+
+<div class="questao">
+
+<h2>Questão 7</h2>
+
+<p><strong>Qual função foi utilizada para somar todos os elementos do array?</strong></p>
+
+A) len()<br>
+B) append()<br>
+C) sum()<br>
+D) sort()<br><br>
+
+<button onclick="mostrar('r7')">
+Mostrar Gabarito
+</button>
+
+<div id="r7" class="resposta">
+
+<h3>✅ Gabarito: C) sum()</h3>
+
+<p>
+A função sum() realiza a soma de todos os elementos numéricos
+existentes dentro de uma lista.
+</p>
+
+<div class="codigo">
+numeros = [10,20,30]
+
+total = sum(numeros)
+
+Resultado: 60
+</div>
+
+<p>
+Foi exatamente essa função utilizada pelo professor
+na implementação da média.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 8 -->
+
+<div class="questao">
+
+<h2>Questão 8</h2>
+
+<p><strong>O que acontece quando o array está vazio na função calcula_media()?</strong></p>
+
+A) O programa trava<br>
+B) Retorna 100<br>
+C) Retorna 0<br>
+D) Retorna -1<br><br>
+
+<button onclick="mostrar('r8')">
+Mostrar Gabarito
+</button>
+
+<div id="r8" class="resposta">
+
+<h3>✅ Gabarito: C) Retorna 0</h3>
+
+<p>
+Antes de calcular a média, o professor verificou
+se o array estava vazio.
+</p>
+
+<div class="codigo">
+if not arr:
+
+    print("O array está vazio.")
+
+    return 0
+</div>
+
+<p>
+Dessa forma o programa evita erros de divisão por zero.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 9 -->
+
+<div class="questao">
+
+<h2>Questão 9</h2>
+
+<p><strong>Qual função foi utilizada para descobrir a quantidade de elementos do array?</strong></p>
+
+A) sort()<br>
+B) len()<br>
+C) append()<br>
+D) sum()<br><br>
+
+<button onclick="mostrar('r9')">
+Mostrar Gabarito
+</button>
+
+<div id="r9" class="resposta">
+
+<h3>✅ Gabarito: B) len()</h3>
+
+<p>
+A função len() retorna a quantidade de elementos existentes
+em uma lista.
+</p>
+
+<div class="codigo">
+valores = [10,20,30,40,50]
+
+len(valores)
+
+Resultado: 5
+</div>
+
+<p>
+O professor utilizou len(arr) para dividir a soma
+pela quantidade correta de elementos.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 10 -->
+
+<div class="questao">
+
+<h2>Questão 10</h2>
+
+<p><strong>Qual valor será retornado pela função para o array abaixo?</strong></p>
+
+<div class="codigo">
+[10,20,30,40,50]
+</div>
+
+A) 20<br>
+B) 25<br>
+C) 30<br>
+D) 35<br><br>
+
+<button onclick="mostrar('r10')">
+Mostrar Gabarito
+</button>
+
+<div id="r10" class="resposta">
+
+<h3>✅ Gabarito: C) 30</h3>
+
+<p>
+Primeiro somamos todos os elementos:
+</p>
+
+<div class="codigo">
+10 + 20 + 30 + 40 + 50 = 150
+</div>
+
+<p>
+Depois dividimos pela quantidade de elementos:
+</p>
+
+<div class="codigo">
+150 / 5 = 30
+</div>
+
+<p>
+Portanto a média calculada pela função será 30.
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO 6 -->
+
+<div class="questao">
+
+<h2>Questão 6</h2>
+
+<p><strong>Qual era o objetivo da função calcula_media(arr)?</strong></p>
+
+A) Ordenar um array<br>
+B) Calcular a média dos elementos de um array<br>
+C) Criar uma lista vazia<br>
+D) Multiplicar números<br><br>
+
+<button onclick="mostrar('r6')">
+Mostrar Gabarito
+</button>
+
+<div id="r6" class="resposta">
+
+<h3>✅ Gabarito: B) Calcular a média dos elementos de um array</h3>
+
+<p>
+O professor apresentou uma função chamada calcula_media()
+que recebia um array como parâmetro.
+</p>
+
+<p>
+O objetivo da função era somar todos os elementos do array
+e dividir pela quantidade de elementos existentes.
+</p>
+
+<div class="codigo">
+def calcula_media(arr):
+
+    total = sum(arr)
+
+    media = total / len(arr)
+
+    return media
+</div>
+
+<p>
+Esse tipo de função evita repetir cálculos em vários locais do programa.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 7 -->
+
+<div class="questao">
+
+<h2>Questão 7</h2>
+
+<p><strong>Qual função foi utilizada para somar todos os elementos do array?</strong></p>
+
+A) len()<br>
+B) append()<br>
+C) sum()<br>
+D) sort()<br><br>
+
+<button onclick="mostrar('r7')">
+Mostrar Gabarito
+</button>
+
+<div id="r7" class="resposta">
+
+<h3>✅ Gabarito: C) sum()</h3>
+
+<p>
+A função sum() realiza a soma de todos os elementos numéricos
+existentes dentro de uma lista.
+</p>
+
+<div class="codigo">
+numeros = [10,20,30]
+
+total = sum(numeros)
+
+Resultado: 60
+</div>
+
+<p>
+Foi exatamente essa função utilizada pelo professor
+na implementação da média.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 8 -->
+
+<div class="questao">
+
+<h2>Questão 8</h2>
+
+<p><strong>O que acontece quando o array está vazio na função calcula_media()?</strong></p>
+
+A) O programa trava<br>
+B) Retorna 100<br>
+C) Retorna 0<br>
+D) Retorna -1<br><br>
+
+<button onclick="mostrar('r8')">
+Mostrar Gabarito
+</button>
+
+<div id="r8" class="resposta">
+
+<h3>✅ Gabarito: C) Retorna 0</h3>
+
+<p>
+Antes de calcular a média, o professor verificou
+se o array estava vazio.
+</p>
+
+<div class="codigo">
+if not arr:
+
+    print("O array está vazio.")
+
+    return 0
+</div>
+
+<p>
+Dessa forma o programa evita erros de divisão por zero.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 9 -->
+
+<div class="questao">
+
+<h2>Questão 9</h2>
+
+<p><strong>Qual função foi utilizada para descobrir a quantidade de elementos do array?</strong></p>
+
+A) sort()<br>
+B) len()<br>
+C) append()<br>
+D) sum()<br><br>
+
+<button onclick="mostrar('r9')">
+Mostrar Gabarito
+</button>
+
+<div id="r9" class="resposta">
+
+<h3>✅ Gabarito: B) len()</h3>
+
+<p>
+A função len() retorna a quantidade de elementos existentes
+em uma lista.
+</p>
+
+<div class="codigo">
+valores = [10,20,30,40,50]
+
+len(valores)
+
+Resultado: 5
+</div>
+
+<p>
+O professor utilizou len(arr) para dividir a soma
+pela quantidade correta de elementos.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 10 -->
+
+<div class="questao">
+
+<h2>Questão 10</h2>
+
+<p><strong>Qual valor será retornado pela função para o array abaixo?</strong></p>
+
+<div class="codigo">
+[10,20,30,40,50]
+</div>
+
+A) 20<br>
+B) 25<br>
+C) 30<br>
+D) 35<br><br>
+
+<button onclick="mostrar('r10')">
+Mostrar Gabarito
+</button>
+
+<div id="r10" class="resposta">
+
+<h3>✅ Gabarito: C) 30</h3>
+
+<p>
+Primeiro somamos todos os elementos:
+</p>
+
+<div class="codigo">
+10 + 20 + 30 + 40 + 50 = 150
+</div>
+
+<p>
+Depois dividimos pela quantidade de elementos:
+</p>
+
+<div class="codigo">
+150 / 5 = 30
+</div>
+
+<p>
+Portanto a média calculada pela função será 30.
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO 16 -->
+
+<div class="questao">
+
+<h2>Questão 16</h2>
+
+<p><strong>No exercício do restaurante, qual era a porcentagem da taxa de serviço?</strong></p>
+
+A) 5%<br>
+B) 8%<br>
+C) 10%<br>
+D) 15%<br><br>
+
+<button onclick="mostrar('r16')">
+Mostrar Gabarito
+</button>
+
+<div id="r16" class="resposta">
+
+<h3>✅ Gabarito: C) 10%</h3>
+
+<p>
+O exercício solicitava criar uma função que retornasse
+o valor da conta acrescido de 10% de taxa de serviço.
+</p>
+
+<div class="codigo">
+return valor_gasto * 1.1
+</div>
+
+<p>
+Multiplicar por 1.1 equivale a acrescentar 10%.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 17 -->
+
+<div class="questao">
+
+<h2>Questão 17</h2>
+
+<p><strong>Se a conta for R$ 150,00, qual será o valor final com a taxa?</strong></p>
+
+A) R$ 155,00<br>
+B) R$ 160,00<br>
+C) R$ 165,00<br>
+D) R$ 170,00<br><br>
+
+<button onclick="mostrar('r17')">
+Mostrar Gabarito
+</button>
+
+<div id="r17" class="resposta">
+
+<h3>✅ Gabarito: C) R$ 165,00</h3>
+
+<p>
+Primeiro calculamos os 10%:
+</p>
+
+<div class="codigo">
+150 × 0.10 = 15
+</div>
+
+<p>
+Depois somamos ao valor original:
+</p>
+
+<div class="codigo">
+150 + 15 = 165
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 18 -->
+
+<div class="questao">
+
+<h2>Questão 18</h2>
+
+<p><strong>Qual era o nome da função recursiva utilizada para calcular potência?</strong></p>
+
+A) potencia()<br>
+B) expoente()<br>
+C) calc()<br>
+D) pot()<br><br>
+
+<button onclick="mostrar('r18')">
+Mostrar Gabarito
+</button>
+
+<div id="r18" class="resposta">
+
+<h3>✅ Gabarito: D) pot()</h3>
+
+<div class="codigo">
+def pot(x,n):
+</div>
+
+<p>
+Essa foi a função apresentada pelo professor
+para calcular xⁿ utilizando recursão.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 19 -->
+
+<div class="questao">
+
+<h2>Questão 19</h2>
+
+<p><strong>Qual é o caso base da função pot(x,n)?</strong></p>
+
+A) n == 1<br>
+B) n == 2<br>
+C) n == 0<br>
+D) n == -1<br><br>
+
+<button onclick="mostrar('r19')">
+Mostrar Gabarito
+</button>
+
+<div id="r19" class="resposta">
+
+<h3>✅ Gabarito: C) n == 0</h3>
+
+<p>
+Quando o expoente chega a zero,
+a função retorna 1.
+</p>
+
+<div class="codigo">
+if(n == 0):
+
+    return 1
+</div>
+
+<p>
+Essa é a condição de parada da recursão.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 20 -->
+
+<div class="questao">
+
+<h2>Questão 20</h2>
+
+<p><strong>Qual será o resultado de 2³ utilizando a função recursiva?</strong></p>
+
+A) 6<br>
+B) 8<br>
+C) 9<br>
+D) 12<br><br>
+
+<button onclick="mostrar('r20')">
+Mostrar Gabarito
+</button>
+
+<div id="r20" class="resposta">
+
+<h3>✅ Gabarito: B) 8</h3>
+
+<p>
+O cálculo ocorre da seguinte forma:
+</p>
+
+<div class="codigo">
+2³ = 2 × 2 × 2
+
+Resultado: 8
+</div>
+
+<p>
+A função realiza chamadas recursivas até que o expoente
+atinja o caso base.
+</p>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+function mostrar(id){
+
+document.getElementById(id).style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>

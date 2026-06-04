@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Manual: Módulo 3 - Programação e Lógica SQL</title>
+    <style>
+        :root {
+            --primary: #6d28d9;
+            --secondary: #a78bfa;
+            --code-bg: #0f172a;
+            --code-text: #e2e8f0;
+            --logic-bg: #f5f3ff;
+            --accent: #ddd6fe;
+            --text: #1e293b;
+        }
+
+        body {
+            font-family: 'Fira Code', 'Segoe UI', Tahoma, sans-serif;
+            background-color: #f8fafc;
+            color: var(--text);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+        }
+
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+
+        .card {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-right: 8px solid var(--primary);
+        }
+
+        h2 { color: var(--primary); display: flex; align-items: center; gap: 12px; }
+
+        /* --- GRÁFICO: FLUXO DE TRANSAÇÃO --- */
+        .transaction-flow {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+            background: var(--logic-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px dashed var(--primary);
+        }
+
+        .t-box {
+            padding: 15px;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .arrow { font-size: 1.5rem; color: var(--primary); }
+
+        /* --- CÓDIGO ESTILIZADO --- */
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 25px;
+            border-radius: 10px;
+            overflow-x: auto;
+            border-left: 5px solid #10b981;
+        }
+
+        code .keyword { color: #fb7185; font-weight: bold; }
+        code .func { color: #38bdf8; }
+        code .var { color: #fbbf24; }
+        code .comment { color: #64748b; font-style: italic; }
+
+        /* --- GRID DE ELEMENTOS --- */
+        .grid-logic {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .logic-item {
+            background: var(--logic-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--accent);
+        }
+
+        .logic-item strong { color: var(--primary); display: block; margin-bottom: 10px; }
+
+        .badge {
+            background: var(--primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            vertical-align: middle;
+        }
+/* ==========================
+   QUIZ E GABARITOS
+========================== */
+
+.quiz-card{
+    background: var(--white);
+    padding: 30px;
+    margin: 30px 0;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.05);
+    border-left: 8px solid var(--secondary);
+}
+
+.quiz-card h3{
+    color: var(--primary);
+    margin-top: 0;
+}
+
+.alternativa{
+    display:block;
+    padding:15px;
+    margin:10px 0;
+    background:#f8fafc;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.alternativa:hover{
+    background:#dbeafe;
+    border-color:var(--secondary);
+}
+
+.alternativa input{
+    margin-right:10px;
+}
+
+.btn-gabarito{
+    background:var(--primary);
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-top:15px;
+    transition:.3s;
+}
+
+.btn-gabarito:hover{
+    background:var(--secondary);
+}
+
+.gabarito{
+    display:none;
+    margin-top:20px;
+    background:#eff6ff;
+    border-left:6px solid var(--secondary);
+    padding:20px;
+    border-radius:8px;
+}
+
+.gabarito h4{
+    color:var(--primary);
+    margin-top:15px;
+}
+
+.gabarito ul{
+    padding-left:20px;
+}
+
+.gabarito li{
+    margin-bottom:8px;
+}
+    </style>
+</head>
+<script>
+
+function mostrarGabarito(id){
+
+let bloco =
+document.getElementById(id);
+
+if(bloco.style.display === "block"){
+
+    bloco.style.display = "none";
+
+}
+else{
+
+    bloco.style.display = "block";
+
+}
+
+}
+
+</script>
+
+<body>
+
+<header>
+    <h1>Módulo 3: Inteligência SQL</h1>
+    <p>Views, Transações, Funções e Procedures (T-SQL)</p>
+</header>
+
+<div class="container">
+
+    <!-- SEÇÃO 1: VISUALIZAÇÕES (VIEWS) -->
+    <section class="card">
+        <h2>🖼️ 1. Views: Tabelas Virtuais</h2>
+        <p>Uma <strong>View</strong> é como uma consulta salva. Ela não ocupa espaço com dados duplicados, apenas "lembra" do SELECT complexo que você criou.</p>
+        <div class="logic-item">
+            <strong>Vantagens:</strong>
+            <ul>
+                <li><strong>Segurança:</strong> Esconde colunas sensíveis (como salários).</li>
+                <li><strong>Simplicidade:</strong> Transforma um JOIN de 5 tabelas em um "SELECT * FROM View".</li>
+            </ul>
+        </div>
+        <pre><code><span class="keyword">CREATE VIEW</span> v_TotalVendas <span class="keyword">AS</span>
+<span class="keyword">SELECT</span> Nome, <span class="func">SUM</span>(Total) <span class="keyword">FROM</span> Vendas
+<span class="keyword">GROUP BY</span> Nome;</code></pre>
+    </section>
+
+    <!-- SEÇÃO 2: TRANSAÇÕES (O GRÁFICO DE SEGURANÇA) -->
+    <section class="card">
+        <h2>🛡️ 2. Transações: O Tudo ou Nada</h2>
+        <p>Garante a integridade. Se você transfere dinheiro, o banco precisa tirar de uma conta E colocar na outra. Se uma falhar, o sistema desfaz tudo.</p>
+        
+        <div class="transaction-flow">
+            <div class="t-box">BEGIN<br><small>Início</small></div>
+            <div class="arrow">→</div>
+            <div class="t-box" style="background: #ecfdf5;">COMMIT<br><small>Sucesso (Salva)</small></div>
+            <div class="arrow">/</div>
+            <div class="t-box" style="background: #fef2f2;">ROLLBACK<br><small>Erro (Cancela)</small></div>
+        </div>
+        
+        <pre><code><span class="keyword">BEGIN TRANSACTION</span>;
+   <span class="keyword">UPDATE</span> Conta <span class="keyword">SET</span> Saldo -= 100 <span class="keyword">WHERE</span> ID=1;
+   <span class="keyword">UPDATE</span> Conta <span class="keyword">SET</span> Saldo += 100 <span class="keyword">WHERE</span> ID=2;
+<span class="keyword">IF</span> (@@ERROR <> 0) <span class="keyword">ROLLBACK</span>;
+<span class="keyword">ELSE COMMIT</span>;</code></pre>
+    </section>
+
+    <!-- SEÇÃO 3: ELEMENTOS DE PROGRAMAÇÃO -->
+    <section class="card">
+        <h2>💻 3. T-SQL: Programando no Banco</h2>
+        <p>O SQL Server permite usar lógica de programação (Variáveis, IF, WHILE).</p>
+        <div class="grid-logic">
+            <div class="logic-item">
+                <strong>Variáveis</strong>
+                Usamos o <code>@</code> para declarar.
+                <br><code><span class="keyword">DECLARE</span> <span class="var">@Preco</span> <span class="type">MONEY</span>;</code>
+            </div>
+            <div class="logic-item">
+                <strong>Estruturas de Decisão</strong>
+                O clássico IF/ELSE para checar condições antes de agir.
+            </div>
+            <div class="logic-item">
+                <strong>Laços (Loops)</strong>
+                O <code>WHILE</code> para repetir tarefas enquanto algo for verdade.
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 4: PROCEDURES VS FUNCTIONS -->
+    <section class="card">
+        <h2>⚙️ 4. Stored Procedures vs. Functions</h2>
+        <p>Abaixo, a comparação visual definitiva de quando usar cada uma:</p>
+        
+        <table>
+            <thead>
+                <tr><th>Característica</th><th>Stored Procedure <span class="badge">Ação</span></th><th>Function <span class="badge">Cálculo</span></th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Retorno</strong></td><td>Pode retornar vários ou nenhum.</td><td>DEVE retornar um valor (ou tabela).</td></tr>
+                <tr><td><strong>Uso no SELECT</strong></td><td>Não pode.</td><td>Pode ser usada como uma coluna.</td></tr>
+                <tr><td><strong>DML (Insert/Update)</strong></td><td>Pode alterar o banco.</td><td>Não pode alterar dados.</td></tr>
+                <tr><td><strong>Exemplo</strong></td><td>Gerar Nota Fiscal.</td><td>Calcular Desconto de 10%.</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Exemplo de Procedure:</h3>
+        <pre><code><span class="keyword">CREATE PROCEDURE</span> sp_AumentaPreco <span class="var">@porcentagem</span> <span class="type">FLOAT</span>
+<span class="keyword">AS</span>
+<span class="keyword">BEGIN</span>
+    <span class="keyword">UPDATE</span> Produto <span class="keyword">SET</span> Preco *= (1 + <span class="var">@porcentagem</span> / 100);
+<span class="keyword">END</span>;</code></pre>
+    </section>
+
+    <!-- SEÇÃO 5: FUNÇÕES NATIVAS -->
+    <section class="card">
+        <h2>🧮 5. Funções Nativas do SQL Server</h2>
+        <p>O SQL Server já vem com ferramentas prontas para manipular dados no Módulo 3 [59-60]:</p>
+        <div class="grid-logic">
+            <div class="logic-item"><strong>Strings:</strong> <br><code>LEN()</code>, <code>SUBSTRING()</code>, <code>UPPER()</code></div>
+            <div class="logic-item"><strong>Datas:</strong> <br><code>GETDATE()</code>, <code>DATEDIFF()</code>, <code>YEAR()</code></div>
+            <div class="logic-item"><strong>Conversão:</strong> <br><code>CAST()</code> e <code>CONVERT()</code></div>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>Manual Módulo 3 - Banco de Dados | Programação T-SQL | 2023</p>
+</footer>
+<div class="quiz-card">
+
+<h3>Questão 1</h3>
+
+<p>
+
+Em bancos de dados relacionais, qual é a principal finalidade de uma VIEW?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="m3q1">
+A) Armazenar dados fisicamente.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q1">
+B) Criar uma tabela permanente.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q1">
+C) Representar uma consulta armazenada.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q1">
+D) Criar backups automáticos.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q1">
+E) Excluir registros duplicados.
+</label>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('m3g1')">
+Ver Gabarito Comentado
+</button>
+
+<div id="m3g1" class="gabarito">
+
+<h4>✅ Resposta Correta: C</h4>
+
+<h4>Explicação Geral</h4>
+
+<p>
+
+Uma View é uma tabela virtual criada a partir de uma consulta SQL.
+
+Ela não armazena dados fisicamente, mas apresenta informações obtidas de uma ou mais tabelas.
+
+</p>
+
+<h4>Exemplo</h4>
+
+<pre>
+
+CREATE VIEW VW_CLIENTES AS
+
+SELECT
+NOME,
+CPF
+
+FROM CLIENTE;
+
+</pre>
+
+<h4>Aplicação Profissional</h4>
+
+<p>
+
+Views são utilizadas para simplificar consultas complexas e restringir o acesso direto às tabelas.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão 2</h3>
+
+<p>
+
+Qual é o principal objetivo de uma transação em banco de dados?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="m3q2">
+A) Melhorar o layout das tabelas.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q2">
+B) Garantir integridade das operações.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q2">
+C) Criar novas views.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q2">
+D) Alterar permissões.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q2">
+E) Excluir índices.
+</label>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('m3g2')">
+Ver Gabarito Comentado
+</button>
+
+<div id="m3g2" class="gabarito">
+
+<h4>✅ Resposta Correta: B</h4>
+
+<p>
+
+Uma transação garante que um conjunto de operações seja executado completamente ou não seja executado.
+
+</p>
+
+<pre>
+
+BEGIN TRANSACTION
+
+UPDATE CONTA
+SET SALDO = SALDO - 500
+
+UPDATE CONTA
+SET SALDO = SALDO + 500
+
+COMMIT
+
+</pre>
+
+<p>
+
+Se ocorrer um erro, utiliza-se ROLLBACK para desfazer todas as alterações.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão 3</h3>
+
+<p>
+
+Qual função SQL é utilizada para calcular a média de valores?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="m3q3">
+A) SUM()
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q3">
+B) COUNT()
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q3">
+C) AVG()
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q3">
+D) MAX()
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q3">
+E) MIN()
+</label>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('m3g3')">
+Ver Gabarito Comentado
+</button>
+
+<div id="m3g3" class="gabarito">
+
+<h4>✅ Resposta Correta: C</h4>
+
+<pre>
+
+SELECT AVG(SALARIO)
+FROM FUNCIONARIO;
+
+</pre>
+
+<p>
+
+A função AVG calcula a média aritmética dos valores de uma coluna numérica.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão 4</h3>
+
+<p>
+
+O que é uma Stored Procedure?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="m3q4">
+A) Uma tabela temporária.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q4">
+B) Um conjunto de comandos SQL armazenados no banco.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q4">
+C) Um índice.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q4">
+D) Uma chave estrangeira.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q4">
+E) Um tipo de transação.
+</label>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('m3g4')">
+Ver Gabarito Comentado
+</button>
+
+<div id="m3g4" class="gabarito">
+
+<h4>✅ Resposta Correta: B</h4>
+
+<pre>
+
+CREATE PROCEDURE SP_LISTAR_CLIENTES
+
+AS
+
+SELECT * FROM CLIENTE;
+
+</pre>
+
+<p>
+
+Stored Procedures permitem reutilizar código SQL e melhorar desempenho e segurança.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão 5</h3>
+
+<p>
+
+Qual é a principal característica de uma Function em SQL Server?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="m3q5">
+A) Sempre altera dados.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q5">
+B) Não pode receber parâmetros.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q5">
+C) Retorna obrigatoriamente um valor.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q5">
+D) Cria índices automaticamente.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="m3q5">
+E) Exclui registros duplicados.
+</label>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('m3g5')">
+Ver Gabarito Comentado
+</button>
+
+<div id="m3g5" class="gabarito">
+
+<h4>✅ Resposta Correta: C</h4>
+
+<pre>
+
+CREATE FUNCTION FN_DOBRO
+
+(@VALOR INT)
+
+RETURNS INT
+
+AS
+
+BEGIN
+
+RETURN @VALOR * 2
+
+END
+
+</pre>
+
+<p>
+
+Uma Function recebe dados, realiza processamento e retorna um resultado.
+
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO DISCURSIVA 1 -->
+
+<div class="quiz-card">
+
+<h3>Questão Discursiva 1</h3>
+
+<p>
+
+Explique o conceito de View em bancos de dados relacionais e apresente suas principais vantagens.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('m3d1')">
+Ver Resposta Comentada
+</button>
+
+<div id="m3d1" class="gabarito">
+
+<h4>Resposta Esperada</h4>
+
+<p>
+
+Uma View é uma tabela virtual criada a partir de uma consulta SQL.
+
+Ela não armazena dados fisicamente, mas apresenta informações obtidas de uma ou mais tabelas existentes.
+
+</p>
+
+<h4>Principais Vantagens</h4>
+
+<ul>
+
+<li>Simplificação de consultas complexas.</li>
+
+<li>Maior segurança dos dados.</li>
+
+<li>Reutilização de consultas.</li>
+
+<li>Facilidade de manutenção.</li>
+
+<li>Controle de acesso às informações.</li>
+
+</ul>
+
+<h4>Exemplo</h4>
+
+<pre>
+
+CREATE VIEW VW_CLIENTES
+
+AS
+
+SELECT
+NOME,
+CPF
+
+FROM CLIENTE;
+
+</pre>
+
+<h4>Aplicação Profissional</h4>
+
+<p>
+
+Uma empresa pode criar Views específicas para departamentos diferentes, permitindo que cada setor visualize apenas os dados necessários para suas atividades.
+
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO DISCURSIVA 2 -->
+
+<div class="quiz-card">
+
+<h3>Questão Discursiva 2</h3>
+
+<p>
+
+Explique o conceito de Transação em banco de dados e descreva sua importância para a integridade das informações.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('m3d2')">
+Ver Resposta Comentada
+</button>
+
+<div id="m3d2" class="gabarito">
+
+<h4>Resposta Esperada</h4>
+
+<p>
+
+Uma transação é um conjunto de operações executadas como uma única unidade lógica de trabalho.
+
+Todas as operações devem ser concluídas com sucesso ou todas devem ser desfeitas.
+
+</p>
+
+<h4>Propriedades ACID</h4>
+
+<ul>
+
+<li><strong>Atomicidade:</strong> tudo ou nada.</li>
+
+<li><strong>Consistência:</strong> preservação das regras do banco.</li>
+
+<li><strong>Isolamento:</strong> transações independentes.</li>
+
+<li><strong>Durabilidade:</strong> alterações permanentes após confirmação.</li>
+
+</ul>
+
+<h4>Exemplo</h4>
+
+<p>
+
+Uma transferência bancária envolve débito em uma conta e crédito em outra.
+
+Se uma etapa falhar, toda a operação deve ser cancelada.
+
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO DISCURSIVA 3 -->
+
+<div class="quiz-card">
+
+<h3>Questão Discursiva 3</h3>
+
+<p>
+
+Explique a diferença entre Stored Procedures e Functions no SQL Server.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('m3d3')">
+Ver Resposta Comentada
+</button>
+
+<div id="m3d3" class="gabarito">
+
+<h4>Resposta Esperada</h4>
+
+<p>
+
+Stored Procedures são conjuntos de comandos SQL armazenados no banco de dados para execução de tarefas específicas.
+
+Functions também armazenam lógica SQL, porém obrigatoriamente retornam um valor.
+
+</p>
+
+<h4>Diferenças Principais</h4>
+
+<table class="tech-table">
+
+<tr>
+<th>Stored Procedure</th>
+<th>Function</th>
+</tr>
+
+<tr>
+<td>Pode executar várias operações.</td>
+<td>Retorna obrigatoriamente um valor.</td>
+</tr>
+
+<tr>
+<td>Pode alterar dados.</td>
+<td>Normalmente utilizada para cálculos.</td>
+</tr>
+
+<tr>
+<td>Executada com EXEC.</td>
+<td>Pode ser utilizada em consultas SELECT.</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+<!-- QUESTÃO DISCURSIVA 4 -->
+
+<div class="quiz-card">
+
+<h3>Questão Discursiva 4</h3>
+
+<p>
+
+Descreva as principais funções de agregação disponíveis na linguagem SQL e apresente exemplos de utilização.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('m3d4')">
+Ver Resposta Comentada
+</button>
+
+<div id="m3d4" class="gabarito">
+
+<h4>Resposta Esperada</h4>
+
+<p>
+
+As funções de agregação são utilizadas para realizar cálculos sobre conjuntos de registros.
+
+</p>
+
+<h4>Principais Funções</h4>
+
+<ul>
+
+<li><strong>SUM()</strong> → Soma valores.</li>
+
+<li><strong>AVG()</strong> → Calcula média.</li>
+
+<li><strong>COUNT()</strong> → Conta registros.</li>
+
+<li><strong>MAX()</strong> → Retorna maior valor.</li>
+
+<li><strong>MIN()</strong> → Retorna menor valor.</li>
+
+</ul>
+
+<h4>Exemplo</h4>
+
+<pre>
+
+SELECT AVG(SALARIO)
+FROM FUNCIONARIO;
+
+SELECT COUNT(*)
+FROM CLIENTE;
+
+</pre>
+
+<h4>Aplicação</h4>
+
+<p>
+
+São amplamente utilizadas em relatórios gerenciais e análises estatísticas.
+
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO DISCURSIVA 5 -->
+
+<div class="quiz-card">
+
+<h3>Questão Discursiva 5</h3>
+
+<p>
+
+Uma empresa deseja automatizar o cálculo de comissão dos vendedores utilizando SQL Server.
+
+Explique qual recurso seria mais adequado entre View, Function e Stored Procedure e justifique sua resposta.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('m3d5')">
+Ver Resposta Comentada
+</button>
+
+<div id="m3d5" class="gabarito">
+
+<h4>Resposta Esperada</h4>
+
+<p>
+
+A melhor opção seria uma Function quando o objetivo for apenas calcular e retornar um valor.
+
+Caso seja necessário realizar várias operações, atualizações ou registros adicionais, uma Stored Procedure pode ser mais adequada.
+
+</p>
+
+<h4>Exemplo de Function</h4>
+
+<pre>
+
+CREATE FUNCTION FN_COMISSAO
+
+(@VALOR MONEY)
+
+RETURNS MONEY
+
+AS
+
+BEGIN
+
+RETURN @VALOR * 0.10
+
+END
+
+</pre>
+
+<h4>Justificativa</h4>
+
+<p>
+
+Functions são ideais para cálculos reutilizáveis e podem ser utilizadas diretamente em consultas SQL.
+
+</p>
+
+<h4>Conclusão</h4>
+
+<p>
+
+A escolha depende do objetivo da automação, mas para cálculos simples e reutilizáveis a Function é normalmente a solução mais eficiente.
+
+</p>
+
+</div>
+
+</div>
+
+
+</body>
+</html>

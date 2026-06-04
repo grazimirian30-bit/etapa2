@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📋 Questionário Comentado - Encontro 1</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+padding:30px;
+color:white;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+h1{
+text-align:center;
+margin-bottom:40px;
+font-size:40px;
+}
+
+.questao{
+background:white;
+color:#222;
+padding:25px;
+margin-bottom:25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.alternativa{
+padding:10px;
+margin:8px 0;
+background:#f1f5f9;
+border-radius:8px;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:8px;
+cursor:pointer;
+margin-top:15px;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+.resposta{
+display:none;
+margin-top:20px;
+padding:20px;
+background:#dcfce7;
+border-left:6px solid #16a34a;
+border-radius:10px;
+color:black;
+}
+
+.codigo{
+background:#0f172a;
+color:#22c55e;
+padding:15px;
+margin:10px 0;
+border-radius:10px;
+font-family:monospace;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📋 Questionário Comentado - Encontro 4</h1>
+<!-- QUESTÃO 1 -->
+
+<div class="questao">
+
+<h2>Questão 1</h2>
+
+<p><strong>Qual função é utilizada para abrir um arquivo em Python?</strong></p>
+
+A) read()<br>
+B) write()<br>
+C) open()<br>
+D) file()<br><br>
+
+<button onclick="mostrar('r1')">
+Mostrar Gabarito
+</button>
+
+<div id="r1" class="resposta">
+
+<h3>✅ Gabarito: C) open()</h3>
+
+<p>
+A função open() é utilizada para abrir arquivos em Python.
+Ela permite criar, ler ou modificar arquivos dependendo
+do modo de acesso informado.
+</p>
+
+<div class="codigo">
+arquivo = open("meuarquivo.txt","w")
+</div>
+
+<p>
+Nesse exemplo o arquivo é aberto em modo de escrita.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 2 -->
+
+<div class="questao">
+
+<h2>Questão 2</h2>
+
+<p><strong>Qual método foi utilizado para gravar informações em um arquivo?</strong></p>
+
+A) save()<br>
+B) insert()<br>
+C) append()<br>
+D) write()<br><br>
+
+<button onclick="mostrar('r2')">
+Mostrar Gabarito
+</button>
+
+<div id="r2" class="resposta">
+
+<h3>✅ Gabarito: D) write()</h3>
+
+<p>
+O método write() é responsável por escrever dados
+dentro de um arquivo aberto.
+</p>
+
+<div class="codigo">
+arquivo.write("Olá Mundo")
+</div>
+
+<p>
+Após a execução, o texto será armazenado no arquivo.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 3 -->
+
+<div class="questao">
+
+<h2>Questão 3</h2>
+
+<p><strong>Qual comando foi utilizado para fechar o arquivo após a gravação?</strong></p>
+
+A) stop()<br>
+B) finish()<br>
+C) close()<br>
+D) end()<br><br>
+
+<button onclick="mostrar('r3')">
+Mostrar Gabarito
+</button>
+
+<div id="r3" class="resposta">
+
+<h3>✅ Gabarito: C) close()</h3>
+
+<p>
+Depois de utilizar um arquivo é importante fechá-lo.
+Isso libera recursos do sistema operacional.
+</p>
+
+<div class="codigo">
+arquivo.close()
+</div>
+
+<p>
+Esse comando encerra o acesso ao arquivo.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 4 -->
+
+<div class="questao">
+
+<h2>Questão 4</h2>
+
+<p><strong>No exemplo da aula, quais informações eram gravadas no arquivo?</strong></p>
+
+A) Nome e salário<br>
+B) Nome e idade<br>
+C) Cidade e estado<br>
+D) Email e telefone<br><br>
+
+<button onclick="mostrar('r4')">
+Mostrar Gabarito
+</button>
+
+<div id="r4" class="resposta">
+
+<h3>✅ Gabarito: B) Nome e idade</h3>
+
+<p>
+O professor solicitava o nome e a idade do usuário
+e gravava essas informações no arquivo.
+</p>
+
+<div class="codigo">
+arquivo.write(f"{nome} tem {idade} anos.")
+</div>
+
+<p>
+O texto gerado continha os dados informados pelo usuário.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 5 -->
+
+<div class="questao">
+
+<h2>Questão 5</h2>
+
+<p><strong>Qual arquivo era criado no exemplo apresentado pelo professor?</strong></p>
+
+A) dados.txt<br>
+B) pessoas.txt<br>
+C) meuarquivo.txt<br>
+D) texto.txt<br><br>
+
+<button onclick="mostrar('r5')">
+Mostrar Gabarito
+</button>
+
+<div id="r5" class="resposta">
+
+<h3>✅ Gabarito: C) meuarquivo.txt</h3>
+
+<p>
+O exemplo mostrado em aula criava um arquivo chamado
+meuarquivo.txt para armazenar as informações digitadas.
+</p>
+
+<div class="codigo">
+arquivo = open("meuarquivo.txt","w")
+</div>
+
+</div>
+
+</div>
+<!-- QUESTÃO 6 -->
+
+<div class="questao">
+
+<h2>Questão 6</h2>
+
+<p><strong>Qual modo é utilizado apenas para leitura?</strong></p>
+
+A) w<br>
+B) a<br>
+C) r<br>
+D) r+<br><br>
+
+<button onclick="mostrar('r6')">
+Mostrar Gabarito
+</button>
+
+<div id="r6" class="resposta">
+
+<h3>✅ Gabarito: C) r</h3>
+
+<p>
+O modo r significa read (leitura).
+O arquivo deve existir para ser aberto.
+</p>
+
+<div class="codigo">
+arquivo = open("dados.txt","r")
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 7 -->
+
+<div class="questao">
+
+<h2>Questão 7</h2>
+
+<p><strong>Qual modo cria o arquivo caso ele não exista e apaga seu conteúdo anterior?</strong></p>
+
+A) r<br>
+B) w<br>
+C) a<br>
+D) rb<br><br>
+
+<button onclick="mostrar('r7')">
+Mostrar Gabarito
+</button>
+
+<div id="r7" class="resposta">
+
+<h3>✅ Gabarito: B) w</h3>
+
+<p>
+O modo w cria o arquivo se necessário e substitui
+todo o conteúdo anterior.
+</p>
+
+<div class="codigo">
+arquivo = open("dados.txt","w")
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 8 -->
+
+<div class="questao">
+
+<h2>Questão 8</h2>
+
+<p><strong>Qual modo adiciona informações ao final do arquivo?</strong></p>
+
+A) a<br>
+B) r<br>
+C) rb<br>
+D) w<br><br>
+
+<button onclick="mostrar('r8')">
+Mostrar Gabarito
+</button>
+
+<div id="r8" class="resposta">
+
+<h3>✅ Gabarito: A) a</h3>
+
+<p>
+O modo append adiciona novos dados ao final
+sem apagar os dados já existentes.
+</p>
+
+<div class="codigo">
+arquivo = open("dados.txt","a")
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 9 -->
+
+<div class="questao">
+
+<h2>Questão 9</h2>
+
+<p><strong>Qual modo é utilizado para leitura de arquivos binários?</strong></p>
+
+A) rt<br>
+B) rb<br>
+C) wb<br>
+D) bt<br><br>
+
+<button onclick="mostrar('r9')">
+Mostrar Gabarito
+</button>
+
+<div id="r9" class="resposta">
+
+<h3>✅ Gabarito: B) rb</h3>
+
+<p>
+O modo rb significa read binary.
+É utilizado para leitura de arquivos binários.
+</p>
+
+<div class="codigo">
+arquivo = open("foto.jpg","rb")
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 10 -->
+
+<div class="questao">
+
+<h2>Questão 10</h2>
+
+<p><strong>Qual modo permite leitura e escrita simultaneamente?</strong></p>
+
+A) r+<br>
+B) r<br>
+C) w<br>
+D) a<br><br>
+
+<button onclick="mostrar('r10')">
+Mostrar Gabarito
+</button>
+
+<div id="r10" class="resposta">
+
+<h3>✅ Gabarito: A) r+</h3>
+
+<p>
+O modo r+ permite ler e modificar um arquivo existente.
+</p>
+
+<div class="codigo">
+arquivo = open("dados.txt","r+")
+</div>
+
+</div>
+
+</div>
+<!-- QUESTÃO 11 -->
+
+<div class="questao">
+
+<h2>Questão 11</h2>
+
+<p><strong>Qual comando foi utilizado para abrir arquivos de forma mais segura?</strong></p>
+
+A) openfile()<br>
+B) with open()<br>
+C) file.open()<br>
+D) readfile()<br><br>
+
+<button onclick="mostrar('r11')">
+Mostrar Gabarito
+</button>
+
+<div id="r11" class="resposta">
+
+<h3>✅ Gabarito: B) with open()</h3>
+
+<p>
+O comando with open() gerencia automaticamente
+a abertura e o fechamento dos arquivos.
+</p>
+
+<p>
+Isso evita esquecer de utilizar o método close().
+</p>
+
+<div class="codigo">
+with open("dados.txt","r") as arquivo:
+
+    conteudo = arquivo.read()
+</div>
+
+<p>
+Ao finalizar o bloco, o arquivo é fechado automaticamente.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 12 -->
+
+<div class="questao">
+
+<h2>Questão 12</h2>
+
+<p><strong>Qual método foi utilizado para ler todo o conteúdo do arquivo?</strong></p>
+
+A) write()<br>
+B) load()<br>
+C) read()<br>
+D) split()<br><br>
+
+<button onclick="mostrar('r12')">
+Mostrar Gabarito
+</button>
+
+<div id="r12" class="resposta">
+
+<h3>✅ Gabarito: C) read()</h3>
+
+<p>
+O método read() retorna todo o conteúdo
+armazenado dentro do arquivo.
+</p>
+
+<div class="codigo">
+dados = arquivo.read()
+</div>
+
+<p>
+Após a leitura, o conteúdo fica disponível
+para processamento pelo programa.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 13 -->
+
+<div class="questao">
+
+<h2>Questão 13</h2>
+
+<p><strong>Qual arquivo foi utilizado no exemplo de CSV?</strong></p>
+
+A) pessoas.txt<br>
+B) info.json<br>
+C) dados.csv<br>
+D) numeros.txt<br><br>
+
+<button onclick="mostrar('r13')">
+Mostrar Gabarito
+</button>
+
+<div id="r13" class="resposta">
+
+<h3>✅ Gabarito: C) dados.csv</h3>
+
+<p>
+O professor criou um arquivo CSV contendo
+nome e idade das pessoas.
+</p>
+
+<div class="codigo">
+arquivo_csv = open("dados.csv","w")
+</div>
+
+<p>
+CSV significa Comma Separated Values
+(Valores Separados por Vírgula).
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 14 -->
+
+<div class="questao">
+
+<h2>Questão 14</h2>
+
+<p><strong>Qual método foi utilizado para separar os dados do CSV?</strong></p>
+
+A) append()<br>
+B) split(",")<br>
+C) write()<br>
+D) join()<br><br>
+
+<button onclick="mostrar('r14')">
+Mostrar Gabarito
+</button>
+
+<div id="r14" class="resposta">
+
+<h3>✅ Gabarito: B) split(",")</h3>
+
+<p>
+Cada linha do arquivo era dividida utilizando a vírgula
+como separador.
+</p>
+
+<div class="codigo">
+colunas = linha.strip().split(",")
+</div>
+
+<p>
+O resultado é uma lista contendo os valores da linha.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 15 -->
+
+<div class="questao">
+
+<h2>Questão 15</h2>
+
+<p><strong>Qual biblioteca foi utilizada para trabalhar com arquivos JSON?</strong></p>
+
+A) csv<br>
+B) random<br>
+C) json<br>
+D) math<br><br>
+
+<button onclick="mostrar('r15')">
+Mostrar Gabarito
+</button>
+
+<div id="r15" class="resposta">
+
+<h3>✅ Gabarito: C) json</h3>
+
+<p>
+A biblioteca json permite gravar e recuperar
+estruturas de dados no formato JSON.
+</p>
+
+<div class="codigo">
+import json
+</div>
+
+<p>
+Foi a biblioteca utilizada pelo professor
+no exemplo do arquivo info.json.
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO 16 -->
+
+<div class="questao">
+
+<h2>Questão 16</h2>
+
+<p><strong>Qual função da biblioteca json grava dados em um arquivo?</strong></p>
+
+A) json.read()<br>
+B) json.save()<br>
+C) json.dump()<br>
+D) json.write()<br><br>
+
+<button onclick="mostrar('r16')">
+Mostrar Gabarito
+</button>
+
+<div id="r16" class="resposta">
+
+<h3>✅ Gabarito: C) json.dump()</h3>
+
+<p>
+A função json.dump() grava estruturas Python
+em arquivos JSON.
+</p>
+
+<div class="codigo">
+json.dump(dados, arquivo_json)
+</div>
+
+<p>
+Nesse momento os dados são convertidos para JSON.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 17 -->
+
+<div class="questao">
+
+<h2>Questão 17</h2>
+
+<p><strong>Qual função da biblioteca json recupera os dados do arquivo?</strong></p>
+
+A) json.load()<br>
+B) json.open()<br>
+C) json.read()<br>
+D) json.get()<br><br>
+
+<button onclick="mostrar('r17')">
+Mostrar Gabarito
+</button>
+
+<div id="r17" class="resposta">
+
+<h3>✅ Gabarito: A) json.load()</h3>
+
+<p>
+Após abrir o arquivo JSON,
+utilizamos json.load() para reconstruir os dados.
+</p>
+
+<div class="codigo">
+dados_lidos = json.load(arquivo_json)
+</div>
+
+<p>
+O resultado pode ser utilizado normalmente
+como listas e dicionários Python.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 18 -->
+
+<div class="questao">
+
+<h2>Questão 18</h2>
+
+<p><strong>No exercício final, qual arquivo continha os números originais?</strong></p>
+
+A) dados.csv<br>
+B) info.json<br>
+C) numeros.txt<br>
+D) pares.txt<br><br>
+
+<button onclick="mostrar('r18')">
+Mostrar Gabarito
+</button>
+
+<div id="r18" class="resposta">
+
+<h3>✅ Gabarito: C) numeros.txt</h3>
+
+<p>
+O exercício começava lendo o conteúdo
+do arquivo numeros.txt.
+</p>
+
+<div class="codigo">
+with open("numeros.txt","r")
+</div>
+
+<p>
+Cada linha continha um número inteiro.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 19 -->
+
+<div class="questao">
+
+<h2>Questão 19</h2>
+
+<p><strong>Qual operador foi utilizado para identificar números pares?</strong></p>
+
+A) //<br>
+B) **<br>
+C) %<br>
+D) //<br><br>
+
+<button onclick="mostrar('r19')">
+Mostrar Gabarito
+</button>
+
+<div id="r19" class="resposta">
+
+<h3>✅ Gabarito: C) %</h3>
+
+<p>
+O operador módulo (%) retorna o resto da divisão.
+</p>
+
+<div class="codigo">
+if num % 2 == 0:
+</div>
+
+<p>
+Se o resto for zero, o número é considerado par.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 20 -->
+
+<div class="questao">
+
+<h2>Questão 20</h2>
+
+<p><strong>Qual arquivo era criado contendo apenas os números pares?</strong></p>
+
+A) dados.csv<br>
+B) numeros.txt<br>
+C) resultado.txt<br>
+D) pares.txt<br><br>
+
+<button onclick="mostrar('r20')">
+Mostrar Gabarito
+</button>
+
+<div id="r20" class="resposta">
+
+<h3>✅ Gabarito: D) pares.txt</h3>
+
+<p>
+O objetivo do exercício era gerar um novo arquivo
+contendo apenas os números pares encontrados.
+</p>
+
+<div class="codigo">
+with open("pares.txt","w") as saida:
+
+    saida.write(f"{num}\n")
+</div>
+
+<p>
+Os números ímpares eram ignorados
+e apenas os pares eram gravados.
+</p>
+
+</div>
+
+</div>
+<script>
+
+function mostrar(id){
+
+document.getElementById(id).style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>

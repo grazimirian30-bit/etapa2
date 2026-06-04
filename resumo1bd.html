@@ -1,0 +1,1083 @@
+Unidade 1 da apostila da USF. 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual Supremo - Banco de Dados | Módulo 1</title>
+<style>
+:root{
+--primary:#0f172a;
+--secondary:#334155;
+--accent:#0ea5e9;
+--bg:#f8fafc;
+}
+body{font-family:Arial,sans-serif;background:var(--bg);margin:0;line-height:1.8;color:#111827}
+header{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;padding:90px 20px;text-align:center}
+.container{max-width:1200px;margin:-50px auto 50px;padding:20px}
+.card{background:white;padding:40px;border-radius:20px;margin-bottom:30px;box-shadow:0 10px 25px rgba(0,0,0,.08);border-left:10px solid var(--accent)}
+h2{color:var(--primary)}
+h3{border-left:5px solid var(--accent);padding-left:10px}
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid #cbd5e1;padding:12px}
+th{background:#e2e8f0}
+.quiz-card{background:white;padding:30px;border-radius:15px;margin-top:20px}
+.alternativa{display:block;padding:10px;margin:8px 0;border:1px solid #cbd5e1;border-radius:8px}
+.btn{background:#0ea5e9;color:white;border:none;padding:12px 18px;border-radius:8px;cursor:pointer}
+.gabarito{display:none;margin-top:15px;background:#ecfdf5;padding:15px;border-left:5px solid green}
+pre{background:#0f172a;color:white;padding:20px;border-radius:10px;overflow:auto}
+</style>
+<script>
+function mostrar(id){
+let x=document.getElementById(id);
+x.style.display=(x.style.display==="block")?"none":"block";
+}
+</script>
+</head>
+<script>
+
+function mostrarGabarito(id){
+
+let bloco =
+document.getElementById(id);
+
+if(bloco.style.display === "block"){
+
+    bloco.style.display = "none";
+
+}
+else{
+
+    bloco.style.display = "block";
+
+}
+
+}
+
+</script>6
+<body>
+
+<header>
+<h1>Banco de Dados - Módulo 1</h1>
+<p>Histórico de Armazenamento e Modelagem de Dados</p>
+</header>
+
+<div class="container">
+
+<section class="card">
+<h2>📚 1. Introdução aos Bancos de Dados</h2>
+<p>Um banco de dados é um conjunto organizado de informações armazenadas de forma estruturada para permitir consultas rápidas, segurança e integridade dos dados.</p>
+
+<h3>Objetivos do Módulo</h3>
+<ul>
+<li>Compreender a evolução do armazenamento de dados.</li>
+<li>Conhecer entidades, atributos e relacionamentos.</li>
+<li>Entender a modelagem conceitual e lógica.</li>
+<li>Aprender a criar Diagramas Entidade-Relacionamento (DER).</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>🕰️ 2. Evolução do Armazenamento de Dados</h2>
+
+<table>
+<tr>
+<th>Período</th>
+<th>Tecnologia</th>
+<th>Características</th>
+</tr>
+<tr>
+<td>Antiguidade</td>
+<td>Pinturas rupestres e escrita cuneiforme</td>
+<td>Primeiros registros da informação.</td>
+</tr>
+<tr>
+<td>Séculos XV a XX</td>
+<td>Papel e arquivos físicos</td>
+<td>Armazenamento manual.</td>
+</tr>
+<tr>
+<td>Década de 1960</td>
+<td>Arquivos digitais</td>
+<td>Primeiros bancos de dados computadorizados.</td>
+</tr>
+<tr>
+<td>Década de 1970</td>
+<td>Modelo Relacional</td>
+<td>Criação da teoria de Edgar F. Codd.</td>
+</tr>
+<tr>
+<td>Atualidade</td>
+<td>SGBDs e NoSQL</td>
+<td>Alta performance e escalabilidade.</td>
+</tr>
+</table>
+</section>
+
+<section class="card">
+<h2>🗂️ 3. Conceitos Fundamentais</h2>
+
+<h3>Campo</h3>
+<p>Representa um dado específico, como nome, CPF ou telefone.</p>
+
+<h3>Registro</h3>
+<p>Conjunto de campos relacionados a uma única ocorrência.</p>
+
+<h3>Entidade</h3>
+<p>Representa um objeto do mundo real, como Cliente, Produto ou Funcionário.</p>
+
+<h3>Atributo</h3>
+<p>Característica que descreve uma entidade.</p>
+
+<pre>
+Cliente
+ ├─ ID_Cliente
+ ├─ Nome
+ ├─ CPF
+ └─ Telefone
+</pre>
+</section>
+
+<section class="card">
+<h2>🔗 4. Diagrama Entidade-Relacionamento (DER)</h2>
+
+<p>O DER é utilizado para representar graficamente a estrutura do banco de dados.</p>
+
+<h3>Tipos de Relacionamento</h3>
+
+<table>
+<tr>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+<tr>
+<td>1 : 1</td>
+<td>Um registro se relaciona com apenas um registro.</td>
+</tr>
+<tr>
+<td>1 : N</td>
+<td>Um registro pode se relacionar com vários registros.</td>
+</tr>
+<tr>
+<td>N : N</td>
+<td>Vários registros podem se relacionar com vários registros.</td>
+</tr>
+</table>
+</section>
+
+<section class="card">
+<h2>🏗️ 5. Modelagem de Banco de Dados</h2>
+
+<h3>Modelo Descritivo</h3>
+<p>Levantamento dos requisitos do cliente.</p>
+
+<h3>Modelo Conceitual</h3>
+<p>Construção do DER identificando entidades e relacionamentos.</p>
+
+<h3>Modelo Lógico</h3>
+<p>Conversão do DER em tabelas, definindo chaves e tipos de dados.</p>
+
+<pre>
+CLIENTE
+id_cliente (PK)
+nome
+cpf
+
+VENDA
+id_venda (PK)
+data
+id_cliente (FK)
+</pre>
+</section>
+
+<div class="quiz-card">
+<h2>🎯 Exercícios</h2>
+
+<!-- QUESTÃO 1 -->
+
+<div class="quiz-card">
+
+<h3>Questão 1</h3>
+
+<p>
+
+Sobre os Sistemas de Gerenciamento de Banco de Dados (SGBD), assinale a alternativa correta:
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+A) São utilizados apenas para armazenar arquivos de texto.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+B) Não possuem mecanismos de controle de acesso.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+C) Permitem o gerenciamento, organização e recuperação eficiente dos dados.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+D) Funcionam apenas em computadores de grande porte.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q1">
+E) Não utilizam linguagem SQL.
+</label>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('g1')">
+Ver Gabarito Comentado
+</button>
+
+<div id="g1" class="gabarito">
+
+<h4>✅ Resposta Correta: C</h4>
+
+<h4>Explicação Geral</h4>
+
+<p>
+
+Os Sistemas Gerenciadores de Banco de Dados (SGBDs) são softwares especializados
+na administração, armazenamento, organização e recuperação de informações.
+
+Seu principal objetivo é garantir que os dados sejam armazenados de forma segura,
+consistente e eficiente, permitindo que diferentes usuários possam acessar as
+informações simultaneamente sem comprometer sua integridade.
+
+Atualmente, praticamente todas as organizações utilizam algum tipo de SGBD para
+gerenciar grandes volumes de dados.
+
+</p>
+
+<h4>Análise das Alternativas</h4>
+
+<p>
+
+<strong>Alternativa A — Incorreta.</strong>
+
+Os SGBDs não trabalham apenas com arquivos de texto. Eles podem armazenar dados
+numéricos, datas, imagens, vídeos, documentos e diversas outras informações.
+
+</p>
+
+<p>
+
+<strong>Alternativa B — Incorreta.</strong>
+
+O controle de acesso é uma das funções fundamentais dos SGBDs. É possível definir
+quais usuários podem visualizar, inserir, alterar ou excluir dados.
+
+</p>
+
+<p>
+
+<strong>Alternativa C — Correta.</strong>
+
+O gerenciamento eficiente dos dados é justamente a principal finalidade de um
+Sistema Gerenciador de Banco de Dados.
+
+</p>
+
+<p>
+
+<strong>Alternativa D — Incorreta.</strong>
+
+Existem SGBDs para computadores pessoais, servidores corporativos, dispositivos
+móveis e ambientes em nuvem.
+
+</p>
+
+<p>
+
+<strong>Alternativa E — Incorreta.</strong>
+
+A maioria dos bancos relacionais utiliza SQL (Structured Query Language) como
+linguagem padrão para consultas e manipulação de dados.
+
+</p>
+
+<h4>Fundamentação Teórica</h4>
+
+<p>
+
+Os SGBDs surgiram para solucionar problemas encontrados nos sistemas tradicionais
+de arquivos, como redundância, inconsistência, dificuldade de acesso aos dados,
+problemas de integridade e falhas de segurança.
+
+</p>
+
+<ul>
+
+<li>Redundância de dados.</li>
+
+<li>Inconsistência das informações.</li>
+
+<li>Dificuldade de acesso.</li>
+
+<li>Problemas de integridade.</li>
+
+<li>Controle de acesso.</li>
+
+<li>Gerenciamento de acessos simultâneos.</li>
+
+</ul>
+
+<h4>Exemplo Prático</h4>
+
+<p>
+
+Imagine um sistema bancário. Milhares de clientes realizam depósitos, saques e
+transferências simultaneamente. O SGBD garante que todas essas operações sejam
+registradas corretamente, preservando a integridade das informações financeiras.
+
+</p>
+
+<h4>Conclusão</h4>
+
+<p>
+
+Os Sistemas Gerenciadores de Banco de Dados são fundamentais para a tecnologia
+moderna, pois fornecem mecanismos que garantem organização, segurança,
+consistência e eficiência no tratamento das informações.
+
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO 2 -->
+
+<div class="quiz-card">
+
+<h3>Questão 2</h3>
+
+<p>
+
+O modelo relacional, desenvolvido por Edgar F. Codd, revolucionou a forma como os dados são armazenados e manipulados. Sobre esse modelo, assinale a alternativa correta.
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+A) Os dados são armazenados exclusivamente em estruturas hierárquicas.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+B) O modelo relacional utiliza tabelas para organizar e relacionar dados.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+C) Não existe relacionamento entre os dados armazenados.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+D) O modelo relacional foi criado para substituir a linguagem SQL.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q2">
+E) Os registros não possuem identificadores únicos.
+
+</label>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('g2')">
+Ver Gabarito Comentado
+</button>
+
+<div id="g2" class="gabarito">
+
+<h4>✅ Resposta Correta: B</h4>
+
+<h4>Explicação Geral</h4>
+
+<p>
+
+O Modelo Relacional é atualmente o modelo de banco de dados mais utilizado no mundo.
+
+Nele, os dados são organizados em tabelas compostas por linhas e colunas. Cada linha
+representa um registro e cada coluna representa um atributo.
+
+Além disso, as tabelas podem ser relacionadas entre si através de chaves primárias
+e chaves estrangeiras, permitindo representar situações complexas do mundo real.
+
+</p>
+
+<h4>Análise das Alternativas</h4>
+
+<p>
+
+<strong>Alternativa A — Incorreta.</strong>
+
+Estruturas hierárquicas pertencem ao modelo hierárquico de banco de dados, não ao modelo relacional.
+
+</p>
+
+<p>
+
+<strong>Alternativa B — Correta.</strong>
+
+O modelo relacional organiza informações em tabelas que podem se relacionar através de chaves.
+
+</p>
+
+<p>
+
+<strong>Alternativa C — Incorreta.</strong>
+
+O relacionamento entre os dados é justamente uma das principais características do modelo relacional.
+
+</p>
+
+<p>
+
+<strong>Alternativa D — Incorreta.</strong>
+
+A SQL surgiu para manipular bancos relacionais, não para ser substituída por eles.
+
+</p>
+
+<p>
+
+<strong>Alternativa E — Incorreta.</strong>
+
+As tabelas normalmente possuem uma chave primária responsável por identificar cada registro de forma única.
+
+</p>
+
+<h4>Fundamentação Teórica</h4>
+
+<p>
+
+O modelo relacional foi proposto por Edgar Frank Codd em 1970.
+
+Sua proposta foi baseada em conceitos matemáticos da Teoria dos Conjuntos e da Álgebra Relacional.
+
+A grande vantagem desse modelo é a capacidade de organizar informações complexas de maneira estruturada, reduzindo redundâncias e facilitando consultas.
+
+</p>
+
+<h4>Exemplo Prático</h4>
+
+<p>
+
+Imagine um sistema de uma universidade.
+
+Uma tabela pode armazenar os dados dos alunos e outra tabela os dados das disciplinas.
+
+Através de relacionamentos, o banco consegue identificar quais disciplinas cada aluno está cursando sem duplicar informações.
+
+</p>
+
+<h4>Conclusão</h4>
+
+<p>
+
+O modelo relacional tornou-se o padrão mundial para desenvolvimento de sistemas corporativos por sua flexibilidade, segurança e eficiência na manipulação de dados.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão 3</h3>
+
+<p>
+
+Em um banco de dados relacional, qual é a principal função da Chave Primária (Primary Key)?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+A) Armazenar relacionamentos entre tabelas.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+B) Identificar unicamente cada registro de uma tabela.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+C) Controlar permissões de acesso.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+D) Criar cópias de segurança dos dados.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+E) Eliminar tabelas redundantes.
+</label>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('g3')">
+Ver Gabarito Comentado
+</button>
+
+<div id="g3" class="gabarito">
+
+<h4>✅ Resposta Correta: B</h4>
+
+<h4>Explicação Geral</h4>
+
+<p>
+
+A Chave Primária é um atributo ou conjunto de atributos responsável por identificar
+de forma única cada registro armazenado em uma tabela.
+
+Nenhum valor da chave primária pode se repetir e também não pode ser nulo.
+
+</p>
+
+<h4>Exemplo</h4>
+
+<pre>
+CLIENTE
+
+ID_CLIENTE
+NOME
+CPF
+
+1 João
+2 Maria
+3 Pedro
+</pre>
+
+<p>
+
+Nesse exemplo, o campo ID_CLIENTE é a chave primária porque identifica
+cada cliente de forma exclusiva.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão 3</h3>
+
+<p>
+
+Em um banco de dados relacional, qual é a principal função da Chave Primária (Primary Key)?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+A) Armazenar relacionamentos entre tabelas.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+B) Identificar unicamente cada registro de uma tabela.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+C) Controlar permissões de acesso.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+D) Criar cópias de segurança dos dados.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q3">
+E) Eliminar tabelas redundantes.
+</label>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('g3')">
+Ver Gabarito Comentado
+</button>
+
+<div id="g3" class="gabarito">
+
+<h4>✅ Resposta Correta: B</h4>
+
+<h4>Explicação Geral</h4>
+
+<p>
+
+A Chave Primária é um atributo ou conjunto de atributos responsável por identificar
+de forma única cada registro armazenado em uma tabela.
+
+Nenhum valor da chave primária pode se repetir e também não pode ser nulo.
+
+</p>
+
+<h4>Exemplo</h4>
+
+<pre>
+CLIENTE
+
+ID_CLIENTE
+NOME
+CPF
+
+1 João
+2 Maria
+3 Pedro
+</pre>
+
+<p>
+
+Nesse exemplo, o campo ID_CLIENTE é a chave primária porque identifica
+cada cliente de forma exclusiva.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão 5</h3>
+
+<p>
+
+Em um relacionamento Muitos para Muitos (N:N), qual é a solução utilizada pelos bancos de dados relacionais?
+
+</p>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+A) Exclusão de uma das entidades.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+B) Criação de uma entidade associativa.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+C) Duplicação dos registros.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+D) Utilização apenas de chave primária.
+</label>
+
+<label class="alternativa">
+<input type="radio" name="q5">
+E) Remoção dos relacionamentos.
+</label>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('g5')">
+Ver Gabarito Comentado
+</button>
+
+<div id="g5" class="gabarito">
+
+<h4>✅ Resposta Correta: B</h4>
+
+<h4>Explicação Geral</h4>
+
+<p>
+
+Relacionamentos muitos para muitos não podem ser implementados diretamente
+em bancos relacionais.
+
+Por isso é criada uma entidade associativa que faz a ligação entre as duas entidades.
+
+</p>
+
+<h4>Exemplo</h4>
+
+<pre>
+
+ALUNO
+id_aluno
+
+DISCIPLINA
+id_disciplina
+
+MATRICULA
+id_aluno
+id_disciplina
+
+</pre>
+
+<p>
+
+A tabela MATRICULA atua como entidade associativa.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão Discursiva 1</h3>
+
+<p>
+
+Explique a importância dos Sistemas Gerenciadores de Banco de Dados (SGBDs) para as organizações modernas.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('gd1')">
+Ver Resposta Comentada
+</button>
+
+<div id="gd1" class="gabarito">
+
+<h4>Resposta Esperada</h4>
+
+<p>
+
+Os Sistemas Gerenciadores de Banco de Dados são responsáveis pelo armazenamento,
+organização, manipulação e recuperação das informações.
+
+Sua utilização reduz redundâncias, melhora a segurança, controla acessos e
+garante a integridade dos dados.
+
+Além disso, possibilita que vários usuários utilizem simultaneamente as mesmas
+informações sem comprometer sua consistência.
+
+</p>
+
+<h4>Critérios de Correção</h4>
+
+<ul>
+
+<li>Definição correta do SGBD.</li>
+
+<li>Segurança dos dados.</li>
+
+<li>Integridade das informações.</li>
+
+<li>Controle de acesso.</li>
+
+<li>Redução da redundância.</li>
+
+<li>Exemplo prático.</li>
+
+</ul>
+
+</div>
+
+<h3>Questão Discursiva 2</h3>
+
+<p>
+
+Explique as diferenças entre Modelo Descritivo, Modelo Conceitual e Modelo Lógico na modelagem de bancos de dados.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('gd2')">
+Ver Resposta Comentada
+</button>
+
+<div id="gd2" class="gabarito">
+
+<h4>Resposta Esperada</h4>
+
+<p>
+
+O Modelo Descritivo corresponde ao levantamento dos requisitos do negócio.
+
+O Modelo Conceitual transforma esses requisitos em um DER
+(Diagrama Entidade Relacionamento).
+
+Já o Modelo Lógico converte o DER em tabelas, definindo chaves primárias,
+chaves estrangeiras e tipos de dados.
+
+</p>
+
+<h4>Exemplo</h4>
+
+<p>
+
+Uma loja deseja controlar vendas.
+
+Descritivo:
+"Clientes compram produtos."
+
+Conceitual:
+Entidades Cliente e Produto com relacionamento Compra.
+
+Lógico:
+Tabelas Cliente, Produto e Venda.
+
+</p>
+
+</div>
+
+</div>
+<div class="quiz-card">
+
+<h3>Questão Discursiva 2</h3>
+
+<p>
+
+Explique as diferenças entre Modelo Descritivo, Modelo Conceitual e Modelo Lógico na modelagem de bancos de dados.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('gd2')">
+Ver Resposta Comentada
+</button>
+
+<div id="gd2" class="gabarito">
+
+<h4>Resposta Esperada</h4>
+
+<p>
+
+O Modelo Descritivo corresponde ao levantamento dos requisitos do negócio.
+
+O Modelo Conceitual transforma esses requisitos em um DER
+(Diagrama Entidade Relacionamento).
+
+Já o Modelo Lógico converte o DER em tabelas, definindo chaves primárias,
+chaves estrangeiras e tipos de dados.
+
+</p>
+
+<h4>Exemplo</h4>
+
+<p>
+
+Uma loja deseja controlar vendas.
+
+Descritivo:
+"Clientes compram produtos."
+
+Conceitual:
+Entidades Cliente e Produto com relacionamento Compra.
+
+Lógico:
+Tabelas Cliente, Produto e Venda.
+
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO DISCURSIVA 3 -->
+
+<div class="quiz-card">
+
+<h3>Questão Discursiva 3</h3>
+
+<p>
+
+Explique a diferença entre Entidade, Atributo e Relacionamento dentro de um Banco de Dados Relacional.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('gd3')">
+Ver Resposta Comentada
+</button>
+
+<div id="gd3" class="gabarito">
+
+<h4>Resposta Esperada</h4>
+
+<p>
+
+Uma entidade representa um objeto do mundo real sobre o qual desejamos armazenar informações.
+
+Um atributo representa uma característica que descreve uma entidade.
+
+Um relacionamento representa a associação existente entre duas ou mais entidades.
+
+</p>
+
+<h4>Exemplo</h4>
+
+<pre>
+
+CLIENTE
+- Nome
+- CPF
+- Telefone
+
+PRODUTO
+- Código
+- Descrição
+
+RELACIONAMENTO:
+CLIENTE realiza COMPRA de PRODUTO
+
+</pre>
+
+<h4>Critérios de Correção</h4>
+
+<ul>
+
+<li>Definir corretamente entidade.</li>
+
+<li>Definir corretamente atributo.</li>
+
+<li>Definir corretamente relacionamento.</li>
+
+<li>Apresentar exemplo prático.</li>
+
+</ul>
+
+</div>
+
+</div>
+<!-- QUESTÃO DISCURSIVA 4 -->
+
+<div class="quiz-card">
+
+<h3>Questão Discursiva 4</h3>
+
+<p>
+
+Explique os três principais tipos de cardinalidade existentes em bancos de dados relacionais.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('gd4')">
+Ver Resposta Comentada
+</button>
+
+<div id="gd4" class="gabarito">
+
+<h4>Resposta Esperada</h4>
+
+<p>
+
+Cardinalidade é a forma de representar quantas ocorrências de uma entidade podem estar associadas a outra entidade.
+
+</p>
+
+<h4>Tipos</h4>
+
+<p>
+
+<strong>1:1 (Um para Um)</strong>
+
+Um funcionário gerencia apenas um departamento e cada departamento possui apenas um gerente.
+
+</p>
+
+<p>
+
+<strong>1:N (Um para Muitos)</strong>
+
+Um departamento possui vários funcionários.
+
+Cada funcionário pertence a apenas um departamento.
+
+</p>
+
+<p>
+
+<strong>N:N (Muitos para Muitos)</strong>
+
+Um aluno pode cursar várias disciplinas.
+
+Uma disciplina pode possuir vários alunos.
+
+</p>
+
+<h4>Importância</h4>
+
+<p>
+
+As cardinalidades permitem representar corretamente as regras de negócio e definir os relacionamentos entre tabelas.
+
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO DISCURSIVA 5 -->
+
+<div class="quiz-card">
+
+<h3>Questão Discursiva 5</h3>
+
+<p>
+
+Descreva a evolução histórica dos sistemas de armazenamento de dados até o surgimento dos bancos de dados relacionais.
+
+</p>
+
+<button class="btn-gabarito"
+onclick="mostrarGabarito('gd5')">
+Ver Resposta Comentada
+</button>
+
+<div id="gd5" class="gabarito">
+
+<h4>Resposta Esperada</h4>
+
+<p>
+
+O armazenamento de informações acompanha a humanidade desde as pinturas rupestres e inscrições em pedra.
+
+Posteriormente surgiram papiros, livros e arquivos físicos organizados em papel.
+
+Com o avanço da computação, apareceram os cartões perfurados e os primeiros sistemas de arquivos digitais.
+
+Na década de 1970, Edgar F. Codd propôs o Modelo Relacional, baseado na Teoria dos Conjuntos e Álgebra Relacional.
+
+Esse modelo revolucionou o armazenamento de dados e tornou-se a base da maioria dos bancos de dados atuais.
+
+</p>
+
+<h4>Linha do Tempo</h4>
+
+<ul>
+
+<li>Pinturas Rupestres.</li>
+
+<li>Escrita Cuneiforme.</li>
+
+<li>Papel e Arquivos Físicos.</li>
+
+<li>Cartões Perfurados.</li>
+
+<li>Sistemas de Arquivos Digitais.</li>
+
+<li>Modelo Relacional (1970).</li>
+
+<li>SGBDs Modernos.</li>
+
+</ul>
+
+<h4>Conclusão</h4>
+
+<p>
+
+A evolução dos métodos de armazenamento permitiu maior capacidade de processamento, segurança e recuperação eficiente das informações.
+
+</p>
+
+</div>
+
+</div>
+</body>
+</html>
