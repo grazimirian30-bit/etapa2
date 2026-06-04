@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Plataforma de Estudos</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+
+    background:url("https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200")
+    no-repeat center center fixed;
+
+    background-size:cover;
+}
+
+.overlay{
+    min-height:100vh;
+
+    background:linear-gradient(
+        rgba(5,10,30,0.75),
+        rgba(0,0,0,0.80)
+    );
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:15px;
+
+    background:linear-gradient(90deg,#00d4ff,#7c4dff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.subtitulo{
+    color:#d8d8d8;
+    text-align:center;
+    margin-bottom:50px;
+    max-width:600px;
+    line-height:1.6;
+}
+
+.menu{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+}
+
+.btn{
+    width:320px;
+    min-height:180px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-decoration:none;
+    color:white;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.35);
+
+    transition:.35s;
+}
+
+.btn:hover{
+    transform:translateY(-8px);
+    background:rgba(255,255,255,0.15);
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.45);
+}
+
+.icone{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.titulo-card{
+    font-size:22px;
+    font-weight:600;
+}
+
+.descricao{
+    margin-top:10px;
+    font-size:14px;
+    color:#d7d7d7;
+    text-align:center;
+    padding:0 20px;
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:2.1rem;
+    }
+
+    .subtitulo{
+        font-size:15px;
+        margin-bottom:30px;
+    }
+
+    .btn{
+        width:100%;
+        max-width:350px;
+        min-height:160px;
+    }
+
+    .icone{
+        font-size:45px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<h1>📚 Plataforma de Estudos</h1>
+
+<p class="subtitulo">
+Organize seus conteúdos e aprenda de forma prática.
+Escolha uma área abaixo para iniciar seus estudos.
+</p>
+
+<div class="menu">
+
+<a class="btn" href="bancodados.html">
+<div class="icone">💾</div>
+<div class="titulo-card">Banco de Dados</div>
+<div class="descricao">
+Modelagem, SQL, consultas e gerenciamento de dados.
+</div>
+</a>
+
+<a class="btn" href="linguagem.html">
+<div class="icone">💻</div>
+<div class="titulo-card">Programação</div>
+<div class="descricao">
+Lógica, algoritmos e linguagens de desenvolvimento.
+</div>
+</a>
+
+<a class="btn" href="ferramentas.html">
+<div class="icone">🛠️</div>
+<div class="titulo-card">Ferramentas</div>
+<div class="descricao">
+Recursos e técnicas utilizadas no mercado de tecnologia.
+</div>
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
