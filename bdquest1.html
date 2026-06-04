@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Questionário Comentado - Banco de Dados</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+padding:30px;
+color:white;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+h1{
+text-align:center;
+margin-bottom:40px;
+font-size:40px;
+}
+
+.questao{
+background:white;
+color:#222;
+padding:25px;
+margin-bottom:25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.alternativa{
+padding:10px;
+margin:8px 0;
+background:#f1f5f9;
+border-radius:8px;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:8px;
+cursor:pointer;
+margin-top:15px;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+.resposta{
+display:none;
+margin-top:20px;
+padding:20px;
+background:#dcfce7;
+border-left:6px solid #16a34a;
+border-radius:10px;
+color:black;
+}
+
+.codigo{
+background:#0f172a;
+color:#22c55e;
+padding:15px;
+margin-top:10px;
+border-radius:10px;
+font-family:monospace;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📚 Questionário Comentado - Banco de Dados (Encontro 1)</h1>
+
+<!-- QUESTÃO 1 -->
+
+<div class="questao">
+
+<h2>Questão 1</h2>
+
+<p><strong>Qual é o principal objetivo da Análise de Requisitos em um projeto de Banco de Dados?</strong></p>
+
+A) Criar tabelas físicas do banco<br>
+B) Definir consultas SQL<br>
+C) Coletar informações necessárias para representar o negócio<br>
+D) Configurar o servidor do banco<br><br>
+
+<button onclick="mostrar('r1')">
+Mostrar Gabarito
+</button>
+
+<div id="r1" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+A análise de requisitos é a etapa responsável por compreender o negócio,
+levantando entidades, atributos e relacionamentos que serão utilizados
+na construção do banco de dados.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 2 -->
+
+<div class="questao">
+
+<h2>Questão 2</h2>
+
+<p><strong>Durante a Análise de Requisitos são identificados principalmente:</strong></p>
+
+A) Índices e Procedures<br>
+B) Entidades, atributos e relacionamentos<br>
+C) Servidores e usuários<br>
+D) Tipos de backup<br><br>
+
+<button onclick="mostrar('r2')">
+Mostrar Gabarito
+</button>
+
+<div id="r2" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<p>
+Nessa fase ocorre a definição dos elementos fundamentais do banco:
+entidades, atributos e relacionamentos.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 3 -->
+
+<div class="questao">
+
+<h2>Questão 3</h2>
+
+<p><strong>Qual é a sequência correta dos níveis de modelagem de dados?</strong></p>
+
+A) Conceitual → Lógico → Físico<br>
+B) Lógico → Conceitual → Físico<br>
+C) Físico → Conceitual → Lógico<br>
+D) Conceitual → Físico → Lógico<br><br>
+
+<button onclick="mostrar('r3')">
+Mostrar Gabarito
+</button>
+
+<div id="r3" class="resposta">
+
+<h3>✅ Gabarito: A</h3>
+
+<p>
+Primeiro representamos o negócio (conceitual),
+depois adaptamos ao SGBD (lógico)
+e por fim implementamos a estrutura física.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 4 -->
+
+<div class="questao">
+
+<h2>Questão 4</h2>
+
+<p><strong>O Modelo Conceitual tem como principal finalidade:</strong></p>
+
+A) Definir comandos SQL<br>
+B) Criar tabelas físicas<br>
+C) Simplificar a visão do mundo real usando dados e relacionamentos<br>
+D) Configurar usuários do banco<br><br>
+
+<button onclick="mostrar('r4')">
+Mostrar Gabarito
+</button>
+
+<div id="r4" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+O modelo conceitual representa apenas os elementos importantes
+do negócio, sem preocupação com tecnologia ou SGBD.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 5 -->
+
+<div class="questao">
+
+<h2>Questão 5</h2>
+
+<p><strong>No exemplo do cadastro de produtos apresentado pelo professor, qual item é considerado um atributo?</strong></p>
+
+A) Produto<br>
+B) Categoria<br>
+C) Loja<br>
+D) Sistema<br><br>
+
+<button onclick="mostrar('r5')">
+Mostrar Gabarito
+</button>
+
+<div id="r5" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<p>
+Categoria é uma característica do produto,
+logo é considerada um atributo da entidade Produto.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 6 -->
+
+<div class="questao">
+
+<h2>Questão 6</h2>
+
+<p><strong>O Modelo Lógico é responsável por:</strong></p>
+
+A) Representar apenas o negócio<br>
+B) Definir a estrutura lógica dos dados conforme o SGBD<br>
+C) Criar backups<br>
+D) Configurar usuários<br><br>
+
+<button onclick="mostrar('r6')">Mostrar Gabarito</button>
+
+<div id="r6" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<p>
+O Modelo Lógico adapta a modelagem para o SGBD escolhido,
+definindo tipos de dados e estruturas.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 7 -->
+
+<div class="questao">
+
+<h2>Questão 7</h2>
+
+<p><strong>Qual característica é definida completamente no Modelo Lógico?</strong></p>
+
+A) Relatórios<br>
+B) Processos de negócio<br>
+C) Tipos de dados<br>
+D) Hardware<br><br>
+
+<button onclick="mostrar('r7')">Mostrar Gabarito</button>
+
+<div id="r7" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+No modelo lógico os tipos de dados já são especificados.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 8 -->
+
+<div class="questao">
+
+<h2>Questão 8</h2>
+
+<p><strong>O Modelo Físico detalha:</strong></p>
+
+A) Regras de negócio<br>
+B) Tabelas, campos e tipos de dados<br>
+C) Fluxogramas<br>
+D) Algoritmos<br><br>
+
+<button onclick="mostrar('r8')">Mostrar Gabarito</button>
+
+<div id="r8" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<p>
+O modelo físico é a etapa que prepara a implementação real do banco.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 9 -->
+
+<div class="questao">
+
+<h2>Questão 9</h2>
+
+<p><strong>Uma entidade representa:</strong></p>
+
+A) Um comando SQL<br>
+B) Um conceito ou objeto do negócio<br>
+C) Um atributo<br>
+D) Um relacionamento<br><br>
+
+<button onclick="mostrar('r9')">Mostrar Gabarito</button>
+
+<div id="r9" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<p>
+Entidades representam elementos importantes do negócio,
+como Cliente, Produto ou Funcionário.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 10 -->
+
+<div class="questao">
+
+<h2>Questão 10</h2>
+
+<p><strong>Cada ocorrência individual de uma entidade recebe o nome de:</strong></p>
+
+A) Relacionamento<br>
+B) Cardinalidade<br>
+C) Instância de Entidade<br>
+D) Chave Estrangeira<br><br>
+
+<button onclick="mostrar('r10')">Mostrar Gabarito</button>
+
+<div id="r10" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+Uma instância é um objeto específico pertencente à entidade.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 11 -->
+
+<div class="questao">
+
+<h2>Questão 11</h2>
+
+<p><strong>Qual atributo não pode ser subdividido?</strong></p>
+
+A) Composto<br>
+B) Multivalorado<br>
+C) Simples<br>
+D) Primário<br><br>
+
+<button onclick="mostrar('r11')">Mostrar Gabarito</button>
+
+<div id="r11" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+Atributos simples são indivisíveis.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 12 -->
+
+<div class="questao">
+
+<h2>Questão 12</h2>
+
+<p><strong>O atributo Endereço composto por Rua, Número e Cidade é:</strong></p>
+
+A) Simples<br>
+B) Primário<br>
+C) Composto<br>
+D) Multivalorado<br><br>
+
+<button onclick="mostrar('r12')">Mostrar Gabarito</button>
+
+<div id="r12" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+Atributos compostos podem ser divididos em partes menores.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 13 -->
+
+<div class="questao">
+
+<h2>Questão 13</h2>
+
+<p><strong>Qual atributo pode possuir vários valores para um mesmo registro?</strong></p>
+
+A) Simples<br>
+B) Composto<br>
+C) Multivalorado<br>
+D) Primário<br><br>
+
+<button onclick="mostrar('r13')">Mostrar Gabarito</button>
+
+<div id="r13" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+Exemplo: vários telefones para uma mesma pessoa.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 14 -->
+
+<div class="questao">
+
+<h2>Questão 14</h2>
+
+<p><strong>Qual atributo identifica unicamente uma instância?</strong></p>
+
+A) Simples<br>
+B) Primário<br>
+C) Composto<br>
+D) Multivalorado<br><br>
+
+<button onclick="mostrar('r14')">Mostrar Gabarito</button>
+
+<div id="r14" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<p>
+O atributo primário não admite valores repetidos.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 15 -->
+
+<div class="questao">
+
+<h2>Questão 15</h2>
+
+<p><strong>Os relacionamentos servem para:</strong></p>
+
+A) Conectar entidades<br>
+B) Criar tabelas<br>
+C) Definir atributos<br>
+D) Criar backups<br><br>
+
+<button onclick="mostrar('r15')">Mostrar Gabarito</button>
+
+<div id="r15" class="resposta">
+
+<h3>✅ Gabarito: A</h3>
+
+<p>
+Relacionamentos estabelecem ligações entre entidades.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 16 -->
+
+<div class="questao">
+
+<h2>Questão 16</h2>
+
+<p><strong>Um relacionamento envolvendo apenas uma entidade é chamado de:</strong></p>
+
+A) Binário<br>
+B) Ternário<br>
+C) Unário<br>
+D) Associativo<br><br>
+
+<button onclick="mostrar('r16')">Mostrar Gabarito</button>
+
+<div id="r16" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+Também chamado de relacionamento recursivo.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 17 -->
+
+<div class="questao">
+
+<h2>Questão 17</h2>
+
+<p><strong>Um relacionamento entre Funcionário e Setor é:</strong></p>
+
+A) Unário<br>
+B) Binário<br>
+C) Ternário<br>
+D) Associativo<br><br>
+
+<button onclick="mostrar('r17')">Mostrar Gabarito</button>
+
+<div id="r17" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<p>
+Participam duas entidades.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 18 -->
+
+<div class="questao">
+
+<h2>Questão 18</h2>
+
+<p><strong>A cardinalidade mínima representa:</strong></p>
+
+A) Número obrigatório mínimo de participações<br>
+B) Número máximo de participações<br>
+C) Número de atributos<br>
+D) Número de tabelas<br><br>
+
+<button onclick="mostrar('r18')">Mostrar Gabarito</button>
+
+<div id="r18" class="resposta">
+
+<h3>✅ Gabarito: A</h3>
+
+<p>
+Ela indica a participação obrigatória em um relacionamento.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 19 -->
+
+<div class="questao">
+
+<h2>Questão 19</h2>
+
+<p><strong>Qual tipo de especialização obriga toda entidade a pertencer a apenas uma subentidade?</strong></p>
+
+A) Parcial Compartilhada<br>
+B) Total Compartilhada<br>
+C) Parcial Disjuntiva<br>
+D) Total Disjuntiva<br><br>
+
+<button onclick="mostrar('r19')">Mostrar Gabarito</button>
+
+<div id="r19" class="resposta">
+
+<h3>✅ Gabarito: D</h3>
+
+<p>
+Toda ocorrência deve participar de uma única especialização.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 20 -->
+
+<div class="questao">
+
+<h2>Questão 20</h2>
+
+<p><strong>Uma Entidade Associativa normalmente surge em relacionamentos:</strong></p>
+
+A) 1:1<br>
+B) 1:N<br>
+C) N:N<br>
+D) Unários<br><br>
+
+<button onclick="mostrar('r20')">Mostrar Gabarito</button>
+
+<div id="r20" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+A entidade associativa resolve relacionamentos muitos-para-muitos,
+permitindo armazenar informações adicionais.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function mostrar(id){
+
+let resposta = document.getElementById(id);
+
+if(resposta.style.display === "block"){
+resposta.style.display = "none";
+}
+else{
+resposta.style.display = "block";
+}
+
+}
+
+</script>
+
+</body>
+</html>
+

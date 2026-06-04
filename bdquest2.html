@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📋 Questionário Comentado - Encontro 1</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+padding:30px;
+color:white;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+h1{
+text-align:center;
+margin-bottom:40px;
+font-size:40px;
+}
+
+.questao{
+background:white;
+color:#222;
+padding:25px;
+margin-bottom:25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.alternativa{
+padding:10px;
+margin:8px 0;
+background:#f1f5f9;
+border-radius:8px;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:8px;
+cursor:pointer;
+margin-top:15px;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+.resposta{
+display:none;
+margin-top:20px;
+padding:20px;
+background:#dcfce7;
+border-left:6px solid #16a34a;
+border-radius:10px;
+color:black;
+}
+
+.codigo{
+background:#0f172a;
+color:#22c55e;
+padding:15px;
+margin:10px 0;
+border-radius:10px;
+font-family:monospace;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📋 Questionário Comentado - Encontro 2</h1>
+<!-- QUESTÃO 1 -->
+
+
+<!-- QUESTÃO 1 -->
+
+<div class="questao">
+
+<h2>Questão 1</h2>
+
+<p><strong>O SQL Server é classificado como:</strong></p>
+
+A) Uma linguagem de programação utilizada para criar bancos de dados.<br>
+B) Um Sistema Gerenciador de Banco de Dados Relacional desenvolvido pela Microsoft.<br>
+C) Um sistema operacional para bancos de dados.<br>
+D) Um compilador SQL.<br><br>
+
+<button onclick="mostrar('r1')">
+Mostrar Gabarito
+</button>
+
+<div id="r1" class="resposta">
+
+<h3>✅ Gabarito: B) Um Sistema Gerenciador de Banco de Dados Relacional desenvolvido pela Microsoft.</h3>
+
+<p>
+O SQL Server é um SGBDR (Sistema Gerenciador de Banco de Dados Relacional)
+criado pela Microsoft. Sua função é armazenar, organizar e manipular
+dados de forma segura e eficiente.
+</p>
+
+<div class="codigo">
+
+SQL Server ≠ SQL
+
+SQL = Linguagem
+SQL Server = Software que gerencia o banco
+
+</div>
+
+<p>
+Muitos alunos confundem SQL com SQL Server.
+O SQL é a linguagem utilizada para conversar com o banco,
+enquanto o SQL Server é o software que executa esses comandos.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 2 -->
+
+<div class="questao">
+
+<h2>Questão 2</h2>
+
+<p><strong>Qual alternativa representa corretamente a diferença entre SQL e SQL Server?</strong></p>
+
+A) SQL é um banco de dados e SQL Server é uma tabela.<br>
+B) SQL é uma linguagem e SQL Server é um SGBD.<br>
+C) SQL e SQL Server possuem exatamente a mesma função.<br>
+D) SQL é utilizado apenas na Microsoft.<br><br>
+
+<button onclick="mostrar('r2')">
+Mostrar Gabarito
+</button>
+
+<div id="r2" class="resposta">
+
+<h3>✅ Gabarito: B) SQL é uma linguagem e SQL Server é um SGBD.</h3>
+
+<p>
+SQL (Structured Query Language) é a linguagem usada para consultar
+e manipular dados. Já o SQL Server é o sistema que implementa
+essa linguagem e gerencia os dados.
+</p>
+
+<div class="codigo">
+
+SELECT * FROM Cliente;
+
+</div>
+
+<p>
+O comando acima é SQL.
+Quem executa esse comando é o SQL Server.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 3 -->
+
+<div class="questao">
+
+<h2>Questão 3</h2>
+
+<p><strong>Qual subconjunto SQL é responsável pela criação e modificação da estrutura do banco de dados?</strong></p>
+
+A) DML<br>
+B) DQL<br>
+C) DDL<br>
+D) DCL<br><br>
+
+<button onclick="mostrar('r3')">
+Mostrar Gabarito
+</button>
+
+<div id="r3" class="resposta">
+
+<h3>✅ Gabarito: C) DDL</h3>
+
+<p>
+DDL significa Data Definition Language.
+É utilizada para definir a estrutura do banco,
+criando, alterando ou removendo tabelas e objetos.
+</p>
+
+<div class="codigo">
+
+CREATE TABLE Cliente(
+   Id INT,
+   Nome VARCHAR(100)
+);
+
+</div>
+
+<p>
+O comando CREATE TABLE pertence ao subconjunto DDL.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 4 -->
+
+<div class="questao">
+
+<h2>Questão 4</h2>
+
+<p><strong>Qual subconjunto SQL contém comandos como INSERT, UPDATE e DELETE?</strong></p>
+
+A) DML<br>
+B) DDL<br>
+C) DQL<br>
+D) DTL<br><br>
+
+<button onclick="mostrar('r4')">
+Mostrar Gabarito
+</button>
+
+<div id="r4" class="resposta">
+
+<h3>✅ Gabarito: A) DML</h3>
+
+<p>
+DML significa Data Manipulation Language.
+É utilizada para manipular os registros existentes
+nas tabelas do banco de dados.
+</p>
+
+<div class="codigo">
+
+INSERT INTO Cliente(Nome)
+VALUES('João');
+
+UPDATE Cliente
+SET Nome='Pedro'
+WHERE Id=1;
+
+DELETE FROM Cliente
+WHERE Id=1;
+
+</div>
+
+<p>
+Todos esses comandos pertencem ao grupo DML.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 5 -->
+
+<div class="questao">
+
+<h2>Questão 5</h2>
+
+<p><strong>Qual subconjunto SQL é utilizado para consultas e recuperação de informações?</strong></p>
+
+A) DML<br>
+B) DDL<br>
+C) DQL<br>
+D) DCL<br><br>
+
+<button onclick="mostrar('r5')">
+Mostrar Gabarito
+</button>
+
+<div id="r5" class="resposta">
+
+<h3>✅ Gabarito: C) DQL</h3>
+
+<p>
+DQL significa Data Query Language.
+Seu principal comando é o SELECT,
+utilizado para recuperar dados armazenados.
+</p>
+
+<div class="codigo">
+
+SELECT *
+FROM Cliente;
+
+</div>
+
+<p>
+Esse comando retorna todos os registros
+da tabela Cliente.
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO 6 -->
+
+<div class="questao">
+
+<h2>Questão 6</h2>
+
+<p><strong>Qual tipo de dado é mais adequado para armazenar a idade de um cliente?</strong></p>
+
+A) VARCHAR<br>
+B) DATE<br>
+C) INT<br>
+D) CHAR<br><br>
+
+<button onclick="mostrar('r6')">
+Mostrar Gabarito
+</button>
+
+<div id="r6" class="resposta">
+
+<h3>✅ Gabarito: C) INT</h3>
+
+<p>
+O tipo INT é utilizado para armazenar números inteiros,
+ou seja, valores sem casas decimais.
+</p>
+
+<div class="codigo">
+
+CREATE TABLE Cliente(
+   Idade INT
+);
+
+</div>
+
+<p>
+Idades normalmente são representadas por números inteiros,
+por isso INT é o tipo mais adequado.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 7 -->
+
+<div class="questao">
+
+<h2>Questão 7</h2>
+
+<p><strong>Qual tipo de dado é indicado para armazenar nomes de clientes?</strong></p>
+
+A) DATE<br>
+B) VARCHAR<br>
+C) INT<br>
+D) FLOAT<br><br>
+
+<button onclick="mostrar('r7')">
+Mostrar Gabarito
+</button>
+
+<div id="r7" class="resposta">
+
+<h3>✅ Gabarito: B) VARCHAR</h3>
+
+<p>
+VARCHAR é utilizado para armazenar textos com tamanho variável.
+</p>
+
+<div class="codigo">
+
+CREATE TABLE Cliente(
+   Nome VARCHAR(100)
+);
+
+</div>
+
+<p>
+O número entre parênteses representa a quantidade máxima
+de caracteres permitida.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 8 -->
+
+<div class="questao">
+
+<h2>Questão 8</h2>
+
+<p><strong>Qual tipo de dado deve ser utilizado para armazenar datas de nascimento?</strong></p>
+
+A) VARCHAR<br>
+B) BIT<br>
+C) DATE<br>
+D) INT<br><br>
+
+<button onclick="mostrar('r8')">
+Mostrar Gabarito
+</button>
+
+<div id="r8" class="resposta">
+
+<h3>✅ Gabarito: C) DATE</h3>
+
+<p>
+O tipo DATE foi criado especificamente para armazenar datas.
+</p>
+
+<div class="codigo">
+
+CREATE TABLE Cliente(
+   DataNascimento DATE
+);
+
+</div>
+
+<p>
+Utilizar DATE facilita consultas e cálculos envolvendo datas.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 9 -->
+
+<div class="questao">
+
+<h2>Questão 9</h2>
+
+<p><strong>Qual tipo de dado é mais indicado para armazenar valores monetários com casas decimais?</strong></p>
+
+A) VARCHAR<br>
+B) DATE<br>
+C) INT<br>
+D) DECIMAL<br><br>
+
+<button onclick="mostrar('r9')">
+Mostrar Gabarito
+</button>
+
+<div id="r9" class="resposta">
+
+<h3>✅ Gabarito: D) DECIMAL</h3>
+
+<p>
+DECIMAL permite armazenar números com precisão,
+incluindo casas decimais.
+</p>
+
+<div class="codigo">
+
+CREATE TABLE Produto(
+   Preco DECIMAL(10,2)
+);
+
+</div>
+
+<p>
+Nesse exemplo podem ser armazenados valores como:
+10.50, 1500.99 e 99999.99.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 10 -->
+
+<div class="questao">
+
+<h2>Questão 10</h2>
+
+<p><strong>Qual comando DDL é utilizado para criar uma nova tabela no banco de dados?</strong></p>
+
+A) ALTER TABLE<br>
+B) INSERT INTO<br>
+C) CREATE TABLE<br>
+D) DROP TABLE<br><br>
+
+<button onclick="mostrar('r10')">
+Mostrar Gabarito
+</button>
+
+<div id="r10" class="resposta">
+
+<h3>✅ Gabarito: C) CREATE TABLE</h3>
+
+<p>
+CREATE TABLE é o comando responsável pela criação
+de tabelas em um banco de dados.
+</p>
+
+<div class="codigo">
+
+CREATE TABLE Cliente(
+   Id INT,
+   Nome VARCHAR(100),
+   DataNascimento DATE
+);
+
+</div>
+
+<p>
+Ao executar esse comando, uma nova tabela chamada
+Cliente será criada no banco de dados.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- QUESTÃO 11 -->
+
+<div class="questao">
+
+<h2>Questão 11</h2>
+
+<p><strong>Qual restrição garante que cada registro da tabela seja identificado de forma única?</strong></p>
+
+A) UNIQUE<br>
+B) NOT NULL<br>
+C) PRIMARY KEY<br>
+D) DEFAULT<br><br>
+
+<button onclick="mostrar('r11')">
+Mostrar Gabarito
+</button>
+
+<div id="r11" class="resposta">
+
+<h3>✅ Gabarito: C) PRIMARY KEY</h3>
+
+<p>
+A PRIMARY KEY (Chave Primária) é utilizada para identificar
+de forma única cada registro de uma tabela.
+Não podem existir dois registros com o mesmo valor de chave primária.
+</p>
+
+<div class="codigo">
+
+CREATE TABLE Cliente(
+   Id INT PRIMARY KEY,
+   Nome VARCHAR(100)
+);
+
+</div>
+
+<p>
+Nesse exemplo, cada cliente possuirá um código único.
+O SQL Server não permitirá dois registros com o mesmo Id.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 12 -->
+
+<div class="questao">
+
+<h2>Questão 12</h2>
+
+<p><strong>Qual restrição é utilizada para criar relacionamentos entre tabelas?</strong></p>
+
+A) CHECK<br>
+B) FOREIGN KEY<br>
+C) UNIQUE<br>
+D) DEFAULT<br><br>
+
+<button onclick="mostrar('r12')">
+Mostrar Gabarito
+</button>
+
+<div id="r12" class="resposta">
+
+<h3>✅ Gabarito: B) FOREIGN KEY</h3>
+
+<p>
+A FOREIGN KEY (Chave Estrangeira) é responsável por criar
+uma ligação entre tabelas, garantindo a integridade referencial.
+Ela normalmente referencia uma PRIMARY KEY de outra tabela.
+</p>
+
+<div class="codigo">
+
+CREATE TABLE Pedido(
+   IdPedido INT PRIMARY KEY,
+   IdCliente INT,
+
+   FOREIGN KEY(IdCliente)
+   REFERENCES Cliente(Id)
+);
+
+</div>
+
+<p>
+Nesse exemplo, cada pedido estará associado
+a um cliente previamente cadastrado.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 13 -->
+
+<div class="questao">
+
+<h2>Questão 13</h2>
+
+<p><strong>Qual restrição impede que uma coluna receba valores nulos?</strong></p>
+
+A) UNIQUE<br>
+B) CHECK<br>
+C) NOT NULL<br>
+D) DEFAULT<br><br>
+
+<button onclick="mostrar('r13')">
+Mostrar Gabarito
+</button>
+
+<div id="r13" class="resposta">
+
+<h3>✅ Gabarito: C) NOT NULL</h3>
+
+<p>
+A restrição NOT NULL obriga o preenchimento da coluna.
+Se nenhum valor for informado, o banco retornará erro.
+</p>
+
+<div class="codigo">
+
+CREATE TABLE Cliente(
+   Nome VARCHAR(100) NOT NULL
+);
+
+</div>
+
+<p>
+Nesse caso, o nome do cliente deverá ser informado obrigatoriamente.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 14 -->
+
+<div class="questao">
+
+<h2>Questão 14</h2>
+
+<p><strong>Qual restrição impede a repetição de valores em uma coluna?</strong></p>
+
+A) UNIQUE<br>
+B) DEFAULT<br>
+C) CHECK<br>
+D) FOREIGN KEY<br><br>
+
+<button onclick="mostrar('r14')">
+Mostrar Gabarito
+</button>
+
+<div id="r14" class="resposta">
+
+<h3>✅ Gabarito: A) UNIQUE</h3>
+
+<p>
+A restrição UNIQUE garante que não existam valores repetidos
+em uma determinada coluna da tabela.
+</p>
+
+<div class="codigo">
+
+CREATE TABLE Cliente(
+   Email VARCHAR(100) UNIQUE
+);
+
+</div>
+
+<p>
+Com essa restrição, dois clientes não poderão possuir
+o mesmo endereço de e-mail.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 15 -->
+
+<div class="questao">
+
+<h2>Questão 15</h2>
+
+<p><strong>A restrição DEFAULT é utilizada para:</strong></p>
+
+A) Criar relacionamentos<br>
+B) Definir um valor padrão<br>
+C) Impedir valores nulos<br>
+D) Criar uma chave primária<br><br>
+
+<button onclick="mostrar('r15')">
+Mostrar Gabarito
+</button>
+
+<div id="r15" class="resposta">
+
+<h3>✅ Gabarito: B) Definir um valor padrão</h3>
+
+<p>
+DEFAULT permite que o banco atribua automaticamente
+um valor quando nenhum valor for informado pelo usuário.
+</p>
+
+<div class="codigo">
+
+CREATE TABLE Cliente(
+   Status VARCHAR(20)
+   DEFAULT 'Ativo'
+);
+
+</div>
+
+<p>
+Caso nenhum status seja informado durante o cadastro,
+o SQL Server gravará automaticamente o valor "Ativo".
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 16 -->
+
+<div class="questao">
+
+<h2>Questão 16</h2>
+
+<p><strong>O comando ALTER TABLE é utilizado para:</strong></p>
+
+A) Criar tabelas<br>
+B) Modificar tabelas existentes<br>
+C) Excluir registros<br>
+D) Consultar dados<br><br>
+
+<button onclick="mostrar('r16')">
+Mostrar Gabarito
+</button>
+
+<div id="r16" class="resposta">
+
+<h3>✅ Gabarito: B) Modificar tabelas existentes</h3>
+
+<p>
+ALTER TABLE permite alterar a estrutura de uma tabela já criada,
+adicionando, removendo ou modificando colunas e restrições.
+</p>
+
+<div class="codigo">
+
+ALTER TABLE Cliente
+ADD Telefone VARCHAR(20);
+
+</div>
+
+<p>
+Após a execução desse comando, a tabela Cliente
+passará a possuir uma nova coluna chamada Telefone.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 17 -->
+
+<div class="questao">
+
+<h2>Questão 17</h2>
+
+<p><strong>DROP TABLE remove:</strong></p>
+
+A) Apenas registros<br>
+B) Apenas colunas<br>
+C) Estrutura e dados da tabela<br>
+D) Apenas chaves<br><br>
+
+<button onclick="mostrar('r17')">Mostrar Gabarito</button>
+
+<div id="r17" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+DROP TABLE exclui completamente
+a tabela do banco de dados.
+</p>
+
+<div class="codigo">
+
+DROP TABLE Cliente;
+
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 18 -->
+
+<div class="questao">
+
+<h2>Questão 18</h2>
+
+<p><strong>Qual comando insere registros em uma tabela?</strong></p>
+
+A) UPDATE<br>
+B) SELECT<br>
+C) INSERT<br>
+D) DELETE<br><br>
+
+<button onclick="mostrar('r18')">Mostrar Gabarito</button>
+
+<div id="r18" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<div class="codigo">
+
+INSERT INTO Cliente
+(Nome)
+VALUES
+('Maria');
+
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 19 -->
+
+<div class="questao">
+
+<h2>Questão 19</h2>
+
+<p><strong>Campos IDENTITY:</strong></p>
+
+A) São preenchidos manualmente<br>
+B) São gerados automaticamente<br>
+C) Aceitam apenas texto<br>
+D) São opcionais<br><br>
+
+<button onclick="mostrar('r19')">Mostrar Gabarito</button>
+
+<div id="r19" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<p>
+Campos IDENTITY são incrementados
+automaticamente pelo SQL Server.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 20 -->
+
+<div class="questao">
+
+<h2>Questão 20</h2>
+
+<p><strong>Valores do tipo texto devem ser informados:</strong></p>
+
+A) Sem aspas<br>
+B) Entre aspas simples<br>
+C) Entre colchetes<br>
+D) Entre parênteses<br><br>
+
+<button onclick="mostrar('r20')">Mostrar Gabarito</button>
+
+<div id="r20" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<div class="codigo">
+
+INSERT INTO Cliente
+(Nome)
+VALUES
+('João');
+
+</div>
+
+</div>
+
+</div>
+<!-- QUESTÃO 21 -->
+
+<div class="questao">
+
+<h2>Questão 21</h2>
+
+<p><strong>O comando SELECT é utilizado para:</strong></p>
+
+A) Inserir dados<br>
+B) Consultar dados<br>
+C) Excluir dados<br>
+D) Atualizar dados<br><br>
+
+<button onclick="mostrar('r21')">Mostrar Gabarito</button>
+
+<div id="r21" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<div class="codigo">
+
+SELECT * FROM Cliente;
+
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 22 -->
+
+<div class="questao">
+
+<h2>Questão 22</h2>
+
+<p><strong>WHERE é utilizado para:</strong></p>
+
+A) Agrupar registros<br>
+B) Filtrar registros<br>
+C) Ordenar registros<br>
+D) Excluir registros<br><br>
+
+<button onclick="mostrar('r22')">Mostrar Gabarito</button>
+
+<div id="r22" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<div class="codigo">
+
+SELECT *
+FROM Cliente
+WHERE Cidade='Campinas';
+
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 23 -->
+
+<div class="questao">
+
+<h2>Questão 23</h2>
+
+<p><strong>ORDER BY é utilizado para:</strong></p>
+
+A) Filtrar<br>
+B) Ordenar resultados<br>
+C) Agrupar<br>
+D) Atualizar<br><br>
+
+<button onclick="mostrar('r23')">Mostrar Gabarito</button>
+
+<div id="r23" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<div class="codigo">
+
+SELECT *
+FROM Cliente
+ORDER BY Nome ASC;
+
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 24 -->
+
+<div class="questao">
+
+<h2>Questão 24</h2>
+
+<p><strong>LIKE é utilizado para:</strong></p>
+
+A) Comparação matemática<br>
+B) Procurar padrões em texto<br>
+C) Agrupar registros<br>
+D) Excluir registros<br><br>
+
+<button onclick="mostrar('r24')">Mostrar Gabarito</button>
+
+<div id="r24" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<div class="codigo">
+
+WHERE Nome LIKE '%ana%'
+
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 25 -->
+
+<div class="questao">
+
+<h2>Questão 25</h2>
+
+<p><strong>TOP é utilizado para:</strong></p>
+
+A) Limitar quantidade de registros retornados<br>
+B) Excluir registros<br>
+C) Criar tabelas<br>
+D) Alterar registros<br><br>
+
+<button onclick="mostrar('r25')">Mostrar Gabarito</button>
+
+<div id="r25" class="resposta">
+
+<h3>✅ Gabarito: A</h3>
+
+<div class="codigo">
+
+SELECT TOP 10 *
+FROM Cliente;
+
+</div>
+
+</div>
+
+</div>
+<!-- QUESTÃO 26 -->
+
+<div class="questao">
+
+<h2>Questão 26</h2>
+
+<p><strong>COUNT() retorna:</strong></p>
+
+A) Média<br>
+B) Soma<br>
+C) Quantidade de registros<br>
+D) Maior valor<br><br>
+
+<button onclick="mostrar('r26')">Mostrar Gabarito</button>
+
+<div id="r26" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<div class="codigo">
+
+SELECT COUNT(*)
+FROM Cliente;
+
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 27 -->
+
+<div class="questao">
+
+<h2>Questão 27</h2>
+
+<p><strong>GROUP BY é utilizado para:</strong></p>
+
+A) Agrupar registros<br>
+B) Excluir registros<br>
+C) Alterar registros<br>
+D) Ordenar registros<br><br>
+
+<button onclick="mostrar('r27')">Mostrar Gabarito</button>
+
+<div id="r27" class="resposta">
+
+<h3>✅ Gabarito: A</h3>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 28 -->
+
+<div class="questao">
+
+<h2>Questão 28</h2>
+
+<p><strong>HAVING é utilizado para:</strong></p>
+
+A) Filtrar grupos após GROUP BY<br>
+B) Inserir dados<br>
+C) Atualizar registros<br>
+D) Criar tabelas<br><br>
+
+<button onclick="mostrar('r28')">Mostrar Gabarito</button>
+
+<div id="r28" class="resposta">
+
+<h3>✅ Gabarito: A</h3>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 29 -->
+
+<div class="questao">
+
+<h2>Questão 29</h2>
+
+<p><strong>INNER JOIN retorna:</strong></p>
+
+A) Todos os registros das tabelas<br>
+B) Apenas registros correspondentes<br>
+C) Apenas tabela da esquerda<br>
+D) Apenas tabela da direita<br><br>
+
+<button onclick="mostrar('r29')">Mostrar Gabarito</button>
+
+<div id="r29" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<p>
+INNER JOIN retorna apenas os registros
+que possuem correspondência nas duas tabelas.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 30 -->
+
+<div class="questao">
+
+<h2>Questão 30</h2>
+
+<p><strong>FULL OUTER JOIN retorna:</strong></p>
+
+A) Apenas correspondências<br>
+B) Apenas registros da esquerda<br>
+C) Apenas registros da direita<br>
+D) Todos os registros das duas tabelas<br><br>
+
+<button onclick="mostrar('r30')">Mostrar Gabarito</button>
+
+<div id="r30" class="resposta">
+
+<h3>✅ Gabarito: D</h3>
+
+<p>
+FULL OUTER JOIN retorna todos os registros
+das duas tabelas, combinando os que possuem
+correspondência e exibindo NULL quando não houver.
+</p>
+
+</div>
+
+</div>
+<script>
+
+function mostrar(id){
+
+let resposta = document.getElementById(id);
+
+if(resposta.style.display === "block"){
+resposta.style.display = "none";
+}
+else{
+resposta.style.display = "block";
+}
+
+}
+
+</script>
+
+</body>
+</html>

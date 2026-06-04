@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>📋 Questionário Comentado - Encontro 1</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+padding:30px;
+color:white;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+h1{
+text-align:center;
+margin-bottom:40px;
+font-size:40px;
+}
+
+.questao{
+background:white;
+color:#222;
+padding:25px;
+margin-bottom:25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.alternativa{
+padding:10px;
+margin:8px 0;
+background:#f1f5f9;
+border-radius:8px;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:8px;
+cursor:pointer;
+margin-top:15px;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+.resposta{
+display:none;
+margin-top:20px;
+padding:20px;
+background:#dcfce7;
+border-left:6px solid #16a34a;
+border-radius:10px;
+color:black;
+}
+
+.codigo{
+background:#0f172a;
+color:#22c55e;
+padding:15px;
+margin:10px 0;
+border-radius:10px;
+font-family:monospace;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📋 Questionário Comentado - Encontro 3</h1>
+<!-- QUESTÃO 1 -->
+
+<div class="questao">
+<!-- QUESTÃO 1 -->
+
+<div class="questao">
+
+<h2>Questão 1</h2>
+
+<p><strong>O que é uma View no SQL Server?</strong></p>
+
+A) Uma tabela física que armazena dados próprios.<br>
+B) Uma tabela virtual baseada em uma consulta SQL.<br>
+C) Uma procedure armazenada.<br>
+D) Uma função escalar.<br><br>
+
+<button onclick="mostrar('r1')">
+Mostrar Gabarito
+</button>
+
+<div id="r1" class="resposta">
+
+<h3>✅ Gabarito: B) Uma tabela virtual baseada em uma consulta SQL.</h3>
+
+<p>
+Uma View é considerada uma tabela virtual.
+Ela não armazena dados próprios, mas sim a definição
+de uma consulta que será executada sempre que a View for utilizada.
+</p>
+
+<div class="codigo">
+
+CREATE VIEW vw_Clientes
+AS
+SELECT *
+FROM Clientes;
+
+</div>
+
+<p>
+Quando a View for consultada, o SQL Server executará
+automaticamente a consulta definida nela.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 2 -->
+
+<div class="questao">
+
+<h2>Questão 2</h2>
+
+<p><strong>Qual é a principal vantagem de utilizar uma View?</strong></p>
+
+A) Aumentar a quantidade de tabelas do banco.<br>
+B) Facilitar o reuso de consultas SQL.<br>
+C) Excluir registros automaticamente.<br>
+D) Criar chaves primárias.<br><br>
+
+<button onclick="mostrar('r2')">
+Mostrar Gabarito
+</button>
+
+<div id="r2" class="resposta">
+
+<h3>✅ Gabarito: B) Facilitar o reuso de consultas SQL.</h3>
+
+<p>
+A principal vantagem de uma View é evitar que consultas
+complexas precisem ser escritas repetidamente.
+</p>
+
+<div class="codigo">
+
+CREATE VIEW vw_TotalComprasPorCliente
+AS
+SELECT C.Nome,
+       SUM(P.Valor) AS TotalComprado
+FROM Clientes C
+JOIN Pedidos P
+ON P.ClienteId = C.Id
+GROUP BY C.Nome;
+
+</div>
+
+<p>
+Depois da criação da View, basta executar:
+
+SELECT * FROM vw_TotalComprasPorCliente;
+
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 3 -->
+
+<div class="questao">
+
+<h2>Questão 3</h2>
+
+<p><strong>Qual comando é utilizado para criar uma View?</strong></p>
+
+A) CREATE TABLE<br>
+B) CREATE FUNCTION<br>
+C) CREATE VIEW<br>
+D) CREATE PROCEDURE<br><br>
+
+<button onclick="mostrar('r3')">
+Mostrar Gabarito
+</button>
+
+<div id="r3" class="resposta">
+
+<h3>✅ Gabarito: C) CREATE VIEW</h3>
+
+<p>
+O comando CREATE VIEW é utilizado para criar
+uma nova View no banco de dados.
+</p>
+
+<div class="codigo">
+
+CREATE VIEW vw_Produtos
+AS
+SELECT *
+FROM Produtos;
+
+</div>
+
+<p>
+Após sua criação, a View pode ser consultada
+como se fosse uma tabela comum.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 4 -->
+
+<div class="questao">
+
+<h2>Questão 4</h2>
+
+<p><strong>Uma View pode ser criada utilizando dados de:</strong></p>
+
+A) Apenas uma tabela.<br>
+B) Apenas duas tabelas.<br>
+C) Uma ou mais tabelas.<br>
+D) Apenas procedures.<br><br>
+
+<button onclick="mostrar('r4')">
+Mostrar Gabarito
+</button>
+
+<div id="r4" class="resposta">
+
+<h3>✅ Gabarito: C) Uma ou mais tabelas.</h3>
+
+<p>
+Uma View pode reunir informações de diversas tabelas,
+utilizando JOINs e outras operações SQL.
+</p>
+
+<div class="codigo">
+
+CREATE VIEW vw_PedidosClientes
+AS
+SELECT C.Nome,
+       P.Valor
+FROM Clientes C
+INNER JOIN Pedidos P
+ON P.ClienteId = C.Id;
+
+</div>
+
+<p>
+Nesse exemplo, a View utiliza duas tabelas:
+Clientes e Pedidos.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 5 -->
+
+<div class="questao">
+
+<h2>Questão 5</h2>
+
+<p><strong>Ao executar um SELECT em uma View, o SQL Server:</strong></p>
+
+A) Consulta diretamente a definição armazenada da View e executa sua consulta.<br>
+B) Cria uma nova tabela física.<br>
+C) Executa uma procedure automaticamente.<br>
+D) Exclui os registros temporários.<br><br>
+
+<button onclick="mostrar('r5')">
+Mostrar Gabarito
+</button>
+
+<div id="r5" class="resposta">
+
+<h3>✅ Gabarito: A) Consulta diretamente a definição armazenada da View e executa sua consulta.</h3>
+
+<p>
+A View armazena apenas a definição da consulta.
+Quando é acessada, o SQL Server executa novamente
+o comando SQL definido nela.
+</p>
+
+<div class="codigo">
+
+SELECT *
+FROM vw_TotalComprasPorCliente;
+
+</div>
+
+<p>
+O resultado será exibido como se a View fosse uma tabela,
+mas os dados continuam vindo das tabelas originais.
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO 6 -->
+
+<div class="questao">
+
+<h2>Questão 6</h2>
+
+<p><strong>O que é uma transação no SQL Server?</strong></p>
+
+A) Um tipo de tabela.<br>
+B) Um conjunto de operações executadas como uma única unidade lógica.<br>
+C) Um tipo de View.<br>
+D) Um relacionamento entre tabelas.<br><br>
+
+<button onclick="mostrar('r6')">Mostrar Gabarito</button>
+
+<div id="r6" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<p>
+Uma transação agrupa várias operações SQL.
+Todas devem ser concluídas com sucesso ou nenhuma delas será efetivada.
+</p>
+
+<div class="codigo">
+
+BEGIN TRANSACTION;
+
+INSERT INTO Cliente VALUES(1,'João');
+
+COMMIT;
+
+</div>
+
+<p>
+Isso garante consistência nos dados.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 7 -->
+
+<div class="questao">
+
+<h2>Questão 7</h2>
+
+<p><strong>Qual comando inicia uma transação?</strong></p>
+
+A) START<br>
+B) BEGIN TRANSACTION<br>
+C) OPEN TRANSACTION<br>
+D) CREATE TRANSACTION<br><br>
+
+<button onclick="mostrar('r7')">Mostrar Gabarito</button>
+
+<div id="r7" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<p>
+Toda transação começa com BEGIN TRANSACTION.
+</p>
+
+<div class="codigo">
+
+BEGIN TRANSACTION;
+
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 8 -->
+
+<div class="questao">
+
+<h2>Questão 8</h2>
+
+<p><strong>Qual propriedade ACID garante que a transação seja executada por completo ou não seja executada?</strong></p>
+
+A) Consistência<br>
+B) Isolamento<br>
+C) Atomicidade<br>
+D) Persistência<br><br>
+
+<button onclick="mostrar('r8')">Mostrar Gabarito</button>
+
+<div id="r8" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+Atomicidade significa "tudo ou nada".
+</p>
+
+<p>
+Se uma operação falhar, toda a transação será revertida.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 9 -->
+
+<div class="questao">
+
+<h2>Questão 9</h2>
+
+<p><strong>A propriedade Consistência garante:</strong></p>
+
+A) Execução simultânea.<br>
+B) Que o banco permaneça válido após a transação.<br>
+C) Criação automática de backup.<br>
+D) Criação de Views.<br><br>
+
+<button onclick="mostrar('r9')">Mostrar Gabarito</button>
+
+<div id="r9" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<p>
+Após uma transação, os dados devem continuar obedecendo
+às regras do banco.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 10 -->
+
+<div class="questao">
+
+<h2>Questão 10</h2>
+
+<p><strong>Qual propriedade ACID garante que alterações confirmadas não sejam perdidas?</strong></p>
+
+A) Isolamento<br>
+B) Atomicidade<br>
+C) Persistência<br>
+D) Consistência<br><br>
+
+<button onclick="mostrar('r10')">Mostrar Gabarito</button>
+
+<div id="r10" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+Após o COMMIT, os dados ficam permanentemente gravados.
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO 11 -->
+
+<div class="questao">
+
+<h2>Questão 11</h2>
+
+<p><strong>Qual comando confirma uma transação?</strong></p>
+
+A) SAVE<br>
+B) COMMIT<br>
+C) ACCEPT<br>
+D) EXECUTE<br><br>
+
+<button onclick="mostrar('r11')">Mostrar Gabarito</button>
+
+<div id="r11" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<p>
+COMMIT grava definitivamente as alterações realizadas.
+</p>
+
+<div class="codigo">
+
+COMMIT TRANSACTION;
+
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 12 -->
+
+<div class="questao">
+
+<h2>Questão 12</h2>
+
+<p><strong>Qual comando desfaz uma transação?</strong></p>
+
+A) CANCEL<br>
+B) DELETE<br>
+C) ROLLBACK<br>
+D) UNDO<br><br>
+
+<button onclick="mostrar('r12')">Mostrar Gabarito</button>
+
+<div id="r12" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+ROLLBACK desfaz todas as alterações realizadas
+desde o início da transação.
+</p>
+
+<div class="codigo">
+
+ROLLBACK TRANSACTION;
+
+</div>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 13 -->
+
+<div class="questao">
+
+<h2>Questão 13</h2>
+
+<p><strong>TRY/CATCH é utilizado para:</strong></p>
+
+A) Criar tabelas.<br>
+B) Tratar erros.<br>
+C) Criar Views.<br>
+D) Criar índices.<br><br>
+
+<button onclick="mostrar('r13')">Mostrar Gabarito</button>
+
+<div id="r13" class="resposta">
+
+<h3>✅ Gabarito: B</h3>
+
+<p>
+TRY executa o código.
+CATCH captura erros ocorridos.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 14 -->
+
+<div class="questao">
+
+<h2>Questão 14</h2>
+
+<p><strong>Quando ocorre um erro dentro de uma transação protegida por TRY/CATCH normalmente utiliza-se:</strong></p>
+
+A) COMMIT<br>
+B) UPDATE<br>
+C) ROLLBACK<br>
+D) SELECT<br><br>
+
+<button onclick="mostrar('r14')">Mostrar Gabarito</button>
+
+<div id="r14" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+Em caso de erro a prática recomendada é reverter
+a transação com ROLLBACK.
+</p>
+
+</div>
+
+</div>
+
+<!-- QUESTÃO 15 -->
+
+<div class="questao">
+
+<h2>Questão 15</h2>
+
+<p><strong>ERROR_MESSAGE() retorna:</strong></p>
+
+A) Nome do usuário.<br>
+B) Nome da tabela.<br>
+C) Descrição do erro ocorrido.<br>
+D) Número de registros.<br><br>
+
+<button onclick="mostrar('r15')">Mostrar Gabarito</button>
+
+<div id="r15" class="resposta">
+
+<h3>✅ Gabarito: C</h3>
+
+<p>
+A função retorna a mensagem detalhada do erro capturado.
+</p>
+
+</div>
+
+</div>
+<!-- QUESTÃO 16 -->
+
+<div class="questao">
+<h2>Questão 16</h2>
+
+<p><strong>No SQL Server, variáveis locais começam com:</strong></p>
+
+A) #<br>
+B) $<br>
+C) @<br>
+D) %<br><br>
+
+<button onclick="mostrar('r16')">Mostrar Gabarito</button>
+
+<div id="r16" class="resposta">
+<h3>✅ Gabarito: C</h3>
+
+<p>
+Variáveis locais sempre começam com @.
+</p>
+
+<div class="codigo">
+
+DECLARE @Nome VARCHAR(100);
+
+</div>
+
+</div>
+</div>
+
+<!-- QUESTÃO 17 -->
+
+<div class="questao">
+<h2>Questão 17</h2>
+
+<p><strong>DECLARE é utilizado para:</strong></p>
+
+A) Criar tabela.<br>
+B) Declarar variável.<br>
+C) Criar função.<br>
+D) Atualizar registro.<br><br>
+
+<button onclick="mostrar('r17')">Mostrar Gabarito</button>
+
+<div id="r17" class="resposta">
+<h3>✅ Gabarito: B</h3>
+
+<p>
+DECLARE cria uma variável na memória.
+</p>
+
+</div>
+</div>
+
+<!-- QUESTÃO 18 -->
+
+<div class="questao">
+<h2>Questão 18</h2>
+
+<p><strong>@@ROWCOUNT retorna:</strong></p>
+
+A) Quantidade de tabelas.<br>
+B) Quantidade de registros afetados.<br>
+C) Nome do banco.<br>
+D) Quantidade de usuários.<br><br>
+
+<button onclick="mostrar('r18')">Mostrar Gabarito</button>
+
+<div id="r18" class="resposta">
+<h3>✅ Gabarito: B</h3>
+
+<p>
+Retorna o número de linhas afetadas pelo último comando.
+</p>
+
+</div>
+</div>
+
+<!-- QUESTÃO 19 -->
+
+<div class="questao">
+<h2>Questão 19</h2>
+
+<p><strong>@@IDENTITY retorna:</strong></p>
+
+A) Último valor IDENTITY gerado.<br>
+B) Quantidade de colunas.<br>
+C) Nome da chave primária.<br>
+D) Data atual.<br><br>
+
+<button onclick="mostrar('r19')">Mostrar Gabarito</button>
+
+<div id="r19" class="resposta">
+<h3>✅ Gabarito: A</h3>
+
+</div>
+</div>
+
+<!-- QUESTÃO 20 -->
+
+<div class="questao">
+<h2>Questão 20</h2>
+
+<p><strong>SET é utilizado para:</strong></p>
+
+A) Atribuir valor à variável.<br>
+B) Criar View.<br>
+C) Criar Procedure.<br>
+D) Excluir tabela.<br><br>
+
+<button onclick="mostrar('r20')">Mostrar Gabarito</button>
+
+<div id="r20" class="resposta">
+<h3>✅ Gabarito: A</h3>
+
+<div class="codigo">
+
+SET @Nome = 'Maria';
+
+</div>
+
+</div>
+</div>
+<!-- Questões 21 a 25 -->
+
+<div class="questao">
+<h2>Questão 21</h2>
+<p><strong>IF é utilizado para:</strong></p>
+A) Repetição<br>B) Decisão<br>C) Consulta<br>D) Junção
+<button onclick="mostrar('r21')">Mostrar Gabarito</button>
+<div id="r21" class="resposta">
+<h3>✅ Gabarito: B</h3>
+<p>IF executa comandos de acordo com uma condição.</p>
+</div>
+</div>
+
+<div class="questao">
+<h2>Questão 22</h2>
+<p><strong>ELSE é executado quando:</strong></p>
+A) IF é verdadeiro<br>B) IF é falso<br>C) Sempre<br>D) Nunca
+<button onclick="mostrar('r22')">Mostrar Gabarito</button>
+<div id="r22" class="resposta">
+<h3>✅ Gabarito: B</h3>
+</div>
+</div>
+
+<div class="questao">
+<h2>Questão 23</h2>
+<p><strong>WHILE é utilizado para:</strong></p>
+A) Repetição<br>B) Exclusão<br>C) Consulta<br>D) Agrupamento
+<button onclick="mostrar('r23')">Mostrar Gabarito</button>
+<div id="r23" class="resposta">
+<h3>✅ Gabarito: A</h3>
+</div>
+</div>
+
+<div class="questao">
+<h2>Questão 24</h2>
+<p><strong>PRINT serve para:</strong></p>
+A) Imprimir relatórios.<br>
+B) Exibir mensagens.<br>
+C) Criar tabelas.<br>
+D) Executar procedures.
+<button onclick="mostrar('r24')">Mostrar Gabarito</button>
+<div id="r24" class="resposta">
+<h3>✅ Gabarito: B</h3>
+</div>
+</div>
+
+<div class="questao">
+<h2>Questão 25</h2>
+<p><strong>Qual estrutura repete comandos enquanto a condição for verdadeira?</strong></p>
+A) IF<br>B) CASE<br>C) WHILE<br>D) PRINT
+<button onclick="mostrar('r25')">Mostrar Gabarito</button>
+<div id="r25" class="resposta">
+<h3>✅ Gabarito: C</h3>
+</div>
+</div>
+<!-- Questão 26 -->
+
+<div class="questao">
+<h2>Questão 26</h2>
+
+<p><strong>Uma Stored Procedure é:</strong></p>
+
+A) Uma tabela.<br>
+B) Um conjunto de comandos SQL armazenados.<br>
+C) Uma View.<br>
+D) Um índice.<br><br>
+
+<button onclick="mostrar('r26')">Mostrar Gabarito</button>
+
+<div id="r26" class="resposta">
+<h3>✅ Gabarito: B</h3>
+
+<p>
+Procedures armazenam lógica de negócio dentro do banco.
+</p>
+
+</div>
+</div>
+
+<div class="questao">
+<h2>Questão 27</h2>
+
+<p><strong>Qual comando cria uma Procedure?</strong></p>
+
+A) CREATE FUNCTION<br>
+B) CREATE PROCEDURE<br>
+C) CREATE VIEW<br>
+D) CREATE INDEX
+
+<button onclick="mostrar('r27')">Mostrar Gabarito</button>
+
+<div id="r27" class="resposta">
+<h3>✅ Gabarito: B</h3>
+</div>
+</div>
+
+<div class="questao">
+<h2>Questão 28</h2>
+
+<p><strong>Uma Function escalar retorna:</strong></p>
+
+A) Uma tabela.<br>
+B) Um único valor.<br>
+C) Vários registros.<br>
+D) Uma transação.
+
+<button onclick="mostrar('r28')">Mostrar Gabarito</button>
+
+<div id="r28" class="resposta">
+<h3>✅ Gabarito: B</h3>
+</div>
+</div>
+
+<div class="questao">
+<h2>Questão 29</h2>
+
+<p><strong>Qual objeto foi utilizado para calcular bônus no exercício do professor?</strong></p>
+
+A) Trigger<br>
+B) Function<br>
+C) View<br>
+D) Índice
+
+<button onclick="mostrar('r29')">Mostrar Gabarito</button>
+
+<div id="r29" class="resposta">
+<h3>✅ Gabarito: B</h3>
+
+<p>
+Foi criada a função fn_CalcularBonus para retornar o bônus calculado. :contentReference[oaicite:0]{index=0}
+</p>
+
+</div>
+</div>
+
+<div class="questao">
+<h2>Questão 30</h2>
+
+<p><strong>Qual comando executa uma Stored Procedure?</strong></p>
+
+A) RUN<br>
+B) OPEN<br>
+C) EXEC<br>
+D) CALLSQL
+
+<button onclick="mostrar('r30')">Mostrar Gabarito</button>
+
+<div id="r30" class="resposta">
+<h3>✅ Gabarito: C</h3>
+
+<div class="codigo">
+
+EXEC MinhaProcedure;
+
+</div>
+
+</div>
+</div>
+<script>
+
+function mostrar(id){
+
+let resposta = document.getElementById(id);
+
+if(resposta.style.display === "block"){
+resposta.style.display = "none";
+}
+else{
+resposta.style.display = "block";
+}
+
+}
+
+</script>
+
+</body>
+</html>
