@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atividade Banco de Dados</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#eef4ff;
+    margin:20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    color:#004aad;
+    margin-bottom:30px;
+}
+
+.questao{
+    background:white;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:10px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+h2{
+    color:#004aad;
+    margin-bottom:10px;
+}
+
+.alternativa{
+    padding:8px;
+    margin:5px 0;
+    background:#f1f1f1;
+    border-radius:5px;
+}
+
+button{
+    margin-top:10px;
+    padding:10px 15px;
+    background:#004aad;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#003080;
+}
+
+.gabarito{
+    display:none;
+    margin-top:15px;
+    padding:15px;
+    background:#d4edda;
+    border-left:5px solid green;
+}
+
+.correta{
+    color:green;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Atividade Banco de Dados</h1>
+
+<!-- QUESTÃO 1 -->
+
+<div class="questao">
+<h2>Pergunta 1</h2>
+
+<p>
+Os privilégios devem ser concedidos àqueles que possuem capacidade técnica e responsabilidade suficiente para fazer a gestão das estruturas do banco de dados a ele concedidas. A segurança em banco de dados é ampla, e passa por questões legais e éticas.
+</p>
+
+<p><strong>Marque verdadeiro (V) ou falso (F):</strong></p>
+
+<ul>
+<li>GRANT: autoriza a execução de determinada tarefa por um usuário.</li>
+<li>DENY: remove ou restringe a execução ou acesso de um determinado usuário a uma tarefa.</li>
+<li>REVOKE: desautoriza um usuário a executar uma determinada tarefa que lhe foi concedida através de um grupo ao qual ele pertença.</li>
+<li>LOGIN: credencial que dá acesso ao servidor de banco de dados.</li>
+<li>USER: credencial que dá acesso a um determinado banco de dados.</li>
+</ul>
+
+<div class="alternativa">A) V, V, V, F, F</div>
+<div class="alternativa">B) V, F, F, V, V</div>
+<div class="alternativa">C) V, V, F, F, F</div>
+<div class="alternativa">D) F, F, F, V, V</div>
+<div class="alternativa">E) F, F, V, V, V</div>
+
+<button onclick="mostrar('g1')">Mostrar Gabarito</button>
+
+<div class="gabarito" id="g1">
+<p class="correta">Resposta Correta: V, F, F, V, V</p>
+
+<p>
+✔ GRANT concede permissões.<br>
+✔ LOGIN dá acesso ao servidor.<br>
+✔ USER dá acesso ao banco de dados.<br>
+❌ DENY nega acesso, não remove permissões.<br>
+❌ REVOKE remove permissões concedidas diretamente.
+</p>
+</div>
+</div>
+
+<!-- QUESTÃO 2 -->
+
+<div class="questao">
+<h2>Pergunta 2</h2>
+
+<p>
+Os bancos de dados não relacionais, também chamados de bancos de dados NoSQL, surgem para atender demandas específicas.
+</p>
+
+<p>A eficiência desse tipo de banco de dados...</p>
+
+<div class="alternativa">A) São mais modernos e eficientes que os relacionais.</div>
+<div class="alternativa">B) Dependem apenas do tipo de dado armazenado.</div>
+<div class="alternativa">C) São sempre mais eficientes que bancos relacionais.</div>
+<div class="alternativa">D) É indiferente à tecnologia utilizada.</div>
+<div class="alternativa">E) Vem do tipo de tecnologia que utilizam e estão relacionadas a características específicas.</div>
+
+<button onclick="mostrar('g2')">Mostrar Gabarito</button>
+
+<div class="gabarito" id="g2">
+<p class="correta">
+Resposta Correta:
+Vem do tipo de tecnologia que utilizam e estão relacionadas a características específicas.
+</p>
+
+<p>
+Os bancos NoSQL são criados para resolver problemas específicos como escalabilidade, velocidade e flexibilidade dos dados.
+</p>
+</div>
+</div>
+
+<!-- QUESTÃO 3 -->
+
+<div class="questao">
+<h2>Pergunta 3</h2>
+
+<p>
+Sobre o uso de índices, assinale a resposta correta.
+</p>
+
+<div class="alternativa">A) Os índices não otimizam a busca por informação.</div>
+<div class="alternativa">B) Só é permitido um índice por tabela.</div>
+<div class="alternativa">C) Quanto mais índices, mais rápida será a inserção.</div>
+<div class="alternativa">D) Os índices otimizam busca por conta da ordenação em tempo de execução.</div>
+<div class="alternativa">E) Os índices otimizam busca por conta da estrutura com que armazenam os dados no disco.</div>
+
+<button onclick="mostrar('g3')">Mostrar Gabarito</button>
+
+<div class="gabarito" id="g3">
+<p class="correta">
+Resposta Correta:
+Os índices otimizam busca por conta da estrutura com que armazenam os dados no disco.
+</p>
+
+<p>
+Índices utilizam estruturas específicas que permitem localizar registros rapidamente.
+</p>
+</div>
+</div>
+
+<!-- QUESTÃO 4 -->
+
+<div class="questao">
+<h2>Pergunta 4</h2>
+
+<p>
+Dentro das estruturas mais complexas utilizadas para otimizar o armazenamento e busca de informações em um banco de dados destacam-se funções, procedimentos armazenados, gatilhos e índices.
+</p>
+
+<p><strong>Analise as afirmações:</strong></p>
+
+<p>I. Uma Função pode chamar outra Função.</p>
+<p>II. Uma Visualização pode chamar outra Visualização.</p>
+<p>III. Um Procedimento Armazenado pode executar outro Procedimento Armazenado.</p>
+<p>IV. Um Gatilho pode disparar outro Gatilho.</p>
+
+<div class="alternativa">A) I e IV apenas.</div>
+<div class="alternativa">B) I, II, III e IV.</div>
+<div class="alternativa">C) I apenas.</div>
+<div class="alternativa">D) I e II apenas.</div>
+<div class="alternativa">E) I, II e III apenas.</div>
+
+<button onclick="mostrar('g4')">Mostrar Gabarito</button>
+
+<div class="gabarito" id="g4">
+<p class="correta">
+Resposta Correta: I, II e III apenas.
+</p>
+
+<p>
+Funções podem chamar funções, views podem usar outras views e procedures podem executar outras procedures. Nesta disciplina a afirmativa IV é considerada incorreta.
+</p>
+</div>
+</div>
+
+<!-- QUESTÃO 5 -->
+
+<div class="questao">
+<h2>Pergunta 5</h2>
+
+<p>
+Avalie as asserções a seguir:
+</p>
+
+<p>
+I. O uso de gatilhos (triggers) pode contribuir para a automação de processos e controle de integridade dos dados.
+</p>
+
+<p><strong>PORQUE</strong></p>
+
+<p>
+II. Gatilhos são executados automaticamente em resposta a eventos como INSERT, UPDATE ou DELETE.
+</p>
+
+<div class="alternativa">A) I verdadeira e II falsa.</div>
+<div class="alternativa">B) I e II verdadeiras, mas II não justifica I.</div>
+<div class="alternativa">C) I falsa e II verdadeira.</div>
+<div class="alternativa">D) I e II falsas.</div>
+<div class="alternativa">E) I e II verdadeiras, e II justifica I.</div>
+
+<button onclick="mostrar('g5')">Mostrar Gabarito</button>
+
+<div class="gabarito" id="g5">
+<p class="correta">
+Resposta Correta:
+As asserções I e II são proposições verdadeiras, e a II é uma justificativa correta da I.
+</p>
+
+<p>
+Triggers executam ações automaticamente após eventos no banco de dados, ajudando a manter a integridade e automatizar processos.
+</p>
+</div>
+</div>
+
+</div>
+
+<script>
+function mostrar(id){
+    let elemento = document.getElementById(id);
+
+    if(elemento.style.display === "block"){
+        elemento.style.display = "none";
+    } else {
+        elemento.style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>
